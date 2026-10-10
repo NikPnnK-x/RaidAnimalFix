@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Window -->
+  <RAF_Relations_Title>Diplomacy between players</RAF_Relations_Title>
+  <RAF_Relations_OnlyPlayers>Diplomacy is available only to player factions in multiplayer.</RAF_Relations_OnlyPlayers>
+  <RAF_Relations_NoOthers>There are no other player factions.</RAF_Relations_NoOthers>
+  <RAF_Relations_ColFaction>Faction</RAF_Relations_ColFaction>
+  <RAF_Relations_ColStatus>Status</RAF_Relations_ColStatus>
+  <RAF_Relations_ColActions>Actions</RAF_Relations_ColActions>
+
+  <RAF_Relations_KindAlly>Ally</RAF_Relations_KindAlly>
+  <RAF_Relations_KindNeutral>Neutral</RAF_Relations_KindNeutral>
+  <RAF_Relations_KindWar>War</RAF_Relations_KindWar>
+
+  <RAF_Relations_BtnProposeAlliance>Propose alliance</RAF_Relations_BtnProposeAlliance>
+  <RAF_Relations_BtnProposePeace>Propose peace</RAF_Relations_BtnProposePeace>
+  <RAF_Relations_BtnDeclareWar>Declare war</RAF_Relations_BtnDeclareWar>
+  <RAF_Relations_BtnBreakAlliance>End alliance</RAF_Relations_BtnBreakAlliance>
+  <RAF_Relations_BtnAccept>Accept</RAF_Relations_BtnAccept>
+  <RAF_Relations_BtnDecline>Decline</RAF_Relations_BtnDecline>
+  <RAF_Relations_BtnWithdraw>Withdraw proposal</RAF_Relations_BtnWithdraw>
+  <RAF_Relations_BtnCancelPending>Cancel declaration</RAF_Relations_BtnCancelPending>
+
+  <RAF_Relations_StatusWarPending>{0} declared war: starts in {1}</RAF_Relations_StatusWarPending>
+  <RAF_Relations_StatusBreakPending>{0} is ending the alliance: in {1}</RAF_Relations_StatusBreakPending>
+  <RAF_Relations_StatusTheyProposeAlliance>They propose an alliance</RAF_Relations_StatusTheyProposeAlliance>
+  <RAF_Relations_StatusTheyProposePeace>They propose peace</RAF_Relations_StatusTheyProposePeace>
+  <RAF_Relations_StatusYouProposedAlliance>You proposed an alliance</RAF_Relations_StatusYouProposedAlliance>
+  <RAF_Relations_StatusYouProposedPeace>You proposed peace</RAF_Relations_StatusYouProposedPeace>
+  <RAF_Relations_StatusCooldown>next change possible in {0}</RAF_Relations_StatusCooldown>
+
+  <RAF_Relations_ConfirmWar>Declare war on {0}? The war starts in {1}; until then you can cancel the declaration. Both sides will be hostile: pawns on each other's maps will fight.</RAF_Relations_ConfirmWar>
+  <RAF_Relations_ConfirmBreak>End the alliance with {0}? You will become neutral in {1}.</RAF_Relations_ConfirmBreak>
+
+  <!-- Reasons -->
+  <RAF_Relations_ReasonInvalid>Not available.</RAF_Relations_ReasonInvalid>
+  <RAF_Relations_ReasonPending>A declaration is already pending.</RAF_Relations_ReasonPending>
+  <RAF_Relations_ReasonCooldown>Relations changed recently: wait {0}.</RAF_Relations_ReasonCooldown>
+  <RAF_Relations_ReasonNeedPeace>Make peace first.</RAF_Relations_ReasonNeedPeace>
+  <RAF_Relations_ReasonAlready>Already in this state.</RAF_Relations_ReasonAlready>
+  <RAF_Relations_ReasonNotAtWar>You are not at war.</RAF_Relations_ReasonNotAtWar>
+  <RAF_Relations_ReasonNotAllied>You are not allies.</RAF_Relations_ReasonNotAllied>
+  <RAF_Relations_ReasonProposed>Your proposal is already waiting for an answer.</RAF_Relations_ReasonProposed>
+  <RAF_Relations_ReasonNoProposal>There is no such proposal.</RAF_Relations_ReasonNoProposal>
+  <RAF_Relations_ReasonStale>The proposal no longer matches the current relations.</RAF_Relations_ReasonStale>
+  <RAF_Relations_ReasonNoPending>You have no pending declaration.</RAF_Relations_ReasonNoPending>
+
+  <!-- Messages -->
+  <RAF_Relations_MsgAllianceProposed>{0} proposes an alliance. Open the Diplomacy tab to answer.</RAF_Relations_MsgAllianceProposed>
+  <RAF_Relations_MsgPeaceProposed>{0} proposes peace. Open the Diplomacy tab to answer.</RAF_Relations_MsgPeaceProposed>
+  <RAF_Relations_MsgProposalSent>Proposal sent to {0}.</RAF_Relations_MsgProposalSent>
+  <RAF_Relations_MsgProposalDeclined>{0} declined your proposal.</RAF_Relations_MsgProposalDeclined>
+  <RAF_Relations_MsgProposalWithdrawn>{0} withdrew their proposal.</RAF_Relations_MsgProposalWithdrawn>
+  <RAF_Relations_MsgAllianceFormed>{0} and {1} are now allies.</RAF_Relations_MsgAllianceFormed>
+  <RAF_Relations_MsgPeaceMade>{0} and {1} made peace.</RAF_Relations_MsgPeaceMade>
+  <RAF_Relations_MsgWarDeclared>{0} declared war on {1}. The war starts in {2}.</RAF_Relations_MsgWarDeclared>
+  <RAF_Relations_MsgAllianceBreaking>{0} is ending the alliance with {1}. They become neutral in {2}.</RAF_Relations_MsgAllianceBreaking>
+  <RAF_Relations_MsgWarStarted>War between {0} and {1} has begun!</RAF_Relations_MsgWarStarted>
+  <RAF_Relations_MsgAllianceEnded>The alliance between {0} and {1} has ended.</RAF_Relations_MsgAllianceEnded>
+  <RAF_Relations_MsgPendingCancelled>{0} cancelled the declaration against {1}.</RAF_Relations_MsgPendingCancelled>
+  <RAF_Relations_MsgGuestArrived>A caravan of {0} has entered your map {1} (relations: {2}).</RAF_Relations_MsgGuestArrived>
+  <RAF_Relations_MsgRaidOnHostMap>Raid by {0} on {1}, where your colonists are staying!</RAF_Relations_MsgRaidOnHostMap>
+
+  <!-- Guest permissions -->
+  <RAF_Relations_PermTitle>Guests on my maps</RAF_Relations_PermTitle>
+  <RAF_Relations_PermHint>What colonists of other players may do on your maps. Defaults: allies — everything, neutral — nothing. War always forbids everything.</RAF_Relations_PermHint>
+  <RAF_Relations_PermAllAllies>All allies (default)</RAF_Relations_PermAllAllies>
+  <RAF_Relations_PermDesignate>Orders (mine, cut, hunt...)</RAF_Relations_PermDesignate>
+  <RAF_Relations_PermFood>Eat my food</RAF_Relations_PermFood>
+  <RAF_Relations_PermBeds>Use my beds</RAF_Relations_PermBeds>
+  <RAF_Relations_PermForbid>Unforbid my items</RAF_Relations_PermForbid>
+  <RAF_Relations_PermReset>Reset</RAF_Relations_PermReset>
+  <RAF_Relations_PermResetTip>Return this faction to the default permissions.</RAF_Relations_PermResetTip>
+  <RAF_Relations_PermWarTip>You are at war: guests may do nothing on your maps.</RAF_Relations_PermWarTip>
+  <RAF_Relations_GuestNoDesignate>This map belongs to {0}: they did not allow you to give orders here.</RAF_Relations_GuestNoDesignate>
+  <RAF_Relations_GuestNoForbid>This map belongs to {0}: they did not allow you to unforbid their items.</RAF_Relations_GuestNoForbid>
+
+  <!-- Sessions -->
+  <RAF_Relations_ForeignCaravanSessionBusy>A player of {0} is already forming a caravan on this map; only one caravan can be formed at a time. Wait until they finish.</RAF_Relations_ForeignCaravanSessionBusy>
+  <RAF_Relations_ForeignTransporterSessionBusy>A player of {0} is already loading transporters on this map. Wait until they finish.</RAF_Relations_ForeignTransporterSessionBusy>
+
+</LanguageData>

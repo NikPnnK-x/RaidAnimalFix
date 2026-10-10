@@ -11,8 +11,8 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 
-[assembly: AssemblyVersion("3.0.935.0")]
-[assembly: AssemblyFileVersion("3.0.935.0")]
+[assembly: AssemblyVersion("3.0.936.0")]
+[assembly: AssemblyFileVersion("3.0.936.0")]
 
 namespace RaidAnimalFix
 {
@@ -40,7 +40,7 @@ namespace RaidAnimalFix
                         Log.Warning("[RaidAnimalFix] Hotfix patch failed " + t.Name + ": " + ex.Message);
                     }
                 }
-                Log.Message("[RaidAnimalFix] Hotfix 3.0.935.0: patched " + ok + ", failed " + fail);
+                Log.Message("[RaidAnimalFix] Hotfix 3.0.936.0: patched " + ok + ", failed " + fail);
             }
             catch (Exception ex)
             {
@@ -143,121 +143,116 @@ namespace RaidAnimalFix
     }
 
     /// <summary>
-    /// Квесты живут на мировых часах, а TicksGame в MP — часы текущей карты.
-    /// Предложение ставится как mapTicks+8дней, список читает worldTicks
-    /// (или наоборот) → в колонке «1г/2г» вместо 4–8 дней, State врёт,
-    /// оффер не сгорает. Новые квесты сразу пишем от мира; старые
-    /// в геттере пересчитываем от той карты, чей clock совпал.
+    /// Квесты живут на мировых часах, а TicksGame в MP — часы текущего
+    /// контекста (карта / мир / UI-карта под камерой). Срок предложения
+    /// пишем и читаем ТОЛЬКО от мировых часов MP (AsyncWorldTimeComp.worldTicks).
     ///
-    /// Геттер горячий: vanilla Quest.State зовёт TicksUntilExpiry,
-    /// Historical — State дважды, QuestTick — Historical+Expiry+State,
-    /// QuestManagerTick — каждый квест каждый тик, AlertsReadout — каждый кадр.
-    /// Рефлексия + обход всех карт на каждый get сажал FPS (10 карт у Bitn).
-    /// Мир/карты — раз за TicksGame; remaining — раз за квест за тик.
-    /// Карты только если remaining абсурден (>32 дней).
+    /// 3.0.936: убран статический кэш RemCache (ключ — один TicksGame).
+    /// Его наполнял и UI (тревоги каждый кадр, гизмо торговых запросов →
+    /// Quest.State), и симуляция. У игрока с камерой на «отстающей» карте
+    /// кэш отдавал остаток на тик старше → квест истекал на разных тиках,
+    /// а запасной подбор «карты с подходящими часами» растягивал разницу
+    /// до дней. Теперь геттер — чистая функция синхронного состояния.
+    /// Старые офферы, записанные по часам карты (остаток > 32 дней),
+    /// перебазируются один раз из QuestTick — он идёт только в симуляции.
     /// </summary>
     internal static class QuestClock
     {
         private const int MaxOfferTicks = 32 * 60000;
 
-        private static MethodInfo _world;
-        private static MethodInfo _map;
         private static bool _resolved;
-        private static readonly object[] WorldArgs = new object[] { 0 };
-        private static readonly object[] MapArgs = new object[] { null, 0 };
-
-        private static int _clockKey = int.MinValue;
-        private static int _worldTicks;
-        private static bool _worldOk;
-        private static int[] _mapTicks;
-        private static int _mapTickCount = -1;
-        private static readonly Dictionary<int, int> RemCache = new Dictionary<int, int>(64);
+        private static FieldInfo _gameField;
+        private static FieldInfo _worldCompField;
+        private static FieldInfo _worldTicksField;
+        private static FieldInfo _mapTicksField;
+        private static MethodInfo _asyncTimeOfMap;
 
         private static void Resolve()
         {
             if (_resolved) return;
             _resolved = true;
-            Type t = AccessTools.TypeByName("RaidAnimalFix.MpMapTime");
-            if (t == null) return;
-            _world = AccessTools.Method(t, "TryGetWorldTicks");
-            _map = AccessTools.Method(t, "TryGetMapTicks", new Type[] { typeof(Map), typeof(int).MakeByRefType() });
-        }
-
-        private static void EnsureClock()
-        {
-            int key = Find.TickManager.TicksGame;
-            if (_clockKey == key) return;
-            _clockKey = key;
-            _mapTickCount = -1;
-            RemCache.Clear();
-            _worldTicks = key;
-            _worldOk = false;
-            Resolve();
-            if (_world == null) return;
-            WorldArgs[0] = 0;
-            if ((bool)_world.Invoke(null, WorldArgs))
+            try
             {
-                _worldTicks = (int)WorldArgs[0];
-                _worldOk = true;
+                Type mp = AccessTools.TypeByName("Multiplayer.Client.Multiplayer");
+                if (mp != null)
+                    _gameField = AccessTools.Field(mp, "game");
+                if (_gameField != null)
+                    _worldCompField = AccessTools.Field(_gameField.FieldType, "asyncWorldTimeComp");
+                if (_worldCompField != null)
+                    _worldTicksField = AccessTools.Field(_worldCompField.FieldType, "worldTicks");
+                Type ext = AccessTools.TypeByName("Multiplayer.Client.Extensions");
+                if (ext != null)
+                    _asyncTimeOfMap = AccessTools.Method(ext, "AsyncTime", new Type[] { typeof(Map) });
+                Type atc = AccessTools.TypeByName("Multiplayer.Client.AsyncTimeComp");
+                if (atc != null)
+                    _mapTicksField = AccessTools.Field(atc, "mapTicks");
+            }
+            catch (Exception ex)
+            {
+                Log.Warning("[RaidAnimalFix] QuestClock resolve: " + ex.Message);
             }
         }
 
-        private static void EnsureMapTicks()
-        {
-            if (_mapTickCount >= 0) return;
-            _mapTickCount = 0;
-            Resolve();
-            List<Map> maps = Find.Maps;
-            if (_map == null || maps == null) return;
-            int n = maps.Count;
-            if (_mapTicks == null || _mapTicks.Length < n)
-                _mapTicks = new int[Math.Max(n, 8)];
-            for (int i = 0; i < n; i++)
-            {
-                MapArgs[0] = maps[i];
-                MapArgs[1] = 0;
-                if ((bool)_map.Invoke(null, MapArgs))
-                    _mapTicks[_mapTickCount++] = (int)MapArgs[1];
-            }
-            MapArgs[0] = null;
-        }
+        // Геттер срока зовётся для каждого квеста каждый тик и каждый кадр во
+        // вкладке квестов: объект часов мира кэшируем на MP-игру, читаем одно поле.
+        private static AccessTools.FieldRef<object> _gameRef;
+        private static bool _gameRefTried;
+        private static object _cachedGame;
+        private static object _cachedComp;
 
         public static bool TryWorld(out int ticks)
         {
-            EnsureClock();
-            ticks = _worldTicks;
-            return _worldOk;
+            ticks = 0;
+            Resolve();
+            if (_worldTicksField == null) return false;
+            try
+            {
+                if (!_gameRefTried)
+                {
+                    _gameRefTried = true;
+                    try { _gameRef = AccessTools.StaticFieldRefAccess<object>(_gameField); }
+                    catch { _gameRef = null; }
+                }
+                object game = (_gameRef != null) ? _gameRef() : _gameField.GetValue(null);
+                if (game == null) return false;
+                if (!ReferenceEquals(game, _cachedGame) || _cachedComp == null)
+                {
+                    _cachedGame = game;
+                    _cachedComp = _worldCompField.GetValue(game);
+                }
+                if (_cachedComp == null) return false;
+                ticks = (int)_worldTicksField.GetValue(_cachedComp);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public static int RemainingOffer(Quest quest)
+        private static bool TryMapTicks(Map map, out int ticks)
         {
-            int expire = quest.acceptanceExpireTick;
-            int cached;
-            if (RemCache.TryGetValue(quest.id, out cached))
-                return cached;
+            ticks = 0;
+            if (map == null || _asyncTimeOfMap == null || _mapTicksField == null) return false;
+            try
+            {
+                object comp = _asyncTimeOfMap.Invoke(null, new object[] { map });
+                if (comp == null) return false;
+                ticks = (int)_mapTicksField.GetValue(comp);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
-            int rem;
+        public static int RemainingOffer(Quest quest, int vanilla)
+        {
             int world;
             if (!TryWorld(out world))
-                rem = Mathf.Max(expire - Find.TickManager.TicksGame, 0);
-            else
-            {
-                rem = expire - world;
-                if (rem < 0 || rem > MaxOfferTicks)
-                {
-                    EnsureMapTicks();
-                    int best = -1;
-                    for (int i = 0; i < _mapTickCount; i++)
-                    {
-                        int r = expire - _mapTicks[i];
-                        if (r >= 0 && r <= MaxOfferTicks && (best < 0 || r < best))
-                            best = r;
-                    }
-                    rem = best >= 0 ? best : Mathf.Max(rem, 0);
-                }
-            }
-            RemCache[quest.id] = rem;
-            return rem;
+                return vanilla;
+            return Mathf.Max(quest.acceptanceExpireTick - world, 0);
         }
 
         public static void StampFromWorld(Quest quest, int delayTicks)
@@ -266,7 +261,35 @@ namespace RaidAnimalFix
             int world;
             if (!TryWorld(out world)) return;
             quest.acceptanceExpireTick = world + delayTicks;
-            RemCache[quest.id] = delayTicks;
+        }
+
+        /// <summary>
+        /// Только из симуляции (Quest.QuestTick). Оффер, записанный по часам
+        /// карты, которая ушла вперёд мира, даёт остаток > 32 дней. Переносим
+        /// на мировые часы по той карте (порядок Find.Maps), чей остаток
+        /// попадает в 0..32 дня. Все входы синхронны → одинаково у всех.
+        /// </summary>
+        public static void RebaseLegacyOffer(Quest quest)
+        {
+            if (quest == null || quest.acceptanceExpireTick < 0 || quest.acceptanceTick >= 0 || quest.Historical)
+                return;
+            int world;
+            if (!TryWorld(out world)) return;
+            int rem = quest.acceptanceExpireTick - world;
+            if (rem <= MaxOfferTicks) return;
+            List<Map> maps = Find.Maps;
+            int best = -1;
+            for (int i = 0; i < maps.Count; i++)
+            {
+                int mt;
+                if (!TryMapTicks(maps[i], out mt)) continue;
+                int r = quest.acceptanceExpireTick - mt;
+                if (r >= 0 && r <= MaxOfferTicks && (best < 0 || r < best))
+                    best = r;
+            }
+            if (best < 0) best = MaxOfferTicks;
+            quest.acceptanceExpireTick = world + best;
+            Log.Message("[RaidAnimalFix] QuestClock: оффер квеста " + quest.id + " перенесён на мировые часы (" + best + " тиков)");
         }
     }
 
@@ -280,7 +303,22 @@ namespace RaidAnimalFix
             try
             {
                 if (__instance == null || __instance.acceptanceExpireTick < 0) return;
-                __result = QuestClock.RemainingOffer(__instance);
+                __result = QuestClock.RemainingOffer(__instance, __result);
+            }
+            catch { }
+        }
+    }
+
+    [HarmonyPatch(typeof(Quest))]
+    [HarmonyPatch("QuestTick")]
+    public static class QuestLegacyOfferRebase
+    {
+        [HarmonyPrefix]
+        public static void Prefix(Quest __instance)
+        {
+            try
+            {
+                QuestClock.RebaseLegacyOffer(__instance);
             }
             catch { }
         }
@@ -363,6 +401,10 @@ namespace RaidAnimalFix
                     {
                         Thing x = tw.things[j];
                         if (x == null || x.Destroyed)
+                            continue;
+                        // Как ваниль (lookInHaulSources): на земле или в хранилище-источнике,
+                        // не в инвентаре/руках пешки — иначе работа сбора срывается по кругу.
+                        if (!x.Spawned && !(x.ParentHolder is IHaulSource))
                             continue;
                         if (!p.CanReserve(x, 1, -1, null, false))
                             continue;

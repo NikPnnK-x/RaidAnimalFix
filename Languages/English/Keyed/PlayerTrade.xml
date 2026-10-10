@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_PlayerTrade_HubLabel>Player trade</RAF_PlayerTrade_HubLabel>
+  <RAF_PlayerTrade_HubDesc>Open your trade offers with other players, or propose a remote trade delivered by drop pods.</RAF_PlayerTrade_HubDesc>
+  <RAF_PlayerTrade_TradeWith>Trade with {0}</RAF_PlayerTrade_TradeWith>
+  <RAF_PlayerTrade_TradeWithDesc>Propose an exchange of goods with player faction {0}. Goods move directly between your caravan and {1}.</RAF_PlayerTrade_TradeWithDesc>
+  <RAF_PlayerTrade_ActiveOffers>Active offers</RAF_PlayerTrade_ActiveOffers>
+  <RAF_PlayerTrade_NoOffers>No active offers.</RAF_PlayerTrade_NoOffers>
+  <RAF_PlayerTrade_Open>Open</RAF_PlayerTrade_Open>
+  <RAF_PlayerTrade_RemoteHeader>Remote trade (delivery by drop pods, free of charge)</RAF_PlayerTrade_RemoteHeader>
+  <RAF_PlayerTrade_RemoteButton>Trade (remote, by drop pods)</RAF_PlayerTrade_RemoteButton>
+  <RAF_PlayerTrade_NoPlayers>No other player factions.</RAF_PlayerTrade_NoPlayers>
+  <RAF_PlayerTrade_AtWar>You are at war with {0}.</RAF_PlayerTrade_AtWar>
+  <RAF_PlayerTrade_NoHomeMap>you have no colony map</RAF_PlayerTrade_NoHomeMap>
+  <RAF_PlayerTrade_TheyNoHomeMap>{0} has no colony map</RAF_PlayerTrade_TheyNoHomeMap>
+
+  <RAF_PlayerTrade_YourOffer>Your offer (from {0})</RAF_PlayerTrade_YourOffer>
+  <RAF_PlayerTrade_TheirOffer>{0} offers (from {1})</RAF_PlayerTrade_TheirOffer>
+  <RAF_PlayerTrade_Silver>Silver</RAF_PlayerTrade_Silver>
+  <RAF_PlayerTrade_Available>available: {0}</RAF_PlayerTrade_Available>
+  <RAF_PlayerTrade_Value>Market value: {0}</RAF_PlayerTrade_Value>
+  <RAF_PlayerTrade_All>All</RAF_PlayerTrade_All>
+  <RAF_PlayerTrade_Accept>Accept</RAF_PlayerTrade_Accept>
+  <RAF_PlayerTrade_Accepted>accepted</RAF_PlayerTrade_Accepted>
+  <RAF_PlayerTrade_NotAccepted>not accepted</RAF_PlayerTrade_NotAccepted>
+  <RAF_PlayerTrade_You>You: {0}</RAF_PlayerTrade_You>
+  <RAF_PlayerTrade_Them>{0}: {1}</RAF_PlayerTrade_Them>
+  <RAF_PlayerTrade_CancelTrade>Cancel trade</RAF_PlayerTrade_CancelTrade>
+  <RAF_PlayerTrade_Close>Close</RAF_PlayerTrade_Close>
+  <RAF_PlayerTrade_Delivery_Direct>Delivery: directly (you are at the same place).</RAF_PlayerTrade_Delivery_Direct>
+  <RAF_PlayerTrade_Delivery_Pods>Delivery: by drop pods to each colony.</RAF_PlayerTrade_Delivery_Pods>
+  <RAF_PlayerTrade_ExpiresIn>Expires in {0}.</RAF_PlayerTrade_ExpiresIn>
+  <RAF_PlayerTrade_OfferGone>This offer no longer exists.</RAF_PlayerTrade_OfferGone>
+  <RAF_PlayerTrade_State_Done>The trade is complete.</RAF_PlayerTrade_State_Done>
+  <RAF_PlayerTrade_State_Cancelled>The trade was cancelled.</RAF_PlayerTrade_State_Cancelled>
+  <RAF_PlayerTrade_NothingOffered>(nothing offered yet)</RAF_PlayerTrade_NothingOffered>
+  <RAF_PlayerTrade_NoItems>No items available. Only unforbidden items in storage on the colony map, or items in the caravan inventory, can be offered.</RAF_PlayerTrade_NoItems>
+  <RAF_PlayerTrade_Unknown>(item no longer available)</RAF_PlayerTrade_Unknown>
+
+  <RAF_PlayerTrade_Msg_Proposed>{0} proposes a trade. Open it via "Player trade" on your settlement or caravan.</RAF_PlayerTrade_Msg_Proposed>
+  <RAF_PlayerTrade_Msg_Done>Trade with {0} completed.</RAF_PlayerTrade_Msg_Done>
+  <RAF_PlayerTrade_Msg_Cancelled>Trade with {0} was cancelled.</RAF_PlayerTrade_Msg_Cancelled>
+  <RAF_PlayerTrade_Msg_Expired>Trade offer with {0} expired.</RAF_PlayerTrade_Msg_Expired>
+  <RAF_PlayerTrade_Msg_AnchorLost>Trade with {0} cancelled: a caravan or colony involved is gone or has moved away.</RAF_PlayerTrade_Msg_AnchorLost>
+  <RAF_PlayerTrade_Msg_Failed>Trade with {0} failed: {1}. Both acceptances were reset.</RAF_PlayerTrade_Msg_Failed>
+  <RAF_PlayerTrade_Msg_Changed>The offer changed before your acceptance arrived. Review it and accept again.</RAF_PlayerTrade_Msg_Changed>
+  <RAF_PlayerTrade_Msg_CannotCreate>Cannot open trade with {0}: {1}.</RAF_PlayerTrade_Msg_CannotCreate>
+  <RAF_PlayerTrade_Reason_Missing>{0} is no longer available</RAF_PlayerTrade_Reason_Missing>
+  <RAF_PlayerTrade_Reason_Silver>not enough silver</RAF_PlayerTrade_Reason_Silver>
+  <RAF_PlayerTrade_Reason_Anchor>a caravan or colony involved is gone or not at the same place</RAF_PlayerTrade_Reason_Anchor>
+  <RAF_PlayerTrade_Reason_War>the factions are at war</RAF_PlayerTrade_Reason_War>
+  <RAF_PlayerTrade_Reason_Empty>nothing is offered</RAF_PlayerTrade_Reason_Empty>
+
+</LanguageData>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Desync Fix: mod list check, desync analyzer, settings check, compatibility -->
+  <RAF_Safety_rimexodus_seamlessworld>решает, какие карты тикают и спят, по камере каждого игрока; генерирует карты по бюджету реального времени</RAF_Safety_rimexodus_seamlessworld>
+  <RAF_Safety_ferny_perspectiveshift>управляет пешкой с клавиатуры прямо в тике, без синхронизации</RAF_Safety_ferny_perspectiveshift>
+  <RAF_Safety_memegoddess_replacestuff>чертежи поверх скал, туман, отмена над мостами, порядок мостов и сохранение исправлены этим модом; выбор материала у «Заменить» синхронизируется</RAF_Safety_memegoddess_replacestuff>
+  <RAF_Safety_jellycreative_isekaileveling>дыры MP Compatibility закрыты этим модом (автораспределение, руны в тике, точка высадки, ранги, кэши); настройки в игре заблокированы — держите Sync configs включённым</RAF_Safety_jellycreative_isekaileveling>
+  <RAF_Safety_mehni_pickupandhaul>настройки (вместимость, трупы, животные) влияют на выбор работ — включите Sync configs и не меняйте их в игре</RAF_Safety_mehni_pickupandhaul>
+  <RAF_Safety_m00nl1ght_mappreview>переброс сида и превью в игре выключены этим модом</RAF_Safety_m00nl1ght_mappreview>
+  <RAF_Safety_co_uk_epicguru_meleeanimation>декоративный режим: казни, дуэли, лассо, навыки выключены этим модом</RAF_Safety_co_uk_epicguru_meleeanimation>
+  <RAF_Safety_nals_facialanimation>тик компонента выключен, случайность изолирована этим модом</RAF_Safety_nals_facialanimation>
+  <RAF_Safety_fuu_bloodanimations>случайность изолирована, грязь из анимаций не создаётся</RAF_Safety_fuu_bloodanimations>
+  <RAF_Safety_com_yayo_yayoani_continued>только отрисовка</RAF_Safety_com_yayo_yayoani_continued>
+  <RAF_Safety_unlimitedhugs_allowtool>Multiplayer Compatibility; держите Sync configs включённым</RAF_Safety_unlimitedhugs_allowtool>
+  <RAF_Safety_unlimitedhugs_hugslib>Multiplayer Compatibility</RAF_Safety_unlimitedhugs_hugslib>
+  <RAF_Safety_andromeda_usefulmarks>собственная поддержка MP; только отображение</RAF_Safety_andromeda_usefulmarks>
+  <RAF_Safety_jaxe_bubbles>только отображение</RAF_Safety_jaxe_bubbles>
+  <RAF_Safety_brrainz_cameraplus>камера и отрисовка</RAF_Safety_brrainz_cameraplus>
+  <RAF_Safety_ray1203_simplecamerasetting>камера</RAF_Safety_ray1203_simplecamerasetting>
+  <RAF_Safety_tixiv_whoshotmylegoff>только подсказка</RAF_Safety_tixiv_whoshotmylegoff>
+  <RAF_Safety_ferny_resourcedeliveryhelper>только оверлей</RAF_Safety_ferny_resourcedeliveryhelper>
+  <RAF_Safety_frozensnowfox_filthvanisheswithrainandtime>только XML</RAF_Safety_frozensnowfox_filthvanisheswithrainandtime>
+  <RAF_Safety_kilo_plaguedoc>только XML</RAF_Safety_kilo_plaguedoc>
+  <RAF_Safety_TitleBreak>Эти моды ломают синхронизацию в мультиплеере — рассинхроны будут:</RAF_Safety_TitleBreak>
+  <RAF_Safety_TitleRisk>Эти моды могут давать рассинхроны в мультиплеере:</RAF_Safety_TitleRisk>
+  <RAF_Safety_ClientBreak>В сборке есть моды, несовместимые с мультиплеером (подробности в логе).</RAF_Safety_ClientBreak>
+  <RAF_Safety_ClientRisk>В сборке есть моды с риском рассинхрона (подробности в логе).</RAF_Safety_ClientRisk>
+  <RAF_Evacuated>Поселение, где были ваши колонисты, закрылось — они выведены караваном.</RAF_Evacuated>
+  <RAF_SettingsNoMod>(нет мода)</RAF_SettingsNoMod>
+  <RAF_SettingsMismatch>Настройки модов различаются (группы игроков с одинаковыми настройками):</RAF_SettingsMismatch>
+  <RAF_ReplaceStuffSettingsLocked>Настройки Replace Stuff влияют на симуляцию и заблокированы во время игры в мультиплеере.</RAF_ReplaceStuffSettingsLocked>
+  <RAF_IsekaiSettingsLocked>Настройки Isekai заблокированы в мультиплеерной игре: они влияют на симуляцию и должны совпадать у всех игроков. Меняйте их в главном меню (одинаково у всех).</RAF_IsekaiSettingsLocked>
+  <RAF_DesyncAnalysisHeader>Разбор рассинхрона: моды на пути кода, где игра разошлась (самые вероятные первыми).</RAF_DesyncAnalysisHeader>
+</LanguageData>

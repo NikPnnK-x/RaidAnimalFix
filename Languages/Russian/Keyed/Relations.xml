@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Окно -->
+  <RAF_Relations_Title>Дипломатия между игроками</RAF_Relations_Title>
+  <RAF_Relations_OnlyPlayers>Дипломатия доступна только фракциям игроков в мультиплеере.</RAF_Relations_OnlyPlayers>
+  <RAF_Relations_NoOthers>Других фракций игроков нет.</RAF_Relations_NoOthers>
+  <RAF_Relations_ColFaction>Фракция</RAF_Relations_ColFaction>
+  <RAF_Relations_ColStatus>Статус</RAF_Relations_ColStatus>
+  <RAF_Relations_ColActions>Действия</RAF_Relations_ColActions>
+
+  <RAF_Relations_KindAlly>Союз</RAF_Relations_KindAlly>
+  <RAF_Relations_KindNeutral>Нейтралитет</RAF_Relations_KindNeutral>
+  <RAF_Relations_KindWar>Война</RAF_Relations_KindWar>
+
+  <RAF_Relations_BtnProposeAlliance>Предложить союз</RAF_Relations_BtnProposeAlliance>
+  <RAF_Relations_BtnProposePeace>Предложить мир</RAF_Relations_BtnProposePeace>
+  <RAF_Relations_BtnDeclareWar>Объявить войну</RAF_Relations_BtnDeclareWar>
+  <RAF_Relations_BtnBreakAlliance>Разорвать союз</RAF_Relations_BtnBreakAlliance>
+  <RAF_Relations_BtnAccept>Принять</RAF_Relations_BtnAccept>
+  <RAF_Relations_BtnDecline>Отклонить</RAF_Relations_BtnDecline>
+  <RAF_Relations_BtnWithdraw>Отозвать предложение</RAF_Relations_BtnWithdraw>
+  <RAF_Relations_BtnCancelPending>Отменить объявление</RAF_Relations_BtnCancelPending>
+
+  <RAF_Relations_StatusWarPending>{0} объявил(а) войну: начнётся через {1}</RAF_Relations_StatusWarPending>
+  <RAF_Relations_StatusBreakPending>{0} разрывает союз: через {1}</RAF_Relations_StatusBreakPending>
+  <RAF_Relations_StatusTheyProposeAlliance>Вам предлагают союз</RAF_Relations_StatusTheyProposeAlliance>
+  <RAF_Relations_StatusTheyProposePeace>Вам предлагают мир</RAF_Relations_StatusTheyProposePeace>
+  <RAF_Relations_StatusYouProposedAlliance>Вы предложили союз</RAF_Relations_StatusYouProposedAlliance>
+  <RAF_Relations_StatusYouProposedPeace>Вы предложили мир</RAF_Relations_StatusYouProposedPeace>
+  <RAF_Relations_StatusCooldown>следующее изменение через {0}</RAF_Relations_StatusCooldown>
+
+  <RAF_Relations_ConfirmWar>Объявить войну фракции {0}? Война начнётся через {1}; до этого объявление можно отменить. Стороны станут враждебны: пешки на картах друг друга начнут бой.</RAF_Relations_ConfirmWar>
+  <RAF_Relations_ConfirmBreak>Разорвать союз с фракцией {0}? Через {1} вы станете нейтральны.</RAF_Relations_ConfirmBreak>
+
+  <!-- Причины -->
+  <RAF_Relations_ReasonInvalid>Недоступно.</RAF_Relations_ReasonInvalid>
+  <RAF_Relations_ReasonPending>Уже есть ожидающее объявление.</RAF_Relations_ReasonPending>
+  <RAF_Relations_ReasonCooldown>Отношения недавно менялись: подождите {0}.</RAF_Relations_ReasonCooldown>
+  <RAF_Relations_ReasonNeedPeace>Сначала заключите мир.</RAF_Relations_ReasonNeedPeace>
+  <RAF_Relations_ReasonAlready>Уже в этом состоянии.</RAF_Relations_ReasonAlready>
+  <RAF_Relations_ReasonNotAtWar>Вы не воюете.</RAF_Relations_ReasonNotAtWar>
+  <RAF_Relations_ReasonNotAllied>Вы не союзники.</RAF_Relations_ReasonNotAllied>
+  <RAF_Relations_ReasonProposed>Ваше предложение уже ждёт ответа.</RAF_Relations_ReasonProposed>
+  <RAF_Relations_ReasonNoProposal>Такого предложения нет.</RAF_Relations_ReasonNoProposal>
+  <RAF_Relations_ReasonStale>Предложение больше не соответствует текущим отношениям.</RAF_Relations_ReasonStale>
+  <RAF_Relations_ReasonNoPending>У вас нет ожидающего объявления.</RAF_Relations_ReasonNoPending>
+
+  <!-- Сообщения -->
+  <RAF_Relations_MsgAllianceProposed>{0} предлагает союз. Ответить можно во вкладке «Дипломатия».</RAF_Relations_MsgAllianceProposed>
+  <RAF_Relations_MsgPeaceProposed>{0} предлагает мир. Ответить можно во вкладке «Дипломатия».</RAF_Relations_MsgPeaceProposed>
+  <RAF_Relations_MsgProposalSent>Предложение отправлено фракции {0}.</RAF_Relations_MsgProposalSent>
+  <RAF_Relations_MsgProposalDeclined>{0} отклонил(а) ваше предложение.</RAF_Relations_MsgProposalDeclined>
+  <RAF_Relations_MsgProposalWithdrawn>{0} отозвал(а) своё предложение.</RAF_Relations_MsgProposalWithdrawn>
+  <RAF_Relations_MsgAllianceFormed>{0} и {1} теперь союзники.</RAF_Relations_MsgAllianceFormed>
+  <RAF_Relations_MsgPeaceMade>{0} и {1} заключили мир.</RAF_Relations_MsgPeaceMade>
+  <RAF_Relations_MsgWarDeclared>{0} объявил(а) войну фракции {1}. Война начнётся через {2}.</RAF_Relations_MsgWarDeclared>
+  <RAF_Relations_MsgAllianceBreaking>{0} разрывает союз с фракцией {1}. Нейтралитет наступит через {2}.</RAF_Relations_MsgAllianceBreaking>
+  <RAF_Relations_MsgWarStarted>Началась война между {0} и {1}!</RAF_Relations_MsgWarStarted>
+  <RAF_Relations_MsgAllianceEnded>Союз между {0} и {1} расторгнут.</RAF_Relations_MsgAllianceEnded>
+  <RAF_Relations_MsgPendingCancelled>{0} отменил(а) объявление против {1}.</RAF_Relations_MsgPendingCancelled>
+  <RAF_Relations_MsgGuestArrived>Караван фракции {0} вошёл на вашу карту {1} (отношения: {2}).</RAF_Relations_MsgGuestArrived>
+  <RAF_Relations_MsgRaidOnHostMap>Рейд {0} на {1}, где находятся ваши колонисты!</RAF_Relations_MsgRaidOnHostMap>
+
+  <!-- Разрешения гостей -->
+  <RAF_Relations_PermTitle>Гости на моих картах</RAF_Relations_PermTitle>
+  <RAF_Relations_PermHint>Что колонисты других игроков могут делать на ваших картах. По умолчанию: союзникам — всё, нейтральным — ничего. Война всегда запрещает всё.</RAF_Relations_PermHint>
+  <RAF_Relations_PermAllAllies>Все союзники (по умолчанию)</RAF_Relations_PermAllAllies>
+  <RAF_Relations_PermDesignate>Приказы (копать, рубить, охота...)</RAF_Relations_PermDesignate>
+  <RAF_Relations_PermFood>Есть мою еду</RAF_Relations_PermFood>
+  <RAF_Relations_PermBeds>Спать в моих кроватях</RAF_Relations_PermBeds>
+  <RAF_Relations_PermForbid>Разрешать мои вещи</RAF_Relations_PermForbid>
+  <RAF_Relations_PermReset>Сбросить</RAF_Relations_PermReset>
+  <RAF_Relations_PermResetTip>Вернуть этой фракции разрешения по умолчанию.</RAF_Relations_PermResetTip>
+  <RAF_Relations_PermWarTip>Вы воюете: гостям на ваших картах запрещено всё.</RAF_Relations_PermWarTip>
+  <RAF_Relations_GuestNoDesignate>Эта карта принадлежит фракции {0}: вам не разрешено отдавать здесь приказы.</RAF_Relations_GuestNoDesignate>
+  <RAF_Relations_GuestNoForbid>Эта карта принадлежит фракции {0}: вам не разрешено снимать запрет с их вещей.</RAF_Relations_GuestNoForbid>
+
+  <!-- Сессии -->
+  <RAF_Relations_ForeignCaravanSessionBusy>Игрок фракции {0} уже формирует караван на этой карте; одновременно можно формировать только один. Дождитесь, пока он закончит.</RAF_Relations_ForeignCaravanSessionBusy>
+  <RAF_Relations_ForeignTransporterSessionBusy>Игрок фракции {0} уже загружает транспортёры на этой карте. Дождитесь, пока он закончит.</RAF_Relations_ForeignTransporterSessionBusy>
+
+</LanguageData>

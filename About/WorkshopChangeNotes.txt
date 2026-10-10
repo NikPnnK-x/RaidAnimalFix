@@ -1,3 +1,55 @@
+[b]3.0.936.0[/b]
+
+[list]
+[*] Quest offer expiry is now a pure function of the Multiplayer world clock. The countdown cache was shared between the UI (alerts every frame, trade-request gizmos) and the simulation and keyed by TicksGame only; a player whose camera sat on a lagging map could see a quest expire one tick (or, via the "pick a matching map clock" fallback, days) later than everyone else. Old offers stamped on a map clock are re-based once from the quest tick.
+[*] Long events queued from a tick or a command (caravan meetings, peace talks, ambushes, caravan/pod arrival at sites, new colonies) now run in the faction and map clock they were queued in. Before, Multiplayer ran them later with each player's own faction: different goodwill, different raid points, letters on some machines only. Such events are also forced synchronous.
+[*] Trade-request quests: the item cache used by quest generation was keyed by frame and spent random numbers on rebuild — now rebuilt in the simulation with isolated randomness. Stale requests from ended quests are cleared, so the next request at that settlement is not refused.
+[*] Ransom demands no longer read each player's own letter stack to pick the kidnapped colonist; demanded pawns are recorded in the save.
+[*] Anomaly: Sightstealer letter-vs-message choice uses game time instead of real time (letter ids are what Multiplayer matches letter choices by); pit gate collapse camera shake no longer spends randomness only on players viewing the map; Chunkskip no longer reuses a frame cache filled by the targeting preview.
+[*] Melee Animation in multiplayer: its float-menu options (executions, lasso, skills), the duel spot, friendly duels and lasso spawning on generated pawns are disabled — they started jobs or created items on one machine only or depended on per-player settings. Melee idle hooks no longer spend simulation randomness. Facial Animation no longer ticks in multiplayer (portrait refresh only; it could recalc mood thoughts on some machines).
+[*] Join hold: time is held only while a player is actually loading (not when someone presses catch-up), never on the host, and at most 90 s per joiner. The host no longer auto-rejoins on a desync.
+[*] Removed a server lookup patch that rejected joiners whose username equals their Steam name; kicks now run on the server thread.
+[*] Removed dead or redundant patches (duplicate site raid countdown driver, path finder job completion already done by Multiplayer, broken colony-age patch). Combat cooldowns read the map clock and no longer trigger the vanilla "future tick" reset.
+[*] NEW: desync analyzer. After a desync it reads Multiplayer's Desync-NN.zip, maps the first diverging trace and every Harmony patch on it to mods and shows "probable culprits" (window, log, and Desync-NN.RaidAnimalFix.txt next to the report).
+[*] NEW: mod list check at game start. The host gets a window listing mods that break or risk multiplayer sync and which ones this mod already patches; clients get a message.
+[*] NEW: mod settings check. Settings of Pick Up And Haul, ISEKAI, Replace Stuff and Melee Animation are fingerprinted and compared between players every few seconds; a mismatch is announced before it turns into a desync.
+[*] NEW: gravships can no longer land on another player's settlement, and a takeoff never abandons another player's map. When a map closes, other players' colonists leave as a caravan instead of vanishing. Letters sent from the world tick and delayed letters (revenant, sightstealer, gray pall, unnatural corpse, pursuing mechanoids...) now reach their owners. A colonist kidnapped on someone else's map now notifies their owner.
+[*] Odyssey: generated locations were re-rolled on a tick derived from an object hash that differs per process — desync with no join needed. Fixed.
+[*] Multiplayer: quest clock assignment rebuilt at every join point no longer depends on each client's faction; faction goodwill situations are cached per player and the UI no longer changes relations; players of another faction no longer recalculate someone else's trade; gravship engine cache no longer leaks UI state into the simulation.
+[*] Compatibility built in: Replace Stuff (over-rock toggle, fog, bridge cancel by selection, bridge order, save pruning, settings locked in game), Map Preview (in-game seed reroll and preview disabled), ISEKAI RPG LEVELING (gaps in Multiplayer Compatibility: auto-distribute sync, runes in simulation, drop zone, mana core menu, raid ranks, seeded creature ranks, static caches, settings locked in game).
+[*] Review fixes: pit gate isolation touched the emergence logic; item accessibility cache could freeze quest generation; long-event context skipped Multiplayer's own events, survives reloads and mirrors world-context map data.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.936.0 (по-русски)[/b]
+
+[list]
+[*] Срок предложения квеста теперь — чистая функция мировых часов Multiplayer. Кэш обратного отсчёта был общим для интерфейса (тревоги каждый кадр, гизмо торговых запросов) и симуляции и держался на одном TicksGame; у игрока с камерой на отстающей карте квест истекал на тик (а через запасной подбор «подходящих часов карты» — на дни) позже, чем у остальных. Старые офферы, записанные по часам карты, переносятся один раз из тика квеста.
+[*] Длинные события, поставленные из тика или команды (встреча каравана, мирные переговоры, засада, прибытие каравана или капсул на сайт, новая колония), выполняются в той фракции и на тех часах карты, где были поставлены. Раньше Multiplayer выполнял их позже с фракцией каждого игрока: разная репутация, разные очки рейда, письма только у части игроков. Такие события теперь синхронные.
+[*] Квесты торговых запросов: кэш вещей для генерации квеста держался на номере кадра и тратил случайность при пересборке — теперь в симуляции пересобирается с изолированной случайностью. Просроченные запросы закончившихся квестов гасятся, и следующий запрос на том же поселении не отклоняется.
+[*] Требование выкупа больше не смотрит в свой стек писем при выборе похищенного; запрошенные пешки записываются в сохранение.
+[*] Anomaly: выбор «письмо или сообщение» у Sightstealer — по игровому времени вместо реального (по номерам писем Multiplayer сверяет выбор в письмах); тряска камеры при обрушении ямы не тратит случайность только у смотрящих на карту; Chunkskip не берёт кэш кадра из превью прицеливания.
+[*] Melee Animation в мультиплеере: пункты меню (казни, лассо, навыки), дуэльная площадка, дружеские дуэли и лассо у сгенерированных пешек выключены — они запускали работы или создавали вещи только у одного игрока либо зависели от его настроек. Idle-хуки ближнего боя не тратят случайность симуляции. Facial Animation в мультиплеере не тикает (там только обновление портрета, а пересчёт мыслей мог пойти у части игроков).
+[*] Пауза при входе: время держится только пока игрок реально загружается (не когда кто-то жмёт «догнать»), никогда на хосте и не дольше 90 с на игрока. Хост больше не перезаходит сам при рассинхроне.
+[*] Убран патч поиска игрока на сервере, из-за которого не пускало игроков с ником, равным имени в Steam; кик выполняется в потоке сервера.
+[*] Убраны мёртвые и лишние патчи (второй драйвер отсчёта рейда на сайте, добивание поиска пути, которое Multiplayer уже делает, сломанный патч возраста колонии). Кулдауны боя читают часы карты и не вызывают ванильный сброс «тика из будущего».
+[*] НОВОЕ: анализатор рассинхронов. После рассинхрона читает Desync-NN.zip от Multiplayer, сопоставляет первый расходящийся след и все Harmony-патчи на нём с модами и показывает «вероятных виновников» (окно, лог и Desync-NN.RaidAnimalFix.txt рядом с отчётом).
+[*] НОВОЕ: проверка сборки при старте игры. Хост видит окно с модами, которые ломают или рискуют сломать синхронизацию, и какие из них уже исправлены этим модом; клиенты — сообщение.
+[*] НОВОЕ: сверка настроек модов. Настройки Pick Up And Haul, ISEKAI, Replace Stuff и Melee Animation сравниваются между игроками каждые несколько секунд; расхождение объявляется до того, как станет рассинхроном.
+[*] НОВОЕ: гравикорабль больше не садится на поселение другого игрока, а взлёт не бросает чужую карту. При закрытии карты колонисты других игроков уходят караваном, а не пропадают. Письма из тика мира и отложенные письма (ревенант, Sightstealer, серая мгла, неестественный труп, преследующие механоиды...) доходят владельцам. О похищении колониста на чужой карте узнаёт его владелец.
+[*] Odyssey: созданные локации пересоздавались на тике от хэша объекта, у каждого процесса своего, — рассинхрон без всякого перезахода. Исправлено.
+[*] Multiplayer: привязка квестов к часам, которую MP перестраивает на каждой точке входа, больше не зависит от фракции клиента; ситуации репутации кэшируются для каждого игрока, интерфейс больше не меняет отношения; игроки другой фракции не пересчитывают чужую сделку; кэш гравидвигателя не протекает из интерфейса в симуляцию.
+[*] Встроенная совместимость: Replace Stuff (чертежи поверх скал, туман, отмена над мостами по выделению, порядок мостов, чистка при сохранении, настройки заблокированы в игре), Map Preview (переброс сида и превью в игре выключены), ISEKAI RPG LEVELING (дыры Multiplayer Compatibility: синхронизация автораспределения, руны в симуляции, точка высадки, меню ядра маны, ранги рейдов, ранги существ с seed, статические кэши, настройки заблокированы в игре).
+[*] Исправления по ревью: изоляция ямы задевала логику выхода существ; кэш доступных вещей мог подвешивать генерацию квестов; контекст длинных событий не трогает события самого Multiplayer, переживает перезагрузку и переключает данные карт в мировом контексте.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.935.0[/b]
 
 [list]

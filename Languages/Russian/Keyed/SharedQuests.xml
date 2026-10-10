@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_SharedQuests_InviteAlly>Пригласить союзника</RAF_SharedQuests_InviteAlly>
+  <RAF_SharedQuests_InviteAllyDesc>Пригласить фракцию другого игрока в этот квест. Участники получают письма квеста и долю предметной награды (капсулами в свою колонию). Благосклонность и почёт остаются у вас.</RAF_SharedQuests_InviteAllyDesc>
+  <RAF_SharedQuests_NoCandidates>(нет других фракций игроков для приглашения)</RAF_SharedQuests_NoCandidates>
+  <RAF_SharedQuests_NoAllies>(нет союзных фракций игроков для приглашения)</RAF_SharedQuests_NoAllies>
+  <RAF_SharedQuests_Share>Доля награды: {0}</RAF_SharedQuests_Share>
+  <RAF_SharedQuests_ShareDesc>Доля предметной награды каждого участника. «Поровну» — делится между вами и всеми участниками; неделимые предметы раздаются по очереди.</RAF_SharedQuests_ShareDesc>
+  <RAF_SharedQuests_ShareEqual>поровну (по {0}%)</RAF_SharedQuests_ShareEqual>
+  <RAF_SharedQuests_SharePercent>{0}% каждому участнику</RAF_SharedQuests_SharePercent>
+  <RAF_SharedQuests_Remove>Исключить участника</RAF_SharedQuests_Remove>
+  <RAF_SharedQuests_Participants>Участники: {0}</RAF_SharedQuests_Participants>
+  <RAF_SharedQuests_Invited>Приглашены: {0}</RAF_SharedQuests_Invited>
+  <RAF_SharedQuests_InvitedYou>{0} приглашает вас присоединиться к этому квесту.</RAF_SharedQuests_InvitedYou>
+  <RAF_SharedQuests_Join>Вступить</RAF_SharedQuests_Join>
+  <RAF_SharedQuests_Decline>Отказаться</RAF_SharedQuests_Decline>
+  <RAF_SharedQuests_Leave>Выйти из квеста</RAF_SharedQuests_Leave>
+  <RAF_SharedQuests_YouParticipate>Вы участвуете в этом квесте (владелец: {0}, ваша доля: {1}%).</RAF_SharedQuests_YouParticipate>
+
+  <RAF_SharedQuests_MsgInvited>{0} приглашает вас в квест «{1}». Откройте вкладку квестов, чтобы вступить.</RAF_SharedQuests_MsgInvited>
+  <RAF_SharedQuests_MsgInviteSent>Приглашение в квест «{1}» отправлено: {0}.</RAF_SharedQuests_MsgInviteSent>
+  <RAF_SharedQuests_MsgJoined>{0} вступает в квест «{1}».</RAF_SharedQuests_MsgJoined>
+  <RAF_SharedQuests_MsgDeclined>{0} отказывается от квеста «{1}».</RAF_SharedQuests_MsgDeclined>
+  <RAF_SharedQuests_MsgLeft>{0} больше не участвует в квесте «{1}».</RAF_SharedQuests_MsgLeft>
+
+  <RAF_SharedQuests_RewardLetterLabel>Доля награды общего квеста</RAF_SharedQuests_RewardLetterLabel>
+  <RAF_SharedQuests_RewardLetterText>Ваша доля награды за квест «{0}» (владелец: {1}) доставлена капсулами:\n\n{2}</RAF_SharedQuests_RewardLetterText>
+
+</LanguageData>

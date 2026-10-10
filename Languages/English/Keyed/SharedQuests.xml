@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_SharedQuests_InviteAlly>Invite ally</RAF_SharedQuests_InviteAlly>
+  <RAF_SharedQuests_InviteAllyDesc>Invite another player's faction to share this quest. Participants receive the quest's letters and a share of item rewards (delivered by drop pods to their home colony). Goodwill and honor stay with you.</RAF_SharedQuests_InviteAllyDesc>
+  <RAF_SharedQuests_NoCandidates>(no other player factions to invite)</RAF_SharedQuests_NoCandidates>
+  <RAF_SharedQuests_NoAllies>(no allied player factions to invite)</RAF_SharedQuests_NoAllies>
+  <RAF_SharedQuests_Share>Reward share: {0}</RAF_SharedQuests_Share>
+  <RAF_SharedQuests_ShareDesc>Share of item rewards each participant receives. "Equal" splits evenly between you and all participants; single items are handed out in turn.</RAF_SharedQuests_ShareDesc>
+  <RAF_SharedQuests_ShareEqual>equal ({0}% each)</RAF_SharedQuests_ShareEqual>
+  <RAF_SharedQuests_SharePercent>{0}% per participant</RAF_SharedQuests_SharePercent>
+  <RAF_SharedQuests_Remove>Remove participant</RAF_SharedQuests_Remove>
+  <RAF_SharedQuests_Participants>Participants: {0}</RAF_SharedQuests_Participants>
+  <RAF_SharedQuests_Invited>Invited: {0}</RAF_SharedQuests_Invited>
+  <RAF_SharedQuests_InvitedYou>{0} invites you to join this quest.</RAF_SharedQuests_InvitedYou>
+  <RAF_SharedQuests_Join>Join</RAF_SharedQuests_Join>
+  <RAF_SharedQuests_Decline>Decline</RAF_SharedQuests_Decline>
+  <RAF_SharedQuests_Leave>Leave quest</RAF_SharedQuests_Leave>
+  <RAF_SharedQuests_YouParticipate>You are participating in this quest (owner: {0}, your share: {1}%).</RAF_SharedQuests_YouParticipate>
+
+  <RAF_SharedQuests_MsgInvited>{0} invites you to the quest "{1}". Open the Quests tab to join.</RAF_SharedQuests_MsgInvited>
+  <RAF_SharedQuests_MsgInviteSent>Invitation to the quest "{1}" sent to {0}.</RAF_SharedQuests_MsgInviteSent>
+  <RAF_SharedQuests_MsgJoined>{0} joined the quest "{1}".</RAF_SharedQuests_MsgJoined>
+  <RAF_SharedQuests_MsgDeclined>{0} declined the quest "{1}".</RAF_SharedQuests_MsgDeclined>
+  <RAF_SharedQuests_MsgLeft>{0} is no longer part of the quest "{1}".</RAF_SharedQuests_MsgLeft>
+
+  <RAF_SharedQuests_RewardLetterLabel>Shared quest reward</RAF_SharedQuests_RewardLetterLabel>
+  <RAF_SharedQuests_RewardLetterText>Your share of the reward for the quest "{0}" (owner: {1}) has arrived by drop pods:\n\n{2}</RAF_SharedQuests_RewardLetterText>
+
+</LanguageData>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Окно дипломатии между игроками (DesyncFix / Relations). Видно только в мультиплеере:
+       MainButtonWorker_RafDiplomacy.Visible => MP.IsInMultiplayer. -->
+  <MainButtonDef>
+    <defName>RAF_Diplomacy</defName>
+    <label>diplomacy</label>
+    <description>Relations with other players: alliances, peace, war, and what guests may do on your maps.</description>
+    <tabWindowClass>RaidAnimalFix.MainTabWindow_RafDiplomacy</tabWindowClass>
+    <workerClass>RaidAnimalFix.MainButtonWorker_RafDiplomacy</workerClass>
+    <order>91</order>
+    <validWithoutMap>true</validWithoutMap>
+    <minimized>true</minimized>
+    <iconPath>UI/Buttons/MainButtons/Factions</iconPath>
+  </MainButtonDef>
+
+</Defs>

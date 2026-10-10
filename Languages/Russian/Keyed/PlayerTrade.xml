@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_PlayerTrade_HubLabel>Торговля с игроками</RAF_PlayerTrade_HubLabel>
+  <RAF_PlayerTrade_HubDesc>Открыть свои предложения обмена с другими игроками или предложить удалённую сделку с доставкой транспортными капсулами.</RAF_PlayerTrade_HubDesc>
+  <RAF_PlayerTrade_TradeWith>Торговать: {0}</RAF_PlayerTrade_TradeWith>
+  <RAF_PlayerTrade_TradeWithDesc>Предложить обмен товарами игровой фракции {0}. Товары переходят напрямую между вашим караваном и «{1}».</RAF_PlayerTrade_TradeWithDesc>
+  <RAF_PlayerTrade_ActiveOffers>Открытые предложения</RAF_PlayerTrade_ActiveOffers>
+  <RAF_PlayerTrade_NoOffers>Открытых предложений нет.</RAF_PlayerTrade_NoOffers>
+  <RAF_PlayerTrade_Open>Открыть</RAF_PlayerTrade_Open>
+  <RAF_PlayerTrade_RemoteHeader>Удалённая торговля (доставка капсулами, бесплатно)</RAF_PlayerTrade_RemoteHeader>
+  <RAF_PlayerTrade_RemoteButton>Торговать (удалённо, капсулами)</RAF_PlayerTrade_RemoteButton>
+  <RAF_PlayerTrade_NoPlayers>Других игровых фракций нет.</RAF_PlayerTrade_NoPlayers>
+  <RAF_PlayerTrade_AtWar>Вы воюете с фракцией {0}.</RAF_PlayerTrade_AtWar>
+  <RAF_PlayerTrade_NoHomeMap>у вас нет карты колонии</RAF_PlayerTrade_NoHomeMap>
+  <RAF_PlayerTrade_TheyNoHomeMap>у фракции {0} нет карты колонии</RAF_PlayerTrade_TheyNoHomeMap>
+
+  <RAF_PlayerTrade_YourOffer>Ваше предложение (из: {0})</RAF_PlayerTrade_YourOffer>
+  <RAF_PlayerTrade_TheirOffer>{0} предлагает (из: {1})</RAF_PlayerTrade_TheirOffer>
+  <RAF_PlayerTrade_Silver>Серебро</RAF_PlayerTrade_Silver>
+  <RAF_PlayerTrade_Available>доступно: {0}</RAF_PlayerTrade_Available>
+  <RAF_PlayerTrade_Value>Рыночная стоимость: {0}</RAF_PlayerTrade_Value>
+  <RAF_PlayerTrade_All>Все</RAF_PlayerTrade_All>
+  <RAF_PlayerTrade_Accept>Согласиться</RAF_PlayerTrade_Accept>
+  <RAF_PlayerTrade_Accepted>согласен</RAF_PlayerTrade_Accepted>
+  <RAF_PlayerTrade_NotAccepted>не согласен</RAF_PlayerTrade_NotAccepted>
+  <RAF_PlayerTrade_You>Вы: {0}</RAF_PlayerTrade_You>
+  <RAF_PlayerTrade_Them>{0}: {1}</RAF_PlayerTrade_Them>
+  <RAF_PlayerTrade_CancelTrade>Отменить сделку</RAF_PlayerTrade_CancelTrade>
+  <RAF_PlayerTrade_Close>Закрыть</RAF_PlayerTrade_Close>
+  <RAF_PlayerTrade_Delivery_Direct>Доставка: напрямую (вы в одном месте).</RAF_PlayerTrade_Delivery_Direct>
+  <RAF_PlayerTrade_Delivery_Pods>Доставка: транспортными капсулами в каждую колонию.</RAF_PlayerTrade_Delivery_Pods>
+  <RAF_PlayerTrade_ExpiresIn>Истекает через {0}.</RAF_PlayerTrade_ExpiresIn>
+  <RAF_PlayerTrade_OfferGone>Этого предложения больше нет.</RAF_PlayerTrade_OfferGone>
+  <RAF_PlayerTrade_State_Done>Сделка завершена.</RAF_PlayerTrade_State_Done>
+  <RAF_PlayerTrade_State_Cancelled>Сделка отменена.</RAF_PlayerTrade_State_Cancelled>
+  <RAF_PlayerTrade_NothingOffered>(пока ничего не предложено)</RAF_PlayerTrade_NothingOffered>
+  <RAF_PlayerTrade_NoItems>Нет доступных вещей. Предлагать можно только незапрещённые вещи на складах карты колонии или вещи из инвентаря каравана.</RAF_PlayerTrade_NoItems>
+  <RAF_PlayerTrade_Unknown>(вещь больше недоступна)</RAF_PlayerTrade_Unknown>
+
+  <RAF_PlayerTrade_Msg_Proposed>{0} предлагает сделку. Откройте её через «Торговля с игроками» на своём поселении или караване.</RAF_PlayerTrade_Msg_Proposed>
+  <RAF_PlayerTrade_Msg_Done>Сделка с фракцией {0} завершена.</RAF_PlayerTrade_Msg_Done>
+  <RAF_PlayerTrade_Msg_Cancelled>Сделка с фракцией {0} отменена.</RAF_PlayerTrade_Msg_Cancelled>
+  <RAF_PlayerTrade_Msg_Expired>Предложение обмена с фракцией {0} истекло.</RAF_PlayerTrade_Msg_Expired>
+  <RAF_PlayerTrade_Msg_AnchorLost>Сделка с фракцией {0} отменена: участвующий караван или колония исчезли или разошлись.</RAF_PlayerTrade_Msg_AnchorLost>
+  <RAF_PlayerTrade_Msg_Failed>Сделка с фракцией {0} не состоялась: {1}. Согласия обеих сторон сброшены.</RAF_PlayerTrade_Msg_Failed>
+  <RAF_PlayerTrade_Msg_Changed>Предложение изменилось до того, как пришло ваше согласие. Проверьте его и согласитесь снова.</RAF_PlayerTrade_Msg_Changed>
+  <RAF_PlayerTrade_Msg_CannotCreate>Нельзя начать торговлю с фракцией {0}: {1}.</RAF_PlayerTrade_Msg_CannotCreate>
+  <RAF_PlayerTrade_Reason_Missing>«{0}» больше недоступно</RAF_PlayerTrade_Reason_Missing>
+  <RAF_PlayerTrade_Reason_Silver>не хватает серебра</RAF_PlayerTrade_Reason_Silver>
+  <RAF_PlayerTrade_Reason_Anchor>участвующий караван или колония исчезли или находятся не в одном месте</RAF_PlayerTrade_Reason_Anchor>
+  <RAF_PlayerTrade_Reason_War>фракции воюют</RAF_PlayerTrade_Reason_War>
+  <RAF_PlayerTrade_Reason_Empty>ничего не предложено</RAF_PlayerTrade_Reason_Empty>
+
+</LanguageData>
