@@ -1,3 +1,41 @@
+[b]3.0.937.0[/b]
+
+[list]
+[*] DESYNC FIX (Desync-69): the guest-permission patch could not be applied to a designator whose method only throws (Designator_EmptySpace). Harmony left a broken replacement behind; Multiplayer's desync tracer walks all Harmony replacements on every random call and crashed on it in the middle of a pawn's tick, at a different moment on each client. Such methods are now skipped, and any patch that fails to apply is removed completely, so a broken replacement can never stay in the game.
+[*] NEW: diplomacy between players (alliance / neutral / war, by mutual agreement; war after a day's notice). Vanilla mechanics such as capturing or stripping no longer turn players into permanent enemies.
+[*] NEW: guest permissions per host: orders (designators), unforbidding the host's items, food, beds. A guest's corpse can be buried by the host. Guest sessions (caravan forming, loading, trading, rituals) no longer pause the host's map. Raids count guests, and the guests' owner is notified.
+[*] NEW: trading between players: offers with acceptance by both sides, delivery directly between caravans/colony or by drop pods.
+[*] NEW: shared quests: invite an ally, join / leave, item rewards split by drop pods, quest letters reach participants.
+[*] NEW: DLC per faction: Anomaly events go to the monolith's owner (harbinger trees no longer pile up in a dead queue), Ideology date rituals and role letters work for every player, separate cooldowns per player (psychic rituals, bossgroups, Empire military aid, orbital scanner, "resettled recently"), pollution goodwill is charged to the polluter. Toxic wastepack dissolution is processed only in the world tick (it was also drained every frame, at a different moment on each client).
+[*] Replace Stuff: the stuff chosen for "Replace" is now synced. Allow Tool settings are included in the settings check.
+[*] Developer mode: Desync Fix → "Dump Harmony patches" writes every patched method with its owner mods to RaidAnimalFix_HarmonyPatches.txt.
+[*] Performance: hot multiplayer context checks no longer use reflection on every call.
+[*] All new texts are translated (English / Russian); other languages fall back to English.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.937.0 (по-русски)[/b]
+
+[list]
+[*] ИСПРАВЛЕН РАССИНХРОН (Desync-69): патч прав гостей не накладывался на десигнатор, метод которого только бросает исключение (Designator_EmptySpace). Harmony оставлял битую замену; трассировщик рассинхрона Multiplayer перебирает все замены Harmony на каждом броске случайности и падал на ней посреди тика пешки — у каждого клиента в свой момент. Такие методы теперь пропускаются, а любой патч, который не удалось наложить, снимается целиком — битая замена в игре остаться не может.
+[*] НОВОЕ: дипломатия между игроками (союз / нейтралитет / война по взаимному согласию, война — через сутки после объявления). Захват, раздевание и прочие ванильные механики больше не делают игроков вечными врагами.
+[*] НОВОЕ: права гостей у каждого хозяина: приказы (десигнаторы), разрешение его вещей, еда, кровати. Труп гостя может похоронить хозяин. Сессии гостей (сбор каравана, загрузка, торговля, ритуалы) больше не ставят карту хозяина на паузу. Рейды учитывают гостей, их владелец получает сообщение.
+[*] НОВОЕ: торговля между игроками: предложения с подтверждением обеих сторон, доставка напрямую между караванами/колонией или капсулами.
+[*] НОВОЕ: общие квесты: пригласить союзника, вступить / выйти, награда вещами делится капсулами, письма квеста приходят участникам.
+[*] НОВОЕ: DLC для каждой фракции: события Anomaly приходят владельцу монолита (деревья-вестники больше не копятся в мёртвой очереди), праздники и письма о ролях Ideology работают у каждого игрока, отдельные кулдауны у каждого (психические ритуалы, босс-группы, военная помощь Империи, орбитальный сканер, «недавно переезжали»), репутация за загрязнение — загрязнителю. Растворение токсичных отходов обрабатывается только в тике мира (раньше их разбирал ещё и каждый кадр — у каждого клиента в свой момент).
+[*] Replace Stuff: выбранный материал «Заменить» синхронизируется. Настройки Allow Tool входят в сверку настроек.
+[*] Режим разработчика: Desync Fix → «Dump Harmony patches» выгружает все пропатченные методы с модами-владельцами в RaidAnimalFix_HarmonyPatches.txt.
+[*] Производительность: горячие проверки контекста мультиплеера больше не используют рефлексию на каждом вызове.
+[*] Все новые тексты переведены (английский / русский); остальные языки показывают английский.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.936.0[/b]
 
 [list]

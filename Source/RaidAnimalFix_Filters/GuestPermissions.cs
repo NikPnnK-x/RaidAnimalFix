@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Reflection.Emit;
 using HarmonyLib;
 using Multiplayer.API;
 using RimWorld;
@@ -56,15 +57,41 @@ public static class GuestDesignatorPermission
 			catch
 			{
 			}
-			if (cell != null && !cell.IsAbstract && cell.ReturnType == typeof(AcceptanceReport) && seen.Add(cell))
+			if (cell != null && !cell.IsAbstract && cell.ReturnType == typeof(AcceptanceReport) && HasReturn(cell) && seen.Add(cell))
 			{
 				yield return cell;
 			}
-			if (thing != null && !thing.IsAbstract && thing.ReturnType == typeof(AcceptanceReport) && seen.Add(thing))
+			if (thing != null && !thing.IsAbstract && thing.ReturnType == typeof(AcceptanceReport) && HasReturn(thing) && seen.Add(thing))
 			{
 				yield return thing;
 			}
 		}
+	}
+
+	/// <summary>
+	/// Методы-заглушки, которые только бросают исключение (Designator_EmptySpace:
+	/// throw new NotImplementedException()), не содержат ни одного ret. Постфиксу
+	/// Harmony некуда встать — он генерирует невалидный IL, патч падает, но битая
+	/// замена остаётся в Harmony. Трассировщик рассинхрона MP перебирает все
+	/// замены (GetFunctionPointer) и падает на ней посреди тика пешки — момент у
+	/// каждого клиента свой → рассинхрон (Desync-69). Такие методы пропускаем.
+	/// </summary>
+	private static bool HasReturn(MethodInfo method)
+	{
+		try
+		{
+			foreach (KeyValuePair<OpCode, object> item in PatchProcessor.ReadMethodBody(method))
+			{
+				if (item.Key == OpCodes.Ret)
+				{
+					return true;
+				}
+			}
+		}
+		catch
+		{
+		}
+		return false;
 	}
 
 	private static void Postfix(Designator __instance, ref AcceptanceReport __result)

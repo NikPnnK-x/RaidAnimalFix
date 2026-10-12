@@ -68,6 +68,7 @@ internal static class RngSafePatcher
 			{
 				num3++;
 				Log.Warning("[RaidAnimalFix] " + tag + ": " + type2.Name + " FAILED: " + ex2.Message);
+				PatchFailureCleanup.UnpatchClass(harmony, type2);
 			}
 		}
 		Log.Message("[RaidAnimalFix] " + tag + ": patched " + num + ", skipped " + num2 + " (mods not present), failed " + num3);

@@ -11,8 +11,8 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 
-[assembly: AssemblyVersion("3.0.936.0")]
-[assembly: AssemblyFileVersion("3.0.936.0")]
+[assembly: AssemblyVersion("3.0.937.0")]
+[assembly: AssemblyFileVersion("3.0.937.0")]
 
 namespace RaidAnimalFix
 {
@@ -38,13 +38,43 @@ namespace RaidAnimalFix
                     {
                         fail++;
                         Log.Warning("[RaidAnimalFix] Hotfix patch failed " + t.Name + ": " + ex.Message);
+                        UnpatchClass(harmony, t);
                     }
                 }
-                Log.Message("[RaidAnimalFix] Hotfix 3.0.936.0: patched " + ok + ", failed " + fail);
+                Log.Message("[RaidAnimalFix] Hotfix 3.0.937.0: patched " + ok + ", failed " + fail);
             }
             catch (Exception ex)
             {
                 Log.Error("[RaidAnimalFix] Hotfix init failed: " + ex);
+            }
+        }
+
+        /// <summary>
+        /// После ошибки патча снимаем всё, что класс успел наложить: иначе битая
+        /// замена остаётся в Harmony и роняет трассировщик MP посреди тика.
+        /// </summary>
+        private static void UnpatchClass(Harmony harmony, Type patchClass)
+        {
+            try
+            {
+                foreach (MethodBase original in new List<MethodBase>(Harmony.GetAllPatchedMethods()))
+                {
+                    HarmonyLib.Patches info = Harmony.GetPatchInfo(original);
+                    if (info == null) continue;
+                    List<Patch> all = new List<Patch>();
+                    all.AddRange(info.Prefixes); all.AddRange(info.Postfixes); all.AddRange(info.Transpilers); all.AddRange(info.Finalizers);
+                    foreach (Patch p in all)
+                    {
+                        if (p.owner == harmony.Id && p.PatchMethod != null && p.PatchMethod.DeclaringType == patchClass)
+                        {
+                            try { harmony.Unpatch(original, p.PatchMethod); } catch { }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Warning("[RaidAnimalFix] Hotfix cleanup " + patchClass.Name + ": " + ex.Message);
             }
         }
     }

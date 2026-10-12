@@ -4,7 +4,10 @@ set -e
 D="$(cd "$(dirname "$0")" && pwd)"
 CSC="${CSC:?Укажите путь к Roslyn csc.dll: CSC=.../tasks/net6.0/bincore/csc.dll (NuGet Microsoft.Net.Compilers.Toolset)}"
 G="C:/Program Files (x86)/Steam/steamapps/common/RimWorld/RimWorldWin64_Data/Managed"
-H="C:/Program Files (x86)/Steam/steamapps/workshop/content/294100/2009463077/Current/Assemblies/0Harmony.dll"
+HW="C:/Program Files (x86)/Steam/steamapps/workshop/content/294100/2009463077"
+# Harmony раскладывает сборки по версиям игры (1.6/Assemblies); старая раскладка — Current/Assemblies
+H="${HARMONY:-$HW/1.6/Assemblies/0Harmony.dll}"
+[ -f "$H" ] || H="$HW/Current/Assemblies/0Harmony.dll"
 OUT="$D/1.6/Assemblies"
 # 0MultiplayerAPI берём у самого Multiplayer (обязательная зависимость мода, в мод не кладём)
 MPAPI="${MPAPI:-C:/Program Files (x86)/Steam/steamapps/workshop/content/294100/2606448745/1.6/Assemblies/0MultiplayerAPI.dll}"
