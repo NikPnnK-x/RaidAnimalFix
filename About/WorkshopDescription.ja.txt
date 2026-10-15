@@ -36,6 +36,7 @@
 [h2]組み込みの互換性[/h2]
 [list]
 [*][b]RimExodus — Seamless World[/b] がマルチプレイで動作するようになりました。マップはプレイヤーの在否に応じて休止・再開し、隣接マップは全員で同一に生成され、マップをまたぐ命令は同期されます。マルチプレイでは、居住地のマップ上でのその居住地との取引は無効です。
+[*][b]Vehicle Framework、Combat Extended、RunAndGun、Giddy-Up 2、Big and Small、Vanilla Gravship Expanded - Chapter 2：[/b]マルチプレイでの既知のデシンクを修正しました（キャラバン画面が空、車両キャラバン、移動射撃の速度、騎乗命令、プレイヤーごとに異なる襲撃者、敵戦闘プラットフォームの乗員）。
 [*][b]Replace Stuff、Map Preview、ISEKAI RPG LEVELING：[/b]デシンクの原因を修正済みです。Pick Up And Haul、Allow Tool、Replace Stuff、ISEKAI、Melee Animation、RimExodus の設定はプレイヤー間で照合されます。
 [*][b]アニメーションMOD：[/b]Blood Animations と NL Facial Animation は同期を壊さなくなり、Melee Animation は装飾モードに切り替わり、Yayo's Animation はそのまま動作します。
 [/list]

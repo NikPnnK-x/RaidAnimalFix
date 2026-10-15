@@ -36,6 +36,7 @@ Nueva pestaña «Diplomacia» (solo en multijugador).
 [h2]Compatibilidad integrada[/h2]
 [list]
 [*][b]RimExodus — Seamless World[/b] ya funciona en multijugador: los mapas se duermen y despiertan según la presencia de los jugadores, los mapas vecinos se generan igual para todos y las órdenes entre mapas se sincronizan. El comercio con un asentamiento en su propio mapa está desactivado en multijugador.
+[*][b]Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2:[/b] sus desincronizaciones conocidas en multijugador están corregidas (ventana de caravana vacía, caravanas con vehículos, velocidad al disparar en movimiento, órdenes de montar, asaltantes distintos para cada jugador, tripulación de la plataforma de guerra enemiga).
 [*][b]Replace Stuff, Map Preview, ISEKAI RPG LEVELING:[/b] sus causas de desincronización están corregidas. Los ajustes de Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation y RimExodus se comparan entre jugadores.
 [*][b]Mods de animación:[/b] Blood Animations y NL Facial Animation ya no rompen la sincronización, Melee Animation pasa a un modo decorativo y Yayo's Animation funciona tal cual.
 [/list]

@@ -280,9 +280,28 @@ public static class LongEventContextFix
 		return result;
 	}
 
+	// Зерно генератора для события: тик постановки + номер события в этом тике.
+	// Событие выполняется вне тика, где Rand — «интерфейсный» и у каждого клиента свой
+	// (VGE Chapter 2: экипаж вражеской платформы генерировался по-разному).
+	private static int _seqTick = int.MinValue;
+
+	private static int _seq;
+
+	private static int NextSeed()
+	{
+		int tick = Find.TickManager?.TicksGame ?? 0;
+		if (tick != _seqTick)
+		{
+			_seqTick = tick;
+			_seq = 0;
+		}
+		return Gen.HashCombineInt(tick, ++_seq);
+	}
+
 	private static Action WrapOne(Action inner, Faction capturedFaction, Map map, Game game)
 	{
 		int factionId = capturedFaction?.loadID ?? (-1);
+		int seed = NextSeed();
 		return delegate
 		{
 			// Игру успели перезагрузить (точка входа, перезаход) — старые
@@ -317,12 +336,14 @@ public static class LongEventContextFix
 				CaravanLeaveHelper.LogErrorThrottled("LongEventContextFix.push", ex);
 			}
 			MpSim.simEventDepth++;
+			Rand.PushState(seed);
 			try
 			{
 				inner();
 			}
 			finally
 			{
+				Rand.PopState();
 				MpSim.simEventDepth--;
 				try
 				{

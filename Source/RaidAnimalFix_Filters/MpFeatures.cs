@@ -279,7 +279,15 @@ public static class KidnapOwnerContextFix
 [StaticConstructorOnStartup]
 public static class SettingsHashCheck
 {
-	private static readonly string[] SimSettingsMods = new string[5] { "mehni.pickupandhaul", "jellycreative.isekaileveling", "memegoddess.replacestuff", "co.uk.epicguru.meleeanimation", "rimexodus.seamlessworld" };
+	private static readonly string[] SimSettingsMods = new string[6] { "mehni.pickupandhaul", "jellycreative.isekaileveling", "memegoddess.replacestuff", "co.uk.epicguru.meleeanimation", "rimexodus.seamlessworld", "ceteam.combatextended" };
+
+	/// <summary>Сборщики отпечатков для модов, чьи настройки не укладываются в общий дамп.</summary>
+	internal static readonly List<Action<StringBuilder>> ExtraSettingsPayload = new List<Action<StringBuilder>>();
+
+	internal static string FnvHex(string s)
+	{
+		return Fnv(s).ToString("x8");
+	}
 
 	// Поля, которые симуляция не читает (логи, профайлер, интерфейс) или которые мы
 	// переопределяем в MP сами — их различие рассинхрона не даёт, не предупреждаем.
@@ -291,6 +299,15 @@ public static class SettingsHashCheck
 			{
 				"verboseLogging", "logGeneration", "logTransfer", "logCaravanExit", "logWeather", "logDormancy", "logCombat", "logCombatExtended", "logCompat", "logSettlement",
 				"logCore", "tickProfilingEnabled", "tickProfileIntervalTicks", "hideEmptyColonistBarGroups", "incrementalGenerationEnabled", "generationBatchSize"
+			}
+		},
+		{
+			"ceteam.combatextended",
+			new HashSet<string>
+			{
+				"showCasings", "recoilAnim", "showTaunts", "showBackpacks", "showTacticalVests", "realWeaponNames", "showExtraTooltips", "detailedMeleeTooltip", "nonPlayerMeleeTooltip", "showExtraStats",
+				"ShowTutorialPopup", "rightClickAmmoSelect", "showCaliberOnGuns", "logUnpatchedDefs", "debugVerbose", "debugDrawPartialLoSChecks", "debugDrawTargetCoverChecks", "debugMuzzleFlash", "debugShowTreeCollisionChance", "debugShowSuppressionBuildup",
+				"debugDrawInterceptChecks", "debugDisplayDangerBuildup", "debugDisplayCellCoverRating", "debugDisplayAttritionInfo", "debugAutopatcherLogger", "lastAmmoSystemStatus", "enableExtraEffects"
 			}
 		}
 	};
@@ -486,6 +503,16 @@ public static class SettingsHashCheck
 		}
 		catch
 		{
+		}
+		foreach (Action<StringBuilder> extra in ExtraSettingsPayload)
+		{
+			try
+			{
+				extra(stringBuilder);
+			}
+			catch
+			{
+			}
 		}
 		foreach (Mod modHandle in LoadedModManager.ModHandles)
 		{

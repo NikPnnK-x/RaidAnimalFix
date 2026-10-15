@@ -1,3 +1,39 @@
+[b]3.0.939.0[/b]
+
+[list]
+[*] NEW: multiplayer fixes for popular mods that the Multiplayer compatibility list rates as broken or partly broken. Everything applies only in multiplayer.
+[*] Vehicle Framework (and Vanilla Vehicles Expanded): the caravan window is no longer empty (Vehicle Framework built its tabs only on the window's "first" opening, and Multiplayer always opens it as already opened). Sending and re-forming a caravan with vehicles now runs for every player: it used Vehicle Framework's own path straight from the interface, past Multiplayer's synced sending. Seat assignment is kept in two copies (interface and simulation), so a player with the window open no longer computes caravan mass and jobs differently. Group boarding of several pawns into a vehicle is a synced command.
+[*] Combat Extended: black smoke is computed in a fixed order (it ran in parallel threads with random spread order), CE settings are included in the settings check and locked during a game. If "Combat Extended - Multiplayer Desync Fixes" is installed, this is left to it.
+[*] RunAndGun - Continued: the light / forbidden weapon lists were filled only when a player opened the mod's settings window; for everyone else every weapon counted as heavy (40% instead of 10% move penalty), so pawns shooting on the move moved differently. The lists are now filled the same way for every player when the game loads; settings are checked and locked during a game.
+[*] Giddy-Up 2 - Continued: the Multiplayer Compatibility patch never applied to this version (it targets another package id, and classes were renamed). Mounting / dismounting orders, gizmos, caravan riders and the animals tab are now synced.
+[*] Big and Small - Framework: raiders differed between players. The mod keeps its own tick counter that is never saved and counts from the start of the process, and the raid "infiltrator" roll depends on it. The counter now follows game time; its queues are reset on load; the size / stat cache is created and refreshed only by the simulation, not by drawing.
+[*] Vanilla Gravship Expanded - Chapter 2: the enemy warplatform (with its crew) was generated in a background long event. Long events queued by the simulation now also get their own deterministic random generator. The turret accuracy buff is applied the same way for every player.
+[*] Milira Race: use the Multiplayer Milira Race Patch by Keullaeseu - listed in the mod check, not duplicated here.
+[*] Multiplayer: an interface / simulation copy mechanism for mod state that a window fills and the simulation reads (used for Vehicle Framework seats).
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.939.0 (по-русски)[/b]
+
+[list]
+[*] НОВОЕ: исправления мультиплеера для популярных модов, которые таблица совместимости Multiplayer отмечает как сломанные или частично сломанные. Всё действует только в мультиплеере.
+[*] Vehicle Framework (и Vanilla Vehicles Expanded): окно каравана больше не пустое (Vehicle Framework строил вкладки только при «первом» открытии окна, а Multiplayer всегда открывает его как уже открывавшееся). Отправка и переформирование каравана с техникой выполняются у всех игроков: раньше шли собственным путём Vehicle Framework прямо из интерфейса, мимо синхронной отправки Multiplayer. Рассадка по местам хранится в двух копиях (интерфейс и симуляция) - игрок с открытым окном больше не считает вес каравана и работы иначе. Групповая посадка пешек в машину - синхронная команда.
+[*] Combat Extended: чёрный дым считается в одном порядке (раньше - в параллельных потоках со случайным порядком распространения), настройки CE входят в сверку и заблокированы в игре. Если стоит «Combat Extended - Multiplayer Desync Fixes» - это оставлено ему.
+[*] RunAndGun - Continued: списки лёгкого и запрещённого оружия заполнялись, только когда игрок открывал окно настроек мода; у остальных всё оружие считалось тяжёлым (штраф к скорости 40% вместо 10%), и пешки, стреляющие на ходу, двигались по-разному. Теперь списки заполняются одинаково у всех при загрузке игры; настройки сверяются и заблокированы в игре.
+[*] Giddy-Up 2 - Continued: патч Multiplayer Compatibility к этой версии не применялся вовсе (он привязан к другому идентификатору, а классы переименованы). Приказы сесть / слезть, кнопки, всадники в караване и таблица животных теперь синхронизируются.
+[*] Big and Small - Framework: рейдеры различались у игроков. У мода свой счётчик тиков, который не сохраняется и считает с запуска процесса, а от него зависит выбор «инфильтраторов» в рейдах. Теперь счётчик идёт по игровому времени, очереди сбрасываются при загрузке, кэш размеров и статов создаётся и пересчитывается только симуляцией, а не отрисовкой.
+[*] Vanilla Gravship Expanded - Chapter 2: вражеская платформа (с экипажем) генерировалась в фоновом long event. Длинные события, поставленные симуляцией, теперь получают и свой детерминированный генератор случайных чисел. Бафф точности турелей применяется одинаково у всех.
+[*] Milira Race: используйте Multiplayer Milira Race Patch от Keullaeseu - указан в проверке модов, здесь не дублируется.
+[*] Multiplayer: механизм «копия для интерфейса / копия для симуляции» для состояния модов, которое заполняет окно, а читает симуляция (используется для рассадки Vehicle Framework).
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.938.0[/b]
 
 [list]

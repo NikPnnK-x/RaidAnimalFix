@@ -11,8 +11,8 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 
-[assembly: AssemblyVersion("3.0.938.0")]
-[assembly: AssemblyFileVersion("3.0.938.0")]
+[assembly: AssemblyVersion("3.0.939.0")]
+[assembly: AssemblyFileVersion("3.0.939.0")]
 
 namespace RaidAnimalFix
 {
@@ -41,7 +41,7 @@ namespace RaidAnimalFix
                         UnpatchClass(harmony, t);
                     }
                 }
-                Log.Message("[RaidAnimalFix] Hotfix 3.0.938.0: patched " + ok + ", failed " + fail);
+                Log.Message("[RaidAnimalFix] Hotfix 3.0.939.0: patched " + ok + ", failed " + fail);
             }
             catch (Exception ex)
             {

@@ -36,6 +36,7 @@ Nowa zakładka „Dyplomacja” (tylko w grze wieloosobowej).
 [h2]Wbudowana kompatybilność[/h2]
 [list]
 [*][b]RimExodus — Seamless World[/b] działa teraz w grze wieloosobowej: mapy usypiają i budzą się zależnie od obecności graczy, sąsiednie mapy generują się u wszystkich tak samo, rozkazy między mapami są synchronizowane. Handel z osadą na jej własnej mapie jest w grze wieloosobowej wyłączony.
+[*][b]Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2:[/b] ich znane desynchronizacje w grze wieloosobowej są naprawione (puste okno karawany, karawany z pojazdami, prędkość przy strzelaniu w ruchu, rozkazy dosiadania, różni najeźdźcy u graczy, załoga wrogiej platformy bojowej).
 [*][b]Replace Stuff, Map Preview, ISEKAI RPG LEVELING:[/b] ich źródła desynchronizacji są naprawione. Ustawienia Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation i RimExodus są porównywane między graczami.
 [*][b]Mody animacji:[/b] Blood Animations i NL Facial Animation nie psują już synchronizacji, Melee Animation przechodzi w tryb dekoracyjny, Yayo's Animation działa bez zmian.
 [/list]

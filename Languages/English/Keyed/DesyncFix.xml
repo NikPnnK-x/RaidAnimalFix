@@ -21,6 +21,7 @@
   <RAF_Safety_ferny_resourcedeliveryhelper>overlay only</RAF_Safety_ferny_resourcedeliveryhelper>
   <RAF_Safety_frozensnowfox_filthvanisheswithrainandtime>XML only</RAF_Safety_frozensnowfox_filthvanisheswithrainandtime>
   <RAF_Safety_kilo_plaguedoc>XML only</RAF_Safety_kilo_plaguedoc>
+  <RAF_Safety_NeedsMpCompat>works in multiplayer only through Multiplayer Compatibility, which is not loaded - expect desyncs. Add it to the mod list (after Multiplayer, before this mod)</RAF_Safety_NeedsMpCompat>
   <RAF_Safety_TitleBreak>These mods break multiplayer sync - desyncs will happen:</RAF_Safety_TitleBreak>
   <RAF_Safety_TitleRisk>These mods may cause desyncs in multiplayer:</RAF_Safety_TitleRisk>
   <RAF_Safety_ClientBreak>The mod list contains mods incompatible with multiplayer (details in the log).</RAF_Safety_ClientBreak>
@@ -35,4 +36,13 @@
   <RAF_RimExodus_MapViewed>Someone is looking at this map right now - it can't be put to sleep or removed.</RAF_RimExodus_MapViewed>
   <RAF_RimExodus_MapNotYours>Another player has colonists or a home area on this map.</RAF_RimExodus_MapNotYours>
   <RAF_DesyncAnalysisHeader>Desync analysis: mods on the code path where the game diverged (most likely first).</RAF_DesyncAnalysisHeader>
+  <RAF_Safety_smashphil_vehicleframework>fixed by this mod: the caravan window is no longer empty, vehicle caravans are sent and re-formed for everyone, seat assignment and group boarding are synced; needs Multiplayer Compatibility</RAF_Safety_smashphil_vehicleframework>
+  <RAF_Safety_ceteam_combatextended>fixed by this mod: black smoke is computed in a fixed order, CE settings are checked and locked in game (or use Combat Extended - Multiplayer Desync Fixes)</RAF_Safety_ceteam_combatextended>
+  <RAF_Safety_cemp_desyncfix>fixes Combat Extended in multiplayer; this mod then leaves CE smoke and settings to it</RAF_Safety_cemp_desyncfix>
+  <RAF_Safety_memegoddess_runandgun>fixed by this mod: light/forbidden weapon lists are filled the same for every player (they were empty until the settings window was opened), settings are checked and locked in game</RAF_Safety_memegoddess_runandgun>
+  <RAF_Safety_memegoddess_giddyup>the Multiplayer Compatibility patch did not apply to this version; mounting, gizmos, caravan riders and the animals tab are synced by this mod</RAF_Safety_memegoddess_giddyup>
+  <RAF_Safety_vanillaexpanded_gravship2>fixed by this mod: the enemy warplatform is generated the same for everyone (it was generated in a background long event), turret accuracy buff is applied the same way</RAF_Safety_vanillaexpanded_gravship2>
+  <RAF_Safety_ancot_milirarace>use the Multiplayer Milira Race Patch by Keullaeseu (with its Ancot Library and Humanoid Alien Races patches)</RAF_Safety_ancot_milirarace>
+  <RAF_Safety_redmattis_betterprerequisites>fixed by this mod: the raid infiltrator roll no longer depends on an unsaved tick counter (raiders differed between players), the size/stat cache is created and refreshed only by the simulation</RAF_Safety_redmattis_betterprerequisites>
+  <RAF_SimSettingsLocked>{0} settings are locked during a multiplayer game: the simulation reads them, so they must be identical on every client. Change them from the main menu (all players must use the same values).</RAF_SimSettingsLocked>
 </LanguageData>

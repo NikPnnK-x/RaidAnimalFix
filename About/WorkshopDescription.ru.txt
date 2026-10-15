@@ -36,6 +36,7 @@
 [h2]Встроенная совместимость[/h2]
 [list]
 [*][b]RimExodus — Seamless World[/b] теперь работает в мультиплеере: карты засыпают и просыпаются по присутствию игроков, соседние карты генерируются одинаково у всех, приказы через шов синхронизируются. Торговля с поселением на его карте в мультиплеере отключена.
+[*][b]Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2:[/b] исправлены их известные рассинхроны в мультиплеере (пустое окно каравана, караваны с техникой, скорость стрельбы на ходу, приказы сесть на животное, разные рейдеры у игроков, экипаж вражеской платформы).
 [*][b]Replace Stuff, Map Preview, ISEKAI RPG LEVELING:[/b] их источники рассинхронов исправлены. Настройки Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation и RimExodus сверяются между игроками.
 [*][b]Моды анимаций:[/b] Blood Animations и NL Facial Animation больше не ломают синхронизацию, Melee Animation переходит в декоративный режим, Yayo's Animation работает как есть.
 [/list]

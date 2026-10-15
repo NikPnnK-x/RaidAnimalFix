@@ -21,6 +21,7 @@
   <RAF_Safety_ferny_resourcedeliveryhelper>только оверлей</RAF_Safety_ferny_resourcedeliveryhelper>
   <RAF_Safety_frozensnowfox_filthvanisheswithrainandtime>только XML</RAF_Safety_frozensnowfox_filthvanisheswithrainandtime>
   <RAF_Safety_kilo_plaguedoc>только XML</RAF_Safety_kilo_plaguedoc>
+  <RAF_Safety_NeedsMpCompat>в мультиплеере работает только через Multiplayer Compatibility, а он не загружен — будут рассинхроны. Добавьте его в список модов (после Multiplayer, перед этим модом)</RAF_Safety_NeedsMpCompat>
   <RAF_Safety_TitleBreak>Эти моды ломают синхронизацию в мультиплеере — рассинхроны будут:</RAF_Safety_TitleBreak>
   <RAF_Safety_TitleRisk>Эти моды могут давать рассинхроны в мультиплеере:</RAF_Safety_TitleRisk>
   <RAF_Safety_ClientBreak>В сборке есть моды, несовместимые с мультиплеером (подробности в логе).</RAF_Safety_ClientBreak>
@@ -35,4 +36,13 @@
   <RAF_RimExodus_MapViewed>На эту карту сейчас кто-то смотрит - её нельзя усыпить или удалить.</RAF_RimExodus_MapViewed>
   <RAF_RimExodus_MapNotYours>На этой карте есть колонисты или домашняя зона другого игрока.</RAF_RimExodus_MapNotYours>
   <RAF_DesyncAnalysisHeader>Разбор рассинхрона: моды на пути кода, где игра разошлась (самые вероятные первыми).</RAF_DesyncAnalysisHeader>
+  <RAF_Safety_smashphil_vehicleframework>исправлено этим модом: окно каравана больше не пустое, караван с техникой отправляется и переформируется у всех, рассадка и групповая посадка синхронизируются; нужен Multiplayer Compatibility</RAF_Safety_smashphil_vehicleframework>
+  <RAF_Safety_ceteam_combatextended>исправлено этим модом: чёрный дым считается в одном порядке, настройки CE сверяются и заблокированы в игре (или поставьте Combat Extended - Multiplayer Desync Fixes)</RAF_Safety_ceteam_combatextended>
+  <RAF_Safety_cemp_desyncfix>чинит Combat Extended в мультиплеере; дым и настройки CE этот мод тогда оставляет ему</RAF_Safety_cemp_desyncfix>
+  <RAF_Safety_memegoddess_runandgun>исправлено этим модом: списки лёгкого и запрещённого оружия заполняются одинаково у всех (раньше были пустыми, пока не открыть окно настроек), настройки сверяются и заблокированы в игре</RAF_Safety_memegoddess_runandgun>
+  <RAF_Safety_memegoddess_giddyup>патч Multiplayer Compatibility не применялся к этой версии; посадка на животных, кнопки, всадники в караване и таблица животных синхронизируются этим модом</RAF_Safety_memegoddess_giddyup>
+  <RAF_Safety_vanillaexpanded_gravship2>исправлено этим модом: вражеская платформа генерируется одинаково у всех (раньше - в фоновом long event), бафф точности турелей применяется одинаково</RAF_Safety_vanillaexpanded_gravship2>
+  <RAF_Safety_ancot_milirarace>используйте Multiplayer Milira Race Patch от Keullaeseu (вместе с его патчами Ancot Library и Humanoid Alien Races)</RAF_Safety_ancot_milirarace>
+  <RAF_Safety_redmattis_betterprerequisites>исправлено этим модом: выбор инфильтраторов в рейдах больше не зависит от несохраняемого счётчика тиков (рейдеры различались у игроков), кэш размеров и статов создаётся и пересчитывается только симуляцией</RAF_Safety_redmattis_betterprerequisites>
+  <RAF_SimSettingsLocked>Настройки {0} заблокированы в мультиплеерной игре: их читает симуляция, поэтому они должны совпадать у всех игроков. Меняйте их в главном меню (одинаково у всех).</RAF_SimSettingsLocked>
 </LanguageData>

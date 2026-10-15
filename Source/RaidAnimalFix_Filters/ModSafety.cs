@@ -152,13 +152,22 @@ internal static class ModSafetyCheck
 
 		public string reason;
 
-		public Entry(string id, Verdict verdict, string reason)
+		/// <summary>
+		/// Вердикт верен только при загруженном Multiplayer Compatibility: синхронизацию
+		/// мода делают его патчи, а не мы. Без него вердикт понижается до риска.
+		/// </summary>
+		public bool needsMpCompat;
+
+		public Entry(string id, Verdict verdict, string reason, bool needsMpCompat = false)
 		{
 			this.id = id;
 			this.verdict = verdict;
 			this.reason = reason;
+			this.needsMpCompat = needsMpCompat;
 		}
 	}
+
+	private const string MpCompatId = "rwmt.multiplayercompatibility";
 
 	// Только моды с известным вердиктом. Безопасные перечислены, чтобы было
 	// видно: их проверяли (и чтобы не путать с «неизвестными»).
@@ -167,15 +176,15 @@ internal static class ModSafetyCheck
 		new Entry("rimexodus.seamlessworld", Verdict.Mitigated, "RAF_Safety_rimexodus_seamlessworld"),
 		new Entry("ferny.perspectiveshift", Verdict.Incompatible, "RAF_Safety_ferny_perspectiveshift"),
 		new Entry("memegoddess.replacestuff", Verdict.Mitigated, "RAF_Safety_memegoddess_replacestuff"),
-		new Entry("jellycreative.isekaileveling", Verdict.Mitigated, "RAF_Safety_jellycreative_isekaileveling"),
+		new Entry("jellycreative.isekaileveling", Verdict.Mitigated, "RAF_Safety_jellycreative_isekaileveling", needsMpCompat: true),
 		new Entry("mehni.pickupandhaul", Verdict.Risky, "RAF_Safety_mehni_pickupandhaul"),
 		new Entry("m00nl1ght.mappreview", Verdict.Mitigated, "RAF_Safety_m00nl1ght_mappreview"),
 		new Entry("co.uk.epicguru.meleeanimation", Verdict.Mitigated, "RAF_Safety_co_uk_epicguru_meleeanimation"),
 		new Entry("nals.facialanimation", Verdict.Mitigated, "RAF_Safety_nals_facialanimation"),
 		new Entry("fuu.bloodanimations", Verdict.Mitigated, "RAF_Safety_fuu_bloodanimations"),
 		new Entry("com.yayo.yayoani.continued", Verdict.Safe, "RAF_Safety_com_yayo_yayoani_continued"),
-		new Entry("unlimitedhugs.allowtool", Verdict.Safe, "RAF_Safety_unlimitedhugs_allowtool"),
-		new Entry("unlimitedhugs.hugslib", Verdict.Safe, "RAF_Safety_unlimitedhugs_hugslib"),
+		new Entry("unlimitedhugs.allowtool", Verdict.Safe, "RAF_Safety_unlimitedhugs_allowtool", needsMpCompat: true),
+		new Entry("unlimitedhugs.hugslib", Verdict.Safe, "RAF_Safety_unlimitedhugs_hugslib", needsMpCompat: true),
 		new Entry("andromeda.usefulmarks", Verdict.Safe, "RAF_Safety_andromeda_usefulmarks"),
 		new Entry("jaxe.bubbles", Verdict.Safe, "RAF_Safety_jaxe_bubbles"),
 		new Entry("brrainz.cameraplus", Verdict.Safe, "RAF_Safety_brrainz_cameraplus"),
@@ -183,7 +192,16 @@ internal static class ModSafetyCheck
 		new Entry("tixiv.whoshotmylegoff", Verdict.Safe, "RAF_Safety_tixiv_whoshotmylegoff"),
 		new Entry("ferny.resourcedeliveryhelper", Verdict.Safe, "RAF_Safety_ferny_resourcedeliveryhelper"),
 		new Entry("frozensnowfox.filthvanisheswithrainandtime", Verdict.Safe, "RAF_Safety_frozensnowfox_filthvanisheswithrainandtime"),
-		new Entry("kilo.plaguedoc", Verdict.Safe, "RAF_Safety_kilo_plaguedoc")
+		new Entry("kilo.plaguedoc", Verdict.Safe, "RAF_Safety_kilo_plaguedoc"),
+		new Entry("smashphil.vehicleframework", Verdict.Mitigated, "RAF_Safety_smashphil_vehicleframework"),
+		new Entry("oskarpotocki.vanillavehiclesexpanded", Verdict.Mitigated, "RAF_Safety_smashphil_vehicleframework"),
+		new Entry("ceteam.combatextended", Verdict.Mitigated, "RAF_Safety_ceteam_combatextended"),
+		new Entry("cemp.desyncfix", Verdict.Safe, "RAF_Safety_cemp_desyncfix"),
+		new Entry("memegoddess.runandgun", Verdict.Mitigated, "RAF_Safety_memegoddess_runandgun"),
+		new Entry("memegoddess.giddyup", Verdict.Mitigated, "RAF_Safety_memegoddess_giddyup"),
+		new Entry("vanillaexpanded.gravship2", Verdict.Mitigated, "RAF_Safety_vanillaexpanded_gravship2"),
+		new Entry("ancot.milirarace", Verdict.Risky, "RAF_Safety_ancot_milirarace"),
+		new Entry("redmattis.betterprerequisites", Verdict.Mitigated, "RAF_Safety_redmattis_betterprerequisites")
 	};
 
 	private static bool _shown;
@@ -203,6 +221,9 @@ internal static class ModSafetyCheck
 				active.Add(runningMod.PackageIdPlayerFacing.ToLowerInvariant());
 			}
 		}
+		// MP Compat — набор патчей под конкретные моды, ванилу он не трогает. Если его
+		// нет, моды, которые синхронизирует только он, молча рассинхронятся.
+		bool hasMpCompat = active.Contains(MpCompatId);
 		StringBuilder bad = new StringBuilder();
 		StringBuilder info = new StringBuilder();
 		int worst = 0;
@@ -213,18 +234,25 @@ internal static class ModSafetyCheck
 				continue;
 			}
 			string name = NameOf(entry.id);
-			switch (entry.verdict)
+			Verdict verdict = entry.verdict;
+			string reason = entry.reason;
+			if (entry.needsMpCompat && !hasMpCompat && verdict < Verdict.Risky)
+			{
+				verdict = Verdict.Risky;
+				reason = "RAF_Safety_NeedsMpCompat";
+			}
+			switch (verdict)
 			{
 			case Verdict.Incompatible:
-				bad.AppendLine("✖ " + name + ": " + entry.reason.Translate().Resolve());
+				bad.AppendLine("✖ " + name + ": " + reason.Translate().Resolve());
 				worst = Math.Max(worst, 2);
 				break;
 			case Verdict.Risky:
-				bad.AppendLine("⚠ " + name + ": " + entry.reason.Translate().Resolve());
+				bad.AppendLine("⚠ " + name + ": " + reason.Translate().Resolve());
 				worst = Math.Max(worst, 1);
 				break;
 			case Verdict.Mitigated:
-				info.AppendLine("✔ " + name + ": " + entry.reason.Translate().Resolve());
+				info.AppendLine("✔ " + name + ": " + reason.Translate().Resolve());
 				break;
 			}
 		}

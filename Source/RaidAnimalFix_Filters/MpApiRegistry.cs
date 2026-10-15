@@ -45,6 +45,7 @@ internal static class MpApiRegistry
 			MP.RegisterAll(typeof(MpApiRegistry).Assembly);
 			// Порядок фиксирован — одинаков у всех клиентов.
 			ReplaceStuffDesignatorSyncWorker.Register();
+			GiddyUpMpSync.Register();
 			Log.Message("[RaidAnimalFix] MP API: синхронные методы/поля сборки Filters зарегистрированы");
 		}
 		catch (Exception ex)
