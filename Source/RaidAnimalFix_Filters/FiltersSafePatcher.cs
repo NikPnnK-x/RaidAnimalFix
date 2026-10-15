@@ -59,6 +59,13 @@ internal static class FiltersSafePatcher
 					continue;
 				}
 			}
+			else if (!AnyTargetMethods(type2))
+			{
+				// TargetMethods() без целей (нужного мода нет) — Harmony счёл бы это ошибкой.
+				num2++;
+				Log.Message("[RaidAnimalFix] " + tag + ": " + type2.Name + " skipped (target method not found)");
+				continue;
+			}
 			try
 			{
 				PatchClassProcessor patchClassProcessor = harmony.CreateClassProcessor(type2);
@@ -73,5 +80,34 @@ internal static class FiltersSafePatcher
 			}
 		}
 		Log.Message("[RaidAnimalFix] " + tag + ": patched " + num + ", skipped " + num2 + ", failed " + num3);
+	}
+
+	/// <summary>Есть ли у класса хоть одна цель в TargetMethods(). Нет такого метода или он упал — решает Harmony.</summary>
+	private static bool AnyTargetMethods(Type type)
+	{
+		MethodInfo method = type.GetMethod("TargetMethods", BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic, null, Type.EmptyTypes, null);
+		if (method == null || !typeof(IEnumerable<MethodBase>).IsAssignableFrom(method.ReturnType))
+		{
+			return true;
+		}
+		try
+		{
+			if (!(method.Invoke(null, null) is IEnumerable<MethodBase> targets))
+			{
+				return false;
+			}
+			foreach (MethodBase target in targets)
+			{
+				if (target != null)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+		catch
+		{
+			return true;
+		}
 	}
 }

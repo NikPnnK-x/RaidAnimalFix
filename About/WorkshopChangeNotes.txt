@@ -1,3 +1,23 @@
+[b]3.0.941.0[/b]
+
+[list]
+[*] Log cleanup: patches for mods that are not installed (Milira / Ancot effects, mod pawn-table checkboxes, VFE Props) no longer report "FAILED" in the log - they are skipped quietly, like all other optional patches. Nothing changes in the game.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.941.0 (по-русски)[/b]
+
+[list]
+[*] Чистка лога: патчи для неустановленных модов (эффекты Milira / Ancot, галочки таблиц модов, VFE Props) больше не пишут в лог «FAILED» - они тихо пропускаются, как и остальные необязательные патчи. В игре ничего не меняется.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.940.0[/b]
 
 [list]
