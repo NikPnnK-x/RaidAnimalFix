@@ -1,23 +1,44 @@
-A Multiplayer add-on for multifaction games. Makes sure every player gets their OWN colony instead of one shared mess.
+A Multiplayer add-on for multifaction games: every player gets their OWN colony instead of one shared mess, and a long list of desync causes is fixed.
 
-Every player, the host included, needs the same version of this mod.
+[b]Every player, the host included, needs the same version of this mod.[/b]
 
+[h2]Your own colony[/h2]
+[list]
+[*][b]Your own storyteller.[/b] Raids, traders and events arrive only at your maps and scale to your wealth, not to the combined wealth of every player.
+[*][b]Only your notifications.[/b] Letters, alerts and quests of other colonies are hidden. Settlements are labeled with their owner's name.
+[*][b]DLC per faction.[/b] Anomaly events go to the monolith's owner, Ideology rituals and role letters work for every player, cooldowns are separate for each player (psychic rituals, bossgroups, Empire military aid, orbital scanner), pollution goodwill is charged to the polluter.
+[/list]
 
-[b]YOUR OWN STORYTELLER[/b]
-Raids, traders and events only arrive at your maps, and they scale to your wealth instead of the combined wealth of every player.
+[h2]Diplomacy between players[/h2]
+A new "Diplomacy" tab (multiplayer only).
+[list]
+[*][b]Alliance, neutral or war[/b] by mutual agreement; a war starts a day after it is declared. Capturing or stripping no longer turns players into permanent enemies.
+[*][b]Guest permissions[/b] for each host: orders, unforbidding the host's items, food, beds. Guests forming a caravan, loading, trading or holding a ritual no longer pause the host's map. Raids count guests, and their owner is warned.
+[/list]
 
-[b]ONLY YOUR NOTIFICATIONS[/b]
-Letters, alerts and quests that belong to other colonies are hidden. Settlements are labeled with their owner's name.
+[h2]Trade, quests and caravans[/h2]
+[list]
+[*][b]Trade between players:[/b] both sides accept the offer; goods move directly between a caravan and a colony, or by drop pods for remote trade.
+[*][b]Shared quests:[/b] invite an ally to a quest; item rewards are split and delivered by drop pods, quest letters reach every participant.
+[*][b]Caravans to friends:[/b] a caravan at a friend's settlement can always continue its journey. "Bring N items" quests are handed in from the world tile with one button, reward included.
+[*][b]Protected colonies:[/b] another player's gravship can't land on your settlement or abandon your map; your colonists on a closing foreign map leave as a caravan; kidnapping and world letters reach their owner.
+[/list]
 
-[b]CARAVANS TO FRIENDS[/b]
-A caravan parked at a friend's settlement can always continue its journey. "Bring N items" quests are handed in from the world tile with a single button, reward included.
+[h2]Fewer desyncs[/h2]
+[list]
+[*]Dozens of desync causes fixed in the base game, the DLCs and Multiplayer itself: map clocks in asynchronous time, delayed events, quest timers, multithreaded pathfinding, randomness used up by the camera or the interface, and more.
+[*]If a desync still happens, clients reconnect on their own. While somebody is loading in, time is held (90 seconds at most).
+[*][b]Desync analyzer:[/b] after a desync the mod reads Multiplayer's report and names the mods most likely to blame.
+[*][b]Mod list check:[/b] at game start the host sees which mods break multiplayer and which ones this mod already fixes. [b]Settings check:[/b] if players' mod settings differ, you are told before it turns into a desync.
+[*]The host can kick a player from the chat list. Cyrillic Steam names are shown transliterated instead of "Player1234".
+[/list]
 
-[b]FEWER DESYNCS[/b]
-A number of Multiplayer desync causes are closed. If one still happens, the game reconnects on its own, and time stays paused while somebody is joining.
+[h2]Built-in compatibility[/h2]
+[list]
+[*][b]RimExodus — Seamless World[/b] now works in multiplayer: maps sleep and wake by player presence, neighbor maps generate the same for everyone, cross-map orders are synced. Trading with a settlement on its own map is disabled in multiplayer.
+[*][b]Replace Stuff, Map Preview, ISEKAI RPG LEVELING:[/b] their desync sources are fixed. The settings of Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation and RimExodus are compared between players.
+[*][b]Animation mods:[/b] Blood Animations and NL Facial Animation no longer break sync, Melee Animation switches to a decorative mode, Yayo's Animation works as is.
+[/list]
 
-[b]ANIMATION MODS[/b]
-Blood Animations and NL Facial Animation no longer break synchronization. Melee Animation switches to a decorative mode. Yayo's Animation works as is.
-
-
-Requires Harmony and Multiplayer, load after both. RimWorld 1.6.
-Translated into 10 languages: English, Russian, Simplified Chinese, Japanese, Korean, German, French, Spanish, Brazilian Portuguese, Polish.
+Requires Harmony and Multiplayer, load after both (and after Multiplayer Compatibility, if you use it). RimWorld 1.6.
+Language: English and Russian are complete; Chinese, Japanese, Korean, German, French, Spanish, Brazilian Portuguese and Polish are partly translated (the rest is in English).

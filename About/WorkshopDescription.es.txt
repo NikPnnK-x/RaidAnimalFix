@@ -1,24 +1,44 @@
-Un complemento de Multiplayer para partidas multifacción. Garantiza que cada jugador tenga su PROPIA colonia en lugar de un caos compartido.
+Un complemento de Multiplayer para partidas con varias facciones: cada jugador tiene SU propia colonia en lugar de un caos compartido, y se corrige una larga lista de causas de desincronización.
 
-Todos los jugadores, incluido el anfitrión, necesitan la misma versión de este mod.
+[b]Todos los jugadores, incluido el anfitrión, necesitan la misma versión de este mod.[/b]
 
+[h2]Tu propia colonia[/h2]
+[list]
+[*][b]Tu propio narrador.[/b] Las incursiones, los comerciantes y los eventos llegan solo a tus mapas y se calculan según tu riqueza, no la de todos los jugadores juntos.
+[*][b]Solo tus notificaciones.[/b] Las cartas, alertas y misiones de otras colonias quedan ocultas. Los asentamientos muestran el nombre de su dueño.
+[*][b]DLC por facción.[/b] Los eventos de Anomaly van al dueño del monolito, los rituales y cartas de roles de Ideology funcionan para cada jugador, los tiempos de espera son de cada jugador (rituales psíquicos, grupos de jefes, ayuda militar del Imperio, escáner orbital) y la pérdida de buena voluntad por contaminación recae en quien contamina.
+[/list]
 
-[b]TU PROPIO NARRADOR[/b]
-Las incursiones, comerciantes y eventos solo llegan a tus mapas y se ajustan a tu riqueza, no a la riqueza combinada de todos los jugadores.
+[h2]Diplomacia entre jugadores[/h2]
+Nueva pestaña «Diplomacia» (solo en multijugador).
+[list]
+[*][b]Alianza, neutralidad o guerra[/b] por acuerdo mutuo; la guerra empieza un día después de declararla. Capturar o desnudar ya no convierte a los jugadores en enemigos para siempre.
+[*][b]Permisos de invitados[/b] para cada anfitrión: órdenes, permitir sus objetos, comida, camas. Cuando los invitados forman una caravana, cargan, comercian o celebran un ritual, el mapa del anfitrión ya no se pausa. Las incursiones cuentan a los invitados y su dueño recibe un aviso.
+[/list]
 
-[b]SOLO TUS NOTIFICACIONES[/b]
-Las cartas, alertas y misiones de otras colonias quedan ocultas. Los asentamientos llevan el nombre de su propietario.
+[h2]Comercio, misiones y caravanas[/h2]
+[list]
+[*][b]Comercio entre jugadores:[/b] ambas partes aceptan la oferta; los bienes pasan directamente entre una caravana y una colonia, o en cápsulas de descenso en el comercio a distancia.
+[*][b]Misiones compartidas:[/b] invita a un aliado a una misión; las recompensas en objetos se reparten y llegan en cápsulas, y las cartas de la misión llegan a todos los participantes.
+[*][b]Caravanas a los amigos:[/b] una caravana junto al asentamiento de un amigo siempre puede seguir su viaje. Las misiones de «llevar N objetos» se entregan desde la casilla del mundo con un solo botón, recompensa incluida.
+[*][b]Colonias protegidas:[/b] la nave gravitatoria de otro jugador no puede aterrizar en tu asentamiento ni abandonar tu mapa; tus colonos en un mapa ajeno que se cierra se marchan en caravana; las cartas de secuestro y las cartas del mundo llegan a su dueño.
+[/list]
 
-[b]CARAVANAS HACIA AMIGOS[/b]
-Una caravana estacionada en el asentamiento de un amigo siempre puede continuar su viaje. Las misiones «traer N objetos» se entregan desde la casilla del mapa del mundo con un solo botón, recompensa incluida.
+[h2]Menos desincronizaciones[/h2]
+[list]
+[*]Decenas de causas de desincronización corregidas en el juego base, los DLC y el propio Multiplayer: relojes de los mapas con tiempo asíncrono, eventos diferidos, temporizadores de misiones, búsqueda de rutas multihilo, azar gastado por la cámara o la interfaz, y más.
+[*]Si aun así ocurre una desincronización, los clientes se reconectan solos. Mientras alguien está cargando, el tiempo se detiene (como máximo 90 segundos).
+[*][b]Analizador de desincronizaciones:[/b] tras una desincronización, el mod lee el informe de Multiplayer y señala los mods con más probabilidad de ser culpables.
+[*][b]Revisión de la lista de mods:[/b] al empezar, el anfitrión ve qué mods rompen el multijugador y cuáles ya corrige este mod. [b]Comparación de ajustes:[/b] si los ajustes de los mods difieren entre jugadores, te enteras antes de la desincronización.
+[*]El anfitrión puede expulsar a un jugador desde la lista del chat. Los nombres de Steam en cirílico se muestran transliterados en lugar de «Player1234».
+[/list]
 
-[b]MENOS DESINCRONIZACIONES[/b]
-Se han cerrado varias causas de desincronización de Multiplayer. Si aún ocurre una, el juego se reconecta solo y el tiempo permanece en pausa mientras alguien se une.
+[h2]Compatibilidad integrada[/h2]
+[list]
+[*][b]RimExodus — Seamless World[/b] ya funciona en multijugador: los mapas se duermen y despiertan según la presencia de los jugadores, los mapas vecinos se generan igual para todos y las órdenes entre mapas se sincronizan. El comercio con un asentamiento en su propio mapa está desactivado en multijugador.
+[*][b]Replace Stuff, Map Preview, ISEKAI RPG LEVELING:[/b] sus causas de desincronización están corregidas. Los ajustes de Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation y RimExodus se comparan entre jugadores.
+[*][b]Mods de animación:[/b] Blood Animations y NL Facial Animation ya no rompen la sincronización, Melee Animation pasa a un modo decorativo y Yayo's Animation funciona tal cual.
+[/list]
 
-[b]MODS DE ANIMACIÓN[/b]
-Blood Animations y NL Facial Animation ya no rompen la sincronización. Melee Animation cambia a un modo decorativo. Yayo's Animation funciona tal cual.
-
-
-Requiere Harmony y Multiplayer, cargar después de ambos. RimWorld 1.6.
-Traducido a 10 idiomas: inglés, ruso, chino simplificado, japonés, coreano, alemán, francés, español, portugués brasileño y polaco.
-
+Requiere Harmony y Multiplayer; cárgalo después de ambos (y después de Multiplayer Compatibility, si lo usas). RimWorld 1.6.
+Idioma: inglés y ruso completos; español traducido en parte (el resto en inglés).

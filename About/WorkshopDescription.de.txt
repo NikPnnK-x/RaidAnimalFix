@@ -1,24 +1,44 @@
-Ein Multiplayer-Add-on für Multifraktionsspiele. Stellt sicher, dass jeder Spieler seine EIGENE Kolonie erhält – statt eines gemeinsamen Chaos.
+Ein Multiplayer-Add-on für Multifraktionsspiele: Jeder Spieler bekommt seine EIGENE Kolonie statt eines gemeinsamen Chaos – und eine lange Liste von Desync-Ursachen ist behoben.
 
-Jeder Spieler, einschließlich des Hosts, benötigt dieselbe Version dieses Mods.
+[b]Jeder Spieler, auch der Host, braucht dieselbe Version dieses Mods.[/b]
 
+[h2]Deine eigene Kolonie[/h2]
+[list]
+[*][b]Dein eigener Erzähler.[/b] Überfälle, Händler und Ereignisse treffen nur auf deinen Karten ein und richten sich nach deinem Wohlstand, nicht nach dem aller Spieler zusammen.
+[*][b]Nur deine Benachrichtigungen.[/b] Briefe, Warnungen und Quests anderer Kolonien sind ausgeblendet. Siedlungen tragen den Namen ihres Besitzers.
+[*][b]DLCs pro Fraktion.[/b] Anomaly-Ereignisse gehen an den Besitzer des Monolithen, Ideology-Rituale und Rollenbriefe funktionieren für jeden Spieler, Abklingzeiten gelten pro Spieler (psychische Rituale, Bossgruppen, Militärhilfe des Imperiums, Orbitalscanner), der Ansehensverlust durch Verschmutzung trifft den Verursacher.
+[/list]
 
-[b]DEIN EIGENER STORYTELLER[/b]
-Überfälle, Händler und Ereignisse treffen nur deine Karten ein und skalieren nach deinem Wohlstand, nicht nach dem kombinierten Wohlstand aller Spieler.
+[h2]Diplomatie zwischen Spielern[/h2]
+Neuer Reiter „Diplomatie“ (nur im Multiplayer).
+[list]
+[*][b]Bündnis, Neutralität oder Krieg[/b] in gegenseitigem Einvernehmen; ein Krieg beginnt einen Tag nach der Erklärung. Gefangennehmen oder Ausziehen macht Spieler nicht mehr zu ewigen Feinden.
+[*][b]Gastrechte[/b] für jeden Gastgeber: Befehle, Freigeben seiner Gegenstände, Essen, Betten. Bilden Gäste eine Karawane, beladen, handeln oder halten ein Ritual ab, wird die Karte des Gastgebers nicht mehr pausiert. Überfälle zählen Gäste mit, ihr Besitzer wird gewarnt.
+[/list]
 
-[b]NUR DEINE BENACHRICHTIGUNGEN[/b]
-Briefe, Warnungen und Quests anderer Kolonien werden ausgeblendet. Siedlungen sind mit dem Namen des Eigentümers beschriftet.
+[h2]Handel, Quests und Karawanen[/h2]
+[list]
+[*][b]Handel zwischen Spielern:[/b] Beide Seiten bestätigen das Angebot; die Waren gehen direkt zwischen Karawane und Kolonie oder beim Fernhandel per Abwurfkapseln.
+[*][b]Gemeinsame Quests:[/b] Lade einen Verbündeten zu einer Quest ein; Gegenstandsbelohnungen werden aufgeteilt und per Abwurfkapseln geliefert, Questbriefe erreichen alle Teilnehmer.
+[*][b]Karawanen zu Freunden:[/b] Eine Karawane an der Siedlung eines Freundes kann ihre Reise immer fortsetzen. Quests „Bringe N Gegenstände“ werden mit einer Schaltfläche vom Weltkartenfeld abgegeben, samt Belohnung.
+[*][b]Geschützte Kolonien:[/b] Das Gravschiff eines anderen Spielers landet nicht auf deiner Siedlung und lässt deine Karte nicht zurück; deine Kolonisten auf einer fremden Karte, die geschlossen wird, ziehen als Karawane ab; Entführungs- und Weltbriefe erreichen ihren Besitzer.
+[/list]
 
-[b]KARAWANEN ZU FREUNDEN[/b]
-Eine Karawane, die an der Siedlung eines Freundes parkt, kann ihre Reise jederzeit fortsetzen. Quests „Bringe N Gegenstände“ werden vom Weltkartenfeld mit einer einzigen Schaltfläche abgegeben, Belohnung inklusive.
+[h2]Weniger Desyncs[/h2]
+[list]
+[*]Dutzende Desync-Ursachen im Grundspiel, in den DLCs und in Multiplayer selbst sind behoben: Kartenuhren bei asynchroner Zeit, verzögerte Ereignisse, Quest-Timer, mehrfädige Wegfindung, Zufallswerte, die Kamera oder Oberfläche verbrauchten, und mehr.
+[*]Kommt es trotzdem zu einem Desync, verbinden sich Clients von selbst neu. Solange jemand lädt, wird die Zeit angehalten (höchstens 90 Sekunden).
+[*][b]Desync-Analyse:[/b] Nach einem Desync liest der Mod den Bericht von Multiplayer und nennt die wahrscheinlich schuldigen Mods.
+[*][b]Modlisten-Prüfung:[/b] Beim Start sieht der Host, welche Mods den Multiplayer stören und welche dieser Mod bereits repariert. [b]Einstellungsabgleich:[/b] Unterscheiden sich die Mod-Einstellungen der Spieler, erfährst du es vor dem Desync.
+[*]Der Host kann Spieler aus der Chatliste werfen. Kyrillische Steam-Namen werden transliteriert statt als „Player1234“ angezeigt.
+[/list]
 
-[b]WENIGER DESYNCS[/b]
-Eine Reihe von Multiplayer-Desync-Ursachen wurde behoben. Tritt dennoch einer auf, stellt das Spiel die Verbindung von selbst wieder her, und die Zeit bleibt pausiert, solange jemand beitritt.
+[h2]Eingebaute Kompatibilität[/h2]
+[list]
+[*][b]RimExodus — Seamless World[/b] funktioniert jetzt im Multiplayer: Karten schlafen und erwachen je nach Anwesenheit der Spieler, Nachbarkarten werden bei allen gleich erzeugt, Befehle über die Kartengrenze werden synchronisiert. Handel mit einer Siedlung auf ihrer eigenen Karte ist im Multiplayer deaktiviert.
+[*][b]Replace Stuff, Map Preview, ISEKAI RPG LEVELING:[/b] Ihre Desync-Quellen sind behoben. Die Einstellungen von Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation und RimExodus werden zwischen den Spielern abgeglichen.
+[*][b]Animations-Mods:[/b] Blood Animations und NL Facial Animation stören die Synchronisation nicht mehr, Melee Animation wechselt in einen dekorativen Modus, Yayo's Animation funktioniert wie gewohnt.
+[/list]
 
-[b]ANIMATIONS-MODS[/b]
-Blood Animations und NL Facial Animation stören die Synchronisation nicht mehr. Melee Animation wechselt in einen dekorativen Modus. Yayo's Animation funktioniert wie gewohnt.
-
-
-Benötigt Harmony und Multiplayer, nach beiden laden. RimWorld 1.6.
-In 10 Sprachen übersetzt: Englisch, Russisch, Vereinfachtes Chinesisch, Japanisch, Koreanisch, Deutsch, Französisch, Spanisch, Brasilianisches Portugiesisch, Polnisch.
-
+Benötigt Harmony und Multiplayer, nach beiden laden (und nach Multiplayer Compatibility, falls vorhanden). RimWorld 1.6.
+Sprache: Englisch und Russisch vollständig; Deutsch teilweise übersetzt (der Rest auf Englisch).

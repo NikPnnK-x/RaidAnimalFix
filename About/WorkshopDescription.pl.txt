@@ -1,24 +1,44 @@
-Dodatek do Multiplayer do gier wielu frakcji. Zapewnia, że każdy gracz ma WŁASNĄ kolonię zamiast wspólnego chaosu.
+Dodatek do Multiplayer do gry wieloma frakcjami: każdy gracz ma SWOJĄ kolonię zamiast wspólnego bałaganu, a długa lista przyczyn desynchronizacji została usunięta.
 
-Każdy gracz, łącznie z gospodarzem, potrzebuje tej samej wersji tego moda.
+[b]Wszyscy gracze, łącznie z hostem, potrzebują tej samej wersji moda.[/b]
 
+[h2]Własna kolonia[/h2]
+[list]
+[*][b]Własny narrator.[/b] Najazdy, kupcy i zdarzenia trafiają tylko na twoje mapy i zależą od twojego bogactwa, a nie od sumy bogactwa wszystkich graczy.
+[*][b]Tylko twoje powiadomienia.[/b] Listy, alarmy i zadania innych kolonii są ukryte. Osady są podpisane nazwą właściciela.
+[*][b]DLC dla każdej frakcji.[/b] Zdarzenia Anomaly trafiają do właściciela monolitu, rytuały i listy o rolach z Ideology działają u każdego gracza, czasy odnowienia są osobne dla każdego (rytuały psychiczne, grupy bossów, pomoc wojskowa Imperium, skaner orbitalny), a utrata dobrej woli za zanieczyszczenie obciąża tego, kto zanieczyszcza.
+[/list]
 
-[b]TWÓJ WŁASNY MODERATOR FABUŁY[/b]
-Najazdy, kupcy i wydarzenia trafiają tylko na twoje mapy i skalują się według twojego bogactwa, a nie łącznego bogactwa wszystkich graczy.
+[h2]Dyplomacja między graczami[/h2]
+Nowa zakładka „Dyplomacja” (tylko w grze wieloosobowej).
+[list]
+[*][b]Sojusz, neutralność albo wojna[/b] za obopólną zgodą; wojna zaczyna się dobę po wypowiedzeniu. Pojmanie czy rozebranie nie robi już z graczy wrogów na zawsze.
+[*][b]Uprawnienia gości[/b] u każdego gospodarza: rozkazy, odblokowywanie jego przedmiotów, jedzenie, łóżka. Gdy goście formują karawanę, ładują, handlują albo odprawiają rytuał, mapa gospodarza nie jest już pauzowana. Najazdy liczą gości, a ich właściciel dostaje ostrzeżenie.
+[/list]
 
-[b]TYLKO TWOJE POWIADOMIENIA[/b]
-Listy, alarmy i zadania innych kolonii są ukryte. Osady są oznakowane imieniem właściciela.
+[h2]Handel, zadania i karawany[/h2]
+[list]
+[*][b]Handel między graczami:[/b] ofertę zatwierdzają obie strony; towary idą bezpośrednio między karawaną a kolonią albo kapsułami desantowymi przy handlu na odległość.
+[*][b]Wspólne zadania:[/b] zaproś sojusznika do zadania; nagrody w przedmiotach są dzielone i dostarczane kapsułami, a listy zadania trafiają do wszystkich uczestników.
+[*][b]Karawany do przyjaciół:[/b] karawana przy osadzie przyjaciela zawsze może ruszyć dalej. Zadania „przynieś N przedmiotów” oddaje się z pola mapy świata jednym przyciskiem, razem z nagrodą.
+[*][b]Ochrona kolonii:[/b] grawistatek innego gracza nie wyląduje na twojej osadzie ani nie porzuci twojej mapy; twoi koloniści na zamykanej cudzej mapie odchodzą karawaną; listy o porwaniu i listy ze świata trafiają do właściciela.
+[/list]
 
-[b]KARAWANY DO PRZYJACIÓŁ[/b]
-Karawana zatrzymana u przyjaciela zawsze może kontynuować podróż. Zadania „dostarcz N przedmiotów” oddajesz z pola mapy świata jednym przyciskiem, nagroda wliczona.
+[h2]Mniej desynchronizacji[/h2]
+[list]
+[*]Usunięto dziesiątki przyczyn desynchronizacji w podstawowej grze, w DLC i w samym Multiplayer: zegary map przy czasie asynchronicznym, odroczone zdarzenia, liczniki zadań, wielowątkowe wyszukiwanie ścieżek, losowość zużywaną przez kamerę lub interfejs i wiele innych.
+[*]Jeśli desynchronizacja mimo to wystąpi, klienci łączą się ponownie sami. Gdy ktoś się wczytuje, czas stoi (najwyżej 90 sekund).
+[*][b]Analizator desynchronizacji:[/b] po desynchronizacji mod czyta raport Multiplayer i wskazuje mody, które najpewniej zawiniły.
+[*][b]Sprawdzanie listy modów:[/b] na starcie host widzi, które mody psują grę wieloosobową, a które ten mod już naprawia. [b]Porównanie ustawień:[/b] jeśli ustawienia modów u graczy się różnią, dowiesz się o tym przed desynchronizacją.
+[*]Host może wyrzucić gracza z listy na czacie. Cyrylickie nazwy Steam są pokazywane w transliteracji zamiast „Player1234”.
+[/list]
 
-[b]MNIEJ DESYNKÓW[/b]
-Usunięto wiele przyczyn desynków Multiplayer. Jeśli mimo to wystąpi, gra sama się ponownie połączy, a czas pozostaje wstrzymany, gdy ktoś dołącza.
+[h2]Wbudowana kompatybilność[/h2]
+[list]
+[*][b]RimExodus — Seamless World[/b] działa teraz w grze wieloosobowej: mapy usypiają i budzą się zależnie od obecności graczy, sąsiednie mapy generują się u wszystkich tak samo, rozkazy między mapami są synchronizowane. Handel z osadą na jej własnej mapie jest w grze wieloosobowej wyłączony.
+[*][b]Replace Stuff, Map Preview, ISEKAI RPG LEVELING:[/b] ich źródła desynchronizacji są naprawione. Ustawienia Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation i RimExodus są porównywane między graczami.
+[*][b]Mody animacji:[/b] Blood Animations i NL Facial Animation nie psują już synchronizacji, Melee Animation przechodzi w tryb dekoracyjny, Yayo's Animation działa bez zmian.
+[/list]
 
-[b]MODY ANIMACJI[/b]
-Blood Animations i NL Facial Animation nie psują już synchronizacji. Melee Animation przechodzi w tryb dekoracyjny. Yayo's Animation działa jak dotychczas.
-
-
-Wymaga Harmony i Multiplayer, ładuj po obu. RimWorld 1.6.
-Przetłumaczono na 10 języków: angielski, rosyjski, chiński uproszczony, japoński, koreański, niemiecki, francuski, hiszpański, portugalski brazylijski i polski.
-
+Wymaga Harmony i Multiplayer, ładować po nich (i po Multiplayer Compatibility, jeśli go używasz). RimWorld 1.6.
+Język: angielski i rosyjski w pełni; polski częściowo (reszta po angielsku).

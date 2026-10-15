@@ -1,24 +1,44 @@
-Un add-on Multiplayer pour les parties multifactions. Chaque joueur obtient sa PROPRE colonie au lieu d'un enchevêtrement partagé.
+Un add-on pour Multiplayer pensé pour les parties à plusieurs factions : chaque joueur a SA propre colonie au lieu d'un grand chaos commun, et une longue liste de causes de désynchronisation est corrigée.
 
-Chaque joueur, hôte inclus, doit avoir la même version de ce mod.
+[b]Tous les joueurs, hôte compris, doivent avoir la même version de ce mod.[/b]
 
+[h2]Votre propre colonie[/h2]
+[list]
+[*][b]Votre propre conteur.[/b] Raids, marchands et événements n'arrivent que sur vos cartes et se calculent sur votre richesse, pas sur celle de tous les joueurs réunis.
+[*][b]Uniquement vos notifications.[/b] Les lettres, alertes et quêtes des autres colonies sont masquées. Les colonies affichent le nom de leur propriétaire.
+[*][b]DLC par faction.[/b] Les événements d'Anomaly vont au propriétaire du monolithe, les rituels et lettres de rôles d'Ideology fonctionnent pour chaque joueur, les temps de recharge sont propres à chaque joueur (rituels psychiques, groupes de boss, aide militaire de l'Empire, scanner orbital), la perte de bonne volonté due à la pollution est imputée au pollueur.
+[/list]
 
-[b]VOTRE PROPRE NARRATEUR[/b]
-Les razzias, marchands et événements n'arrivent que sur vos cartes et s'adaptent à votre richesse, et non à la richesse combinée de tous les joueurs.
+[h2]Diplomatie entre joueurs[/h2]
+Nouvel onglet « Diplomatie » (en multijoueur uniquement).
+[list]
+[*][b]Alliance, neutralité ou guerre[/b] d'un commun accord ; la guerre commence un jour après sa déclaration. Capturer ou déshabiller ne fait plus des joueurs des ennemis pour toujours.
+[*][b]Droits des invités[/b] chez chaque hôte : ordres, autorisation de ses objets, nourriture, lits. Quand des invités forment une caravane, chargent, commercent ou tiennent un rituel, la carte de l'hôte n'est plus mise en pause. Les raids tiennent compte des invités, et leur propriétaire est prévenu.
+[/list]
 
-[b]SEULEMENT VOS NOTIFICATIONS[/b]
-Les lettres, alertes et quêtes des autres colonies sont masquées. Les colonies sont étiquetées avec le nom de leur propriétaire.
+[h2]Commerce, quêtes et caravanes[/h2]
+[list]
+[*][b]Commerce entre joueurs :[/b] les deux parties acceptent l'offre ; les marchandises passent directement entre une caravane et une colonie, ou par capsules de largage pour le commerce à distance.
+[*][b]Quêtes partagées :[/b] invitez un allié dans une quête ; les récompenses en objets sont partagées et livrées par capsules, les lettres de la quête parviennent à tous les participants.
+[*][b]Caravanes chez les amis :[/b] une caravane devant la colonie d'un ami peut toujours reprendre la route. Les quêtes « apporter N objets » se remettent depuis la case du monde en un clic, récompense comprise.
+[*][b]Colonies protégées :[/b] le vaisseau gravitationnel d'un autre joueur ne peut ni atterrir sur votre colonie ni abandonner votre carte ; vos colons sur une carte étrangère qui se ferme partent en caravane ; les lettres d'enlèvement et les lettres du monde parviennent à leur propriétaire.
+[/list]
 
-[b]CARAVANES VERS LES AMIS[/b]
-Une caravane stationnée sur la colonie d'un ami peut toujours poursuivre son voyage. Les quêtes « apporter N objets » se remettent depuis la case de la carte du monde en un seul bouton, récompense incluse.
+[h2]Moins de désynchronisations[/h2]
+[list]
+[*]Des dizaines de causes de désynchronisation corrigées dans le jeu de base, les DLC et Multiplayer lui-même : horloges des cartes en temps asynchrone, événements différés, minuteurs de quêtes, recherche de chemin multithread, hasard consommé par la caméra ou l'interface, et plus encore.
+[*]Si une désynchronisation survient quand même, les clients se reconnectent seuls. Pendant qu'un joueur se connecte, le temps est mis en pause (90 secondes au plus).
+[*][b]Analyseur de désynchronisation :[/b] après une désynchronisation, le mod lit le rapport de Multiplayer et désigne les mods les plus probablement en cause.
+[*][b]Vérification de la liste de mods :[/b] au lancement, l'hôte voit quels mods cassent le multijoueur et lesquels ce mod corrige déjà. [b]Comparaison des réglages :[/b] si les réglages des mods diffèrent entre joueurs, vous êtes prévenu avant la désynchronisation.
+[*]L'hôte peut expulser un joueur depuis la liste du chat. Les pseudos Steam en cyrillique sont translittérés au lieu d'apparaître comme « Player1234 ».
+[/list]
 
-[b]MOINS DE DÉSYNCHRONISATIONS[/b]
-Plusieurs causes de désynchronisation Multiplayer ont été corrigées. Si une survient quand même, le jeu se reconnecte automatiquement et le temps reste en pause pendant qu'un joueur rejoint.
+[h2]Compatibilité intégrée[/h2]
+[list]
+[*][b]RimExodus — Seamless World[/b] fonctionne désormais en multijoueur : les cartes s'endorment et se réveillent selon la présence des joueurs, les cartes voisines sont générées à l'identique pour tous, les ordres d'une carte à l'autre sont synchronisés. Le commerce avec une colonie sur sa propre carte est désactivé en multijoueur.
+[*][b]Replace Stuff, Map Preview, ISEKAI RPG LEVELING :[/b] leurs sources de désynchronisation sont corrigées. Les réglages de Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation et RimExodus sont comparés entre joueurs.
+[*][b]Mods d'animation :[/b] Blood Animations et NL Facial Animation ne cassent plus la synchronisation, Melee Animation passe en mode décoratif, Yayo's Animation fonctionne tel quel.
+[/list]
 
-[b]MODS D'ANIMATION[/b]
-Blood Animations et NL Facial Animation ne cassent plus la synchronisation. Melee Animation passe en mode décoratif. Yayo's Animation fonctionne tel quel.
-
-
-Nécessite Harmony et Multiplayer, à charger après les deux. RimWorld 1.6.
-Traduit en 10 langues : anglais, russe, chinois simplifié, japonais, coréen, allemand, français, espagnol, portugais brésilien, polonais.
-
+Nécessite Harmony et Multiplayer, à charger après eux (et après Multiplayer Compatibility si vous l'utilisez). RimWorld 1.6.
+Langue : anglais et russe complets ; français partiellement traduit (le reste est en anglais).

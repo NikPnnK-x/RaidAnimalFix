@@ -6,37 +6,76 @@
   <supportedVersions>
     <li>1.6</li>
   </supportedVersions>
-  <description>Дополнение к Multiplayer для игры несколькими фракциями. Делает так, чтобы у каждого игрока была СВОЯ колония, а не общая каша.
+  <description>A Multiplayer add-on for multifaction games: every player gets their OWN colony instead of one shared mess, and a long list of desync causes is fixed.
+
+Every player, the host included, needs the same version of this mod.
+
+YOUR OWN COLONY
+- Your own storyteller. Raids, traders and events arrive only at your maps and scale to your wealth, not to the combined wealth of every player.
+- Only your notifications. Letters, alerts and quests of other colonies are hidden. Settlements are labeled with their owner's name.
+- DLC per faction. Anomaly events go to the monolith's owner, Ideology rituals and role letters work for every player, cooldowns are separate for each player (psychic rituals, bossgroups, Empire military aid, orbital scanner), pollution goodwill is charged to the polluter.
+
+DIPLOMACY BETWEEN PLAYERS
+A new "Diplomacy" tab (multiplayer only).
+- Alliance, neutral or war by mutual agreement; a war starts a day after it is declared. Capturing or stripping no longer turns players into permanent enemies.
+- Guest permissions for each host: orders, unforbidding the host's items, food, beds. Guests forming a caravan, loading, trading or holding a ritual no longer pause the host's map. Raids count guests, and their owner is warned.
+
+TRADE, QUESTS AND CARAVANS
+- Trade between players: both sides accept the offer; goods move directly between a caravan and a colony, or by drop pods for remote trade.
+- Shared quests: invite an ally to a quest; item rewards are split and delivered by drop pods, quest letters reach every participant.
+- Caravans to friends: a caravan at a friend's settlement can always continue its journey. "Bring N items" quests are handed in from the world tile with one button, reward included.
+- Protected colonies: another player's gravship can't land on your settlement or abandon your map; your colonists on a closing foreign map leave as a caravan; kidnapping and world letters reach their owner.
+
+FEWER DESYNCS
+- Dozens of desync causes fixed in the base game, the DLCs and Multiplayer itself: map clocks in asynchronous time, delayed events, quest timers, multithreaded pathfinding, randomness used up by the camera or the interface, and more.
+- If a desync still happens, clients reconnect on their own. While somebody is loading in, time is held (90 seconds at most).
+- Desync analyzer: after a desync the mod reads Multiplayer's report and names the mods most likely to blame.
+- Mod list check: at game start the host sees which mods break multiplayer and which ones this mod already fixes. Settings check: if players' mod settings differ, you are told before it turns into a desync.
+- The host can kick a player from the chat list. Cyrillic Steam names are shown transliterated instead of "Player1234".
+
+BUILT-IN COMPATIBILITY
+- RimExodus — Seamless World now works in multiplayer: maps sleep and wake by player presence, neighbor maps generate the same for everyone, cross-map orders are synced. Trading with a settlement on its own map is disabled in multiplayer.
+- Replace Stuff, Map Preview, ISEKAI RPG LEVELING: their desync sources are fixed. The settings of Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation and RimExodus are compared between players.
+- Animation mods: Blood Animations and NL Facial Animation no longer break sync, Melee Animation switches to a decorative mode, Yayo's Animation works as is.
+
+Requires Harmony and Multiplayer, load after both (and after Multiplayer Compatibility, if you use it). RimWorld 1.6.
+Language: English and Russian are complete; Chinese, Japanese, Korean, German, French, Spanish, Brazilian Portuguese and Polish are partly translated (the rest is in English).
+
+
+Дополнение к Multiplayer для игры несколькими фракциями: у каждого игрока СВОЯ колония, а не общая каша, и закрыт длинный список причин рассинхронов.
 
 Мод нужен всем игрокам, включая хоста, одной версии.
 
+СВОЯ КОЛОНИЯ
+- Свой рассказчик. Рейды, торговцы и события приходят только на ваши карты и считаются по вашему богатству, а не по сумме всех игроков.
+- Только ваши уведомления. Письма, тревоги и квесты чужих колоний скрыты. Поселения подписаны именами владельцев.
+- DLC для каждой фракции. События Anomaly приходят владельцу монолита, ритуалы и письма о ролях Ideology работают у каждого игрока, у каждого свои кулдауны (психические ритуалы, босс-группы, военная помощь Империи, орбитальный сканер), репутация за загрязнение списывается с загрязнителя.
 
-СВОЙ РАССКАЗЧИК
-Рейды, торговцы и события приходят только на ваши карты и считаются по вашему богатству, а не по сумме всех игроков.
+ДИПЛОМАТИЯ МЕЖДУ ИГРОКАМИ
+Новая вкладка «Дипломатия» (только в мультиплеере).
+- Союз, нейтралитет или война по взаимному согласию; война начинается через сутки после объявления. Захват и раздевание больше не делают игроков вечными врагами.
+- Права гостей у каждого хозяина: приказы, разрешение его вещей, еда, кровати. Сбор каравана, погрузка, торговля и ритуалы гостей больше не ставят карту хозяина на паузу. Рейды учитывают гостей, а их владелец получает предупреждение.
 
-ТОЛЬКО ВАШИ УВЕДОМЛЕНИЯ
-Письма, тревоги и квесты чужих колоний скрыты. Поселения подписаны именами владельцев.
-
-КАРАВАНЫ К ДРУЗЬЯМ
-Караван у друга всегда может продолжить путь. Квесты «принести N вещей» сдаются с тайла одной кнопкой, с наградой.
+ТОРГОВЛЯ, КВЕСТЫ И КАРАВАНЫ
+- Торговля между игроками: предложение подтверждают обе стороны; товары идут напрямую между караваном и колонией или капсулами при удалённой торговле.
+- Общие квесты: пригласите союзника в квест; награда вещами делится и доставляется капсулами, письма квеста приходят всем участникам.
+- Караваны к друзьям: караван у поселения друга всегда может продолжить путь. Квесты «принести N вещей» сдаются с тайла одной кнопкой, с наградой.
+- Защита колоний: чужой гравикорабль не садится на ваше поселение и не бросает вашу карту; ваши колонисты на закрывающейся чужой карте уходят караваном; письма о похищении и мировые письма доходят владельцу.
 
 МЕНЬШЕ РАССИНХРОНОВ
-Закрыт ряд причин рассинхронов Multiplayer. Если он всё же случился — игра переподключается сама, а пока кто-то подключается, время держится на паузе.
+- Закрыты десятки причин рассинхронов в самой игре, DLC и в Multiplayer: часы карт в асинхронном времени, отложенные события, таймеры квестов, многопоточный поиск пути, случайность, которую тратили камера или интерфейс, и многое другое.
+- Если рассинхрон всё же случился, клиенты переподключаются сами. Пока кто-то загружается, время держится на паузе (не дольше 90 секунд).
+- Анализатор рассинхронов: после рассинхрона мод разбирает отчёт Multiplayer и называет моды, которые вероятнее всего виноваты.
+- Проверка списка модов: при старте хост видит, какие моды ломают мультиплеер, а какие этот мод уже исправляет. Сверка настроек: если настройки модов у игроков различаются, вы узнаете об этом до рассинхрона.
+- Хост может выгнать игрока из списка в чате. Кириллические ники Steam показываются транслитом, а не «Player1234».
 
-МОДЫ АНИМАЦИЙ
-Blood Animations и [NL] Facial Animation больше не ломают синхронизацию. Melee Animation переходит в декоративный режим. Yayo's Animation работает как есть.
+ВСТРОЕННАЯ СОВМЕСТИМОСТЬ
+- RimExodus — Seamless World теперь работает в мультиплеере: карты засыпают и просыпаются по присутствию игроков, соседние карты генерируются одинаково у всех, приказы через шов синхронизируются. Торговля с поселением на его карте в мультиплеере отключена.
+- Replace Stuff, Map Preview, ISEKAI RPG LEVELING: их источники рассинхронов исправлены. Настройки Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation и RimExodus сверяются между игроками.
+- Моды анимаций: Blood Animations и NL Facial Animation больше не ломают синхронизацию, Melee Animation переходит в декоративный режим, Yayo's Animation работает как есть.
 
-СОВМЕСТИМОСТЬ
-Встроенные исправления для Replace Stuff, Map Preview и ISEKAI RPG LEVELING. При старте хост видит список модов, несовместимых с мультиплеером.
-
-АНАЛИЗАТОР РАССИНХРОНОВ
-После рассинхрона мод разбирает отчёт Multiplayer и показывает, какой мод вероятнее всего виноват. Расхождение настроек модов между игроками объявляется заранее.
-
-ЗАЩИТА КОЛОНИЙ
-Чужой гравикорабль не садится на ваше поселение и не бросает вашу карту. Ваши колонисты на закрывающейся чужой карте уходят караваном. Письма о похищении и мировые письма доходят владельцам.
-
-
-Требует Harmony и Multiplayer, грузить после них. RimWorld 1.6.</description>
+Требует Harmony и Multiplayer, грузить после них (и после Multiplayer Compatibility, если он есть). RimWorld 1.6.
+Язык: английский и русский — полностью; китайский, японский, корейский, немецкий, французский, испанский, бразильский португальский и польский — частично (остальное на английском).</description>
   <modDependencies>
     <li>
       <packageId>brrainz.harmony</packageId>
