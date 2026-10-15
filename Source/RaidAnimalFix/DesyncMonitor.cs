@@ -214,7 +214,7 @@ public class DesyncMonitor : GameComponent
 		_rejoinerResolved = true;
 		try
 		{
-			Type type = AccessTools.TypeByName("Multiplayer.Client.Rejoiner");
+			Type type = RafTypes.Find("Multiplayer.Client.Rejoiner");
 			if (type == null)
 			{
 				Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();

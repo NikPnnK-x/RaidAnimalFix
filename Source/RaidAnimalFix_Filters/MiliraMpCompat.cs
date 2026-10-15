@@ -26,7 +26,7 @@ namespace RaidAnimalFix;
 
 internal static class MiliraMp
 {
-	public static Type Control => AccessTools.TypeByName("Milira.MiliraGameComponent_OverallControl");
+	public static Type Control => RafTypes.Find("Milira.MiliraGameComponent_OverallControl");
 
 	public static bool Present => Control != null;
 
@@ -73,7 +73,7 @@ public static class MiliraHairStyleNumMp
 
 	private static MethodBase TargetMethod()
 	{
-		Type t = AccessTools.TypeByName("Milira.CompMilianHairSwitch");
+		Type t = RafTypes.Find("Milira.CompMilianHairSwitch");
 		if (t == null || AccessTools.Field(t, "num") == null)
 		{
 			return null;
@@ -99,13 +99,13 @@ public static class MiliraManualPrioritiesMp
 
 	private static bool Prepare()
 	{
-		_marker = AccessTools.Field(AccessTools.TypeByName("Multiplayer.Client.SyncMarkers"), "manualPriorities");
+		_marker = AccessTools.Field(RafTypes.Find("Multiplayer.Client.SyncMarkers"), "manualPriorities");
 		return MiliraMp.Enabled && _marker != null && _marker.IsStatic;
 	}
 
 	private static MethodBase TargetMethod()
 	{
-		return AccessTools.Method("Milira.MainTabWindow_MilianWork:DoManualPrioritiesCheckbox");
+		return RafTypes.Method("Milira.MainTabWindow_MilianWork:DoManualPrioritiesCheckbox");
 	}
 
 	private static void Prefix(out bool __state)
@@ -152,7 +152,7 @@ public static class MiliraSimMapMp
 				}
 			}
 		}
-		MethodInfo gen = AccessTools.Method("Milira.Milira_MilianPawnGenerator_Patch:Postfix");
+		MethodInfo gen = RafTypes.Method("Milira.Milira_MilianPawnGenerator_Patch:Postfix");
 		if (gen != null)
 		{
 			yield return gen;
@@ -204,7 +204,7 @@ public static class MiliraSettingsLockMp
 
 	private static MethodBase TargetMethod()
 	{
-		Type t = AccessTools.TypeByName("Milira.Mod_MiliraRace");
+		Type t = RafTypes.Find("Milira.Mod_MiliraRace");
 		return (t == null) ? null : AccessTools.DeclaredMethod(t, "DoSettingsWindowContents", new Type[1] { typeof(Rect) });
 	}
 

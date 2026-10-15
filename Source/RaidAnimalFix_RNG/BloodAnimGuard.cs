@@ -37,7 +37,7 @@ internal static class BloodAnimGuard
 
 	public static MethodBase Entry(string typeName, string methodName)
 	{
-		Type type = AccessTools.TypeByName(typeName);
+		Type type = RafTypes.Find(typeName);
 		if (type == null)
 		{
 			return null;

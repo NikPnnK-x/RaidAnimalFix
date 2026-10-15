@@ -12,7 +12,7 @@ public static class MpQuestTickOrderFix
 {
 	public static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Multiplayer.Client.Comp.MultiplayerAsyncQuest");
+		Type type = RafTypes.Find("Multiplayer.Client.Comp.MultiplayerAsyncQuest");
 		if (type == null)
 		{
 			return null;

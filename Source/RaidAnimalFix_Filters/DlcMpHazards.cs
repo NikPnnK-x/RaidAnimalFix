@@ -23,7 +23,7 @@ public static class LocationGeneratorLayerHashFix
 
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("RimWorld.Planet.WorldComponent_LocationGenerator");
+		Type type = RafTypes.Find("RimWorld.Planet.WorldComponent_LocationGenerator");
 		return (type == null) ? null : AccessTools.Method(type, "WorldComponentTick");
 	}
 
@@ -73,7 +73,7 @@ public static class MpQuestMapFactionAgnosticFix
 
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Multiplayer.Client.Comp.MultiplayerAsyncQuest");
+		Type type = RafTypes.Find("Multiplayer.Client.Comp.MultiplayerAsyncQuest");
 		return (type == null) ? null : AccessTools.Method(type, "TryGetQuestMap");
 	}
 
@@ -165,7 +165,7 @@ public static class MpTradeForeignRecacheFix
 
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Multiplayer.Client.MpTradeDeal");
+		Type type = RafTypes.Find("Multiplayer.Client.MpTradeDeal");
 		if (type == null)
 		{
 			return null;

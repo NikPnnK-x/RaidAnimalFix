@@ -58,7 +58,7 @@ internal static class MpSim
 		_resolved = true;
 		try
 		{
-			Type mp = AccessTools.TypeByName("Multiplayer.Client.Multiplayer");
+			Type mp = RafTypes.Find("Multiplayer.Client.Multiplayer");
 			if (mp != null)
 			{
 				_ticking = AccessTools.Property(mp, "Ticking");
@@ -68,7 +68,7 @@ internal static class MpSim
 				_executingCmdsGet = Getter<Func<bool>>(_executingCmds);
 				_mapContextGet = Getter<Func<Map>>(_mapContext);
 			}
-			Type fe = AccessTools.TypeByName("Multiplayer.Client.Factions.FactionExtensions");
+			Type fe = RafTypes.Find("Multiplayer.Client.Factions.FactionExtensions");
 			if (fe != null)
 			{
 				_pushFaction = AccessTools.Method(fe, "PushFaction", new Type[3]
@@ -79,7 +79,7 @@ internal static class MpSim
 				});
 				_popFaction = AccessTools.Method(fe, "PopFaction", new Type[1] { typeof(Map) });
 			}
-			Type ts = AccessTools.TypeByName("Multiplayer.Client.TimeSnapshot");
+			Type ts = RafTypes.Find("Multiplayer.Client.TimeSnapshot");
 			if (ts != null)
 			{
 				_timeFromMap = AccessTools.Method(ts, "GetAndSetFromMap", new Type[1] { typeof(Map) });
@@ -160,7 +160,7 @@ internal static class MpSim
 		}
 		if (_mpComp == null)
 		{
-			Type ext = AccessTools.TypeByName("Multiplayer.Client.Extensions");
+			Type ext = RafTypes.Find("Multiplayer.Client.Extensions");
 			_mpComp = (ext == null) ? null : AccessTools.Method(ext, "MpComp", new Type[1] { typeof(Map) });
 			_mapSetFaction = (_mpComp == null) ? null : AccessTools.Method(_mpComp.ReturnType, "SetFaction", new Type[1] { typeof(Faction) });
 		}

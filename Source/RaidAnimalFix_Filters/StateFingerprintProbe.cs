@@ -71,7 +71,7 @@ public static class StateFingerprintProbe
 		try
 		{
 			_forceNormalUntil = AccessTools.Field(typeof(TimeSlower), "forceNormalSpeedUntil");
-			Type type = AccessTools.TypeByName("Multiplayer.Client.TickPatch");
+			Type type = RafTypes.Find("Multiplayer.Client.TickPatch");
 			if (type != null)
 			{
 				PropertyInfo property = type.GetProperty("Timer", BindingFlags.Static | BindingFlags.Public);
@@ -80,12 +80,12 @@ public static class StateFingerprintProbe
 					_globalTimerGet = property.GetGetMethod();
 				}
 			}
-			Type type2 = AccessTools.TypeByName("Multiplayer.Client.Extensions");
+			Type type2 = RafTypes.Find("Multiplayer.Client.Extensions");
 			if (type2 != null)
 			{
 				_asyncTimeOf = AccessTools.Method(type2, "AsyncTime", new Type[1] { typeof(Map) });
 			}
-			Type type3 = AccessTools.TypeByName("Multiplayer.Client.AsyncTimeComp");
+			Type type3 = RafTypes.Find("Multiplayer.Client.AsyncTimeComp");
 			if (type3 != null)
 			{
 				_nothingHappening = type3.GetField("nothingHappeningCached", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -550,7 +550,7 @@ public static class StateFingerprintProbe
 		int num = -1;
 		try
 		{
-			Type type = AccessTools.TypeByName("Multiplayer.Client.TickPatch");
+			Type type = RafTypes.Find("Multiplayer.Client.TickPatch");
 			PropertyInfo propertyInfo = ((type == null) ? null : type.GetProperty("Timer", BindingFlags.Static | BindingFlags.Public));
 			if (propertyInfo != null)
 			{

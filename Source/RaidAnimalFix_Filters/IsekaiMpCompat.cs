@@ -23,7 +23,7 @@ internal static class IsekaiMp
 {
 	public static Type T(string name)
 	{
-		return AccessTools.TypeByName(name);
+		return RafTypes.Find(name);
 	}
 
 	public static bool ModPresent => T("IsekaiLeveling.IsekaiComponent") != null;
@@ -164,7 +164,7 @@ public static class IsekaiCompatSimBypass
 {
 	private static readonly string[] Names = new string[8] { "UnlockNodePrefix", "TryUnlockChainPrefix", "RespecPrefix", "DevAddLevelPrefix", "AttemptRefinementPrefix", "RepairItemPrefix", "TryAddRunePrefix", "RemoveRuneAtPrefix" };
 
-	private static Type CompatType => AccessTools.TypeByName("Multiplayer.Compat.IsekaiRPGCompat");
+	private static Type CompatType => RafTypes.Find("Multiplayer.Compat.IsekaiRPGCompat");
 
 	private static bool Prepare()
 	{

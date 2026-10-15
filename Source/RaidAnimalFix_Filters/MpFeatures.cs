@@ -340,13 +340,13 @@ public static class SettingsHashCheck
 	{
 		try
 		{
-			Type type = AccessTools.TypeByName("Multiplayer.API.MP");
+			Type type = RafTypes.Find("Multiplayer.API.MP");
 			FieldInfo fieldInfo = type?.GetField("enabled", BindingFlags.Static | BindingFlags.Public);
 			if (fieldInfo == null || !(bool)fieldInfo.GetValue(null))
 			{
 				return;
 			}
-			Type type2 = AccessTools.TypeByName("Multiplayer.API.SyncType");
+			Type type2 = RafTypes.Find("Multiplayer.API.SyncType");
 			MethodInfo methodInfo = (type2 == null) ? null : type.GetMethod("RegisterSyncMethod", BindingFlags.Static | BindingFlags.Public, null, new Type[2]
 			{
 				typeof(MethodInfo),
@@ -488,7 +488,7 @@ public static class SettingsHashCheck
 
 	private static void AppendAllowTool(StringBuilder payload)
 	{
-		Type type = AccessTools.TypeByName("AllowTool.AllowToolController");
+		Type type = RafTypes.Find("AllowTool.AllowToolController");
 		object obj = (type == null) ? null : AccessTools.Property(type, "Instance")?.GetValue(null, null);
 		object obj2 = (obj == null) ? null : (AccessTools.Property(type, "Handles")?.GetValue(obj, null) ?? AccessTools.Field(type, "Handles")?.GetValue(obj));
 		if (obj2 == null)

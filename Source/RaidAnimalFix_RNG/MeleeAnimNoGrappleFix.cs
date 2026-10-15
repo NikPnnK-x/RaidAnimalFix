@@ -9,7 +9,7 @@ public static class MeleeAnimNoGrappleFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("AM.Grappling.JobDriver_GrapplePawn");
+		Type type = RafTypes.Find("AM.Grappling.JobDriver_GrapplePawn");
 		if (type == null)
 		{
 			return null;

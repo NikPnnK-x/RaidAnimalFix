@@ -68,8 +68,8 @@ internal static class MapPreviewMpGuard
 		{
 			return;
 		}
-		Type settings = AccessTools.TypeByName("MapPreview.MapPreviewSettings");
-		Type reroll = AccessTools.TypeByName("MapPreview.SeedRerollData");
+		Type settings = RafTypes.Find("MapPreview.MapPreviewSettings");
+		Type reroll = RafTypes.Find("MapPreview.SeedRerollData");
 		if (settings == null && reroll == null)
 		{
 			return;

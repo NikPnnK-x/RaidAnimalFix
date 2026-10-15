@@ -24,7 +24,7 @@ public static class ReplaceStuffOverRockToggleFix
 
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Replace_Stuff.OverMineable.PlaySettings_BlueprintOverRockToggle");
+		Type type = RafTypes.Find("Replace_Stuff.OverMineable.PlaySettings_BlueprintOverRockToggle");
 		_flag = (type == null) ? null : AccessTools.Field(type, "blueprintOverRock");
 		return (type == null) ? null : AccessTools.Method(type, "AddButton");
 	}
@@ -45,7 +45,7 @@ public static class ReplaceStuffOverRockToggleFix
 		{
 			if (_flag == null)
 			{
-				Type type = AccessTools.TypeByName("Replace_Stuff.OverMineable.PlaySettings_BlueprintOverRockToggle");
+				Type type = RafTypes.Find("Replace_Stuff.OverMineable.PlaySettings_BlueprintOverRockToggle");
 				_flag = (type == null) ? null : AccessTools.Field(type, "blueprintOverRock");
 			}
 			_flag?.SetValue(null, true);
@@ -66,7 +66,7 @@ public static class ReplaceStuffFogFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Replace_Stuff.OverMineable.FogUtil");
+		Type type = RafTypes.Find("Replace_Stuff.OverMineable.FogUtil");
 		return (type == null) ? null : AccessTools.Method(type, "IsUnderFog", new Type[1] { typeof(Thing) });
 	}
 
@@ -103,12 +103,12 @@ public static class ReplaceStuffCancelAboveSelectorFix
 
 	private static bool Prepare()
 	{
-		return AccessTools.TypeByName("Replace_Stuff.PlaceBridges.CancelAboveBridges") != null && IsSelected != null;
+		return RafTypes.Find("Replace_Stuff.PlaceBridges.CancelAboveBridges") != null && IsSelected != null;
 	}
 
 	private static IEnumerable<MethodBase> TargetMethods()
 	{
-		Type type = AccessTools.TypeByName("Replace_Stuff.PlaceBridges.CancelAboveBridges");
+		Type type = RafTypes.Find("Replace_Stuff.PlaceBridges.CancelAboveBridges");
 		if (type == null || IsSelected == null)
 		{
 			yield break;
@@ -173,7 +173,7 @@ public static class ReplaceStuffBridgeReorderFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Replace_Stuff.PlaceBridges.BridgelikeTerrain");
+		Type type = RafTypes.Find("Replace_Stuff.PlaceBridges.BridgelikeTerrain");
 		return (type == null) ? null : AccessTools.Method(type, "Reorder", new Type[2]
 		{
 			typeof(int),
@@ -190,7 +190,7 @@ public static class ReplaceStuffBridgeReorderFix
 	{
 		try
 		{
-			Type type = AccessTools.TypeByName("Replace_Stuff.PlaceBridges.BridgelikeTerrain");
+			Type type = RafTypes.Find("Replace_Stuff.PlaceBridges.BridgelikeTerrain");
 			FieldInfo fieldInfo = (type == null) ? null : AccessTools.Field(type, "allBridgeTerrains");
 			if (fieldInfo?.GetValue(null) is List<TerrainDef> list)
 			{
@@ -219,7 +219,7 @@ public static class ReplaceStuffDestroyedPruneFix
 
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Replace_Stuff.DestroyedRestore.DestroyedBuildings");
+		Type type = RafTypes.Find("Replace_Stuff.DestroyedRestore.DestroyedBuildings");
 		if (type == null)
 		{
 			return null;
@@ -271,7 +271,7 @@ public static class ReplaceStuffSettingsLockFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Replace_Stuff.Mod");
+		Type type = RafTypes.Find("Replace_Stuff.Mod");
 		return (type == null) ? null : AccessTools.Method(type, "DoSettingsWindowContents", new Type[1] { typeof(UnityEngine.Rect) });
 	}
 
@@ -299,14 +299,14 @@ public static class ReplaceStuffDesignatingFlagFix
 
 	private static bool Prepare()
 	{
-		Type type = AccessTools.TypeByName("Replace_Stuff.DesignatorContext");
+		Type type = RafTypes.Find("Replace_Stuff.DesignatorContext");
 		_flag = (type == null) ? null : AccessTools.Field(type, "designating");
 		return _flag != null;
 	}
 
 	private static IEnumerable<MethodBase> TargetMethods()
 	{
-		Type type = AccessTools.TypeByName("Replace_Stuff.Designator_ReplaceStuff");
+		Type type = RafTypes.Find("Replace_Stuff.Designator_ReplaceStuff");
 		MethodInfo methodInfo = (type == null) ? null : AccessTools.Method(type, "CanDesignateCell", new Type[1] { typeof(IntVec3) });
 		if (methodInfo != null)
 		{
@@ -346,7 +346,7 @@ internal static class ReplaceStuffDesignatorSyncWorker
 {
 	public static void Register()
 	{
-		Type type = AccessTools.TypeByName("Replace_Stuff.Designator_ReplaceStuff");
+		Type type = RafTypes.Find("Replace_Stuff.Designator_ReplaceStuff");
 		FieldInfo stuff = (type == null) ? null : AccessTools.Field(type, "stuffDef");
 		if (stuff == null)
 		{

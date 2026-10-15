@@ -37,7 +37,7 @@ public static class GuestSessionNoPause
 	{
 		for (int i = 0; i < SessionTypes.Length; i++)
 		{
-			Type t = AccessTools.TypeByName(SessionTypes[i]);
+			Type t = RafTypes.Find(SessionTypes[i]);
 			if (!(t == null))
 			{
 				MethodInfo m = AccessTools.DeclaredMethod(t, "IsCurrentlyPausing", new Type[1] { typeof(Map) });
@@ -143,12 +143,12 @@ public static class GuestForeignSessionNotice
 {
 	private static bool Prepare()
 	{
-		return AccessTools.TypeByName("Multiplayer.Client.MultiplayerMapComp") != null;
+		return RafTypes.Find("Multiplayer.Client.MultiplayerMapComp") != null;
 	}
 
 	private static IEnumerable<MethodBase> TargetMethods()
 	{
-		Type t = AccessTools.TypeByName("Multiplayer.Client.MultiplayerMapComp");
+		Type t = RafTypes.Find("Multiplayer.Client.MultiplayerMapComp");
 		if (!(t == null))
 		{
 			MethodInfo a = AccessTools.DeclaredMethod(t, "CreateCaravanFormingSession");

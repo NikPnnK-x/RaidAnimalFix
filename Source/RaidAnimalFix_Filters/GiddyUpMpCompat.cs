@@ -68,9 +68,9 @@ internal static class GiddyUpMpSync
 				Log.Warning("[RaidAnimalFix] Giddy-Up 2 MP: " + what + ": " + (ex.InnerException ?? ex).Message);
 			}
 		}
-		Type epd = AccessTools.TypeByName("GiddyUp.ExtendedPawnData");
+		Type epd = RafTypes.Find("GiddyUp.ExtendedPawnData");
 		FieldInfo epdPawn = (epd == null) ? null : (AccessTools.Field(epd, "_pawn") ?? AccessTools.Field(epd, "pawn"));
-		MethodInfo getData = AccessTools.Method("GiddyUp.StorageUtility:GetExtendedPawnData", new Type[1] { typeof(Pawn) });
+		MethodInfo getData = RafTypes.Method("GiddyUp.StorageUtility:GetExtendedPawnData", new Type[1] { typeof(Pawn) });
 		if (epd == null || epdPawn == null || getData == null)
 		{
 			Log.Warning("[RaidAnimalFix] Giddy-Up 2 MP: ExtendedPawnData не найден — синхронизация не зарегистрирована");
@@ -98,7 +98,7 @@ internal static class GiddyUpMpSync
 		});
 		Try("gizmo: end current job", delegate
 		{
-			Type t = AccessTools.TypeByName("GiddyUpCore.RideAndRoll.Harmony.Pawn_GetGizmos") ?? AccessTools.TypeByName("GiddyUpRideAndRoll.Harmony.Pawn_GetGizmos");
+			Type t = RafTypes.Find("GiddyUpCore.RideAndRoll.Harmony.Pawn_GetGizmos") ?? RafTypes.Find("GiddyUpRideAndRoll.Harmony.Pawn_GetGizmos");
 			MP.RegisterSyncMethod(AccessTools.Method(t, "PawnEndCurrentJob"));
 		});
 		for (int i = 0; i < 4; i++)
@@ -109,7 +109,7 @@ internal static class GiddyUpMpSync
 				RegisterDelegate("GiddyUp.Harmony.FloatMenuUtility", "<AddMountingOptions>b__" + n, null);
 			});
 		}
-		Type widget = AccessTools.TypeByName("GiddyUpCaravan.Harmony.Patch_TransferableOneWayWidget");
+		Type widget = RafTypes.Find("GiddyUpCaravan.Harmony.Patch_TransferableOneWayWidget");
 		Try("caravan: select rider", delegate
 		{
 			MP.RegisterSyncMethod(AccessTools.Method(widget, "SelectMountRider"));
@@ -121,15 +121,15 @@ internal static class GiddyUpMpSync
 		Try("caravan: transferable count watch", PatchHandleAnimal);
 		Try("animals tab: mountable (colonists)", delegate
 		{
-			MP.RegisterSyncMethod(AccessTools.Method("GiddyUpRideAndRoll.PawnColumnWorker_Mountable_Colonists:SetValue"));
+			MP.RegisterSyncMethod(RafTypes.Method("GiddyUpRideAndRoll.PawnColumnWorker_Mountable_Colonists:SetValue"));
 		});
 		Try("animals tab: mountable (slaves)", delegate
 		{
-			MP.RegisterSyncMethod(AccessTools.Method("GiddyUpRideAndRoll.PawnColumnWorker_Mountable_Slaves:SetValue"));
+			MP.RegisterSyncMethod(RafTypes.Method("GiddyUpRideAndRoll.PawnColumnWorker_Mountable_Slaves:SetValue"));
 		});
 		Try("area designator", delegate
 		{
-			Type des = AccessTools.TypeByName("GiddyUp.Designator_GU");
+			Type des = RafTypes.Find("GiddyUp.Designator_GU");
 			FieldInfo area = AccessTools.Field(des, "<SelectedArea>k__BackingField") ?? AccessTools.Field(des, "selectedArea");
 			FieldInfo label = AccessTools.Field(des, "_areaLabel") ?? AccessTools.Field(des, "areaLabel");
 			if (area == null || label == null)
@@ -156,7 +156,7 @@ internal static class GiddyUpMpSync
 	/// <summary>Лямбда, найденная по имени метода в одном из вложенных классов-замыканий.</summary>
 	private static void RegisterDelegate(string typeName, string methodName, string[] fields)
 	{
-		Type outer = AccessTools.TypeByName(typeName) ?? throw new TypeLoadException(typeName);
+		Type outer = RafTypes.Find(typeName) ?? throw new TypeLoadException(typeName);
 		foreach (Type nt in outer.GetNestedTypes(AccessTools.all))
 		{
 			if (AccessTools.DeclaredMethod(nt, methodName) != null)
@@ -178,8 +178,8 @@ internal static class GiddyUpMpSync
 	/// <summary>Как в Multiplayer Compatibility: перед выбором всадника отслеживаем количество в окне каравана.</summary>
 	private static void PatchHandleAnimal()
 	{
-		Type widget = AccessTools.TypeByName("GiddyUpCaravan.Harmony.Patch_TransferableOneWayWidget");
-		MethodInfo adjust = AccessTools.Method("Multiplayer.Client.SyncFields:TransferableAdjustTo");
+		Type widget = RafTypes.Find("GiddyUpCaravan.Harmony.Patch_TransferableOneWayWidget");
+		MethodInfo adjust = RafTypes.Method("Multiplayer.Client.SyncFields:TransferableAdjustTo");
 		if (widget == null || adjust == null)
 		{
 			throw new MissingMethodException("HandleAnimal / TransferableAdjustTo");

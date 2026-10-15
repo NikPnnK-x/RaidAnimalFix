@@ -9,7 +9,7 @@ public static class FaceAnimResetFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("FacialAnimation.FaceAnimation");
+		Type type = RafTypes.Find("FacialAnimation.FaceAnimation");
 		if (type == null)
 		{
 			return null;

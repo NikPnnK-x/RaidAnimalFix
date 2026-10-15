@@ -49,7 +49,7 @@ internal static class MpLambdaSync
 	public static List<Match> Find(string typeName, string parentMethod, string[] stateFields, string[] stateMethods)
 	{
 		List<Match> result = new List<Match>();
-		Type parent = AccessTools.TypeByName(typeName);
+		Type parent = RafTypes.Find(typeName);
 		if (parent == null)
 		{
 			return result;
@@ -168,7 +168,7 @@ internal static class MpLambdaSync
 	{
 		foreach (string name in UiBases)
 		{
-			Type ui = AccessTools.TypeByName(name);
+			Type ui = RafTypes.Find(name);
 			if (ui != null && ui.IsAssignableFrom(type))
 			{
 				return true;
@@ -203,7 +203,7 @@ internal static class MpLambdaSync
 	{
 		try
 		{
-			MethodInfo m = AccessTools.Method(typeColonMethod, args);
+			MethodInfo m = RafTypes.Method(typeColonMethod, args);
 			if (m == null)
 			{
 				Log.Warning("[RaidAnimalFix] " + (tag ?? "MP") + ": метод " + typeColonMethod + " не найден (мод обновился?)");

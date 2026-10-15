@@ -37,12 +37,12 @@ internal static class MpContext
 		_resolved = true;
 		try
 		{
-			Type type = AccessTools.TypeByName("Multiplayer.Client.AsyncTimeComp");
+			Type type = RafTypes.Find("Multiplayer.Client.AsyncTimeComp");
 			if (type != null)
 			{
 				_tickingMapField = type.GetField("tickingMap", BindingFlags.Static | BindingFlags.Public);
 			}
-			Type type2 = AccessTools.TypeByName("Multiplayer.Client.AsyncTime.AsyncWorldTimeComp") ?? AccessTools.TypeByName("Multiplayer.Client.AsyncWorldTimeComp");
+			Type type2 = RafTypes.Find("Multiplayer.Client.AsyncTime.AsyncWorldTimeComp") ?? RafTypes.Find("Multiplayer.Client.AsyncWorldTimeComp");
 			if (type2 != null)
 			{
 				_tickingWorldField = type2.GetField("tickingWorld", BindingFlags.Static | BindingFlags.Public);

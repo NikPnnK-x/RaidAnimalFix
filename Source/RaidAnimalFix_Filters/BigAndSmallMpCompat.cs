@@ -26,7 +26,7 @@ namespace RaidAnimalFix;
 
 internal static class BigAndSmallMp
 {
-	public static bool Present => AccessTools.TypeByName("BigAndSmall.HumanoidPawnScaler") != null;
+	public static bool Present => RafTypes.Find("BigAndSmall.HumanoidPawnScaler") != null;
 
 	private static bool _resolved;
 
@@ -43,8 +43,8 @@ internal static class BigAndSmallMp
 		_resolved = true;
 		try
 		{
-			Type bsCache = AccessTools.TypeByName("BigAndSmall.BSCache");
-			Type dict = AccessTools.TypeByName("BigAndSmall.DictCache`2");
+			Type bsCache = RafTypes.Find("BigAndSmall.BSCache");
+			Type dict = RafTypes.Find("BigAndSmall.DictCache`2");
 			if (bsCache != null && dict != null)
 			{
 				Type closed = dict.MakeGenericType(typeof(Pawn), bsCache);
@@ -95,7 +95,7 @@ public static class BigAndSmallTickSyncOnLoad
 
 	private static bool Prepare()
 	{
-		_setTick = AccessTools.Method("BigAndSmall.BS:SetTick", new Type[1] { typeof(int) });
+		_setTick = RafTypes.Method("BigAndSmall.BS:SetTick", new Type[1] { typeof(int) });
 		return BigAndSmallMp.Present && _setTick != null;
 	}
 
@@ -145,7 +145,7 @@ public static class BigAndSmallCacheReadOnlyInUi
 
 	private static MethodBase TargetMethod()
 	{
-		Type t = AccessTools.TypeByName("BigAndSmall.HumanoidPawnScaler");
+		Type t = RafTypes.Find("BigAndSmall.HumanoidPawnScaler");
 		if (t == null)
 		{
 			return null;
@@ -193,8 +193,8 @@ public static class BigAndSmallNoUiScheduling
 
 	private static MethodBase TargetMethod()
 	{
-		Type t = AccessTools.TypeByName("BigAndSmall.HumanoidPawnScaler");
-		Type c = AccessTools.TypeByName("BigAndSmall.BSCache");
+		Type t = RafTypes.Find("BigAndSmall.HumanoidPawnScaler");
+		Type c = RafTypes.Find("BigAndSmall.BSCache");
 		return (t == null || c == null) ? null : AccessTools.DeclaredMethod(t, "ShedueleForceRegenerate", new Type[2]
 		{
 			c,

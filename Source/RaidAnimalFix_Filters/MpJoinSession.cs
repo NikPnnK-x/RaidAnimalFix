@@ -65,13 +65,13 @@ internal static class MpJoinSession
 		_resolved = true;
 		try
 		{
-			Type type = AccessTools.TypeByName("Multiplayer.Client.Multiplayer");
-			Type type2 = AccessTools.TypeByName("Multiplayer.Client.MultiplayerSession");
-			Type type3 = AccessTools.TypeByName("Multiplayer.Client.PlayerInfo");
-			Type type4 = AccessTools.TypeByName("Multiplayer.Client.TickPatch");
-			Type type5 = AccessTools.TypeByName("Multiplayer.Common.MultiplayerServer");
-			Type type6 = AccessTools.TypeByName("Multiplayer.Common.ServerPlayer");
-			_disconnectReason = AccessTools.TypeByName("Multiplayer.Common.MpDisconnectReason");
+			Type type = RafTypes.Find("Multiplayer.Client.Multiplayer");
+			Type type2 = RafTypes.Find("Multiplayer.Client.MultiplayerSession");
+			Type type3 = RafTypes.Find("Multiplayer.Client.PlayerInfo");
+			Type type4 = RafTypes.Find("Multiplayer.Client.TickPatch");
+			Type type5 = RafTypes.Find("Multiplayer.Common.MultiplayerServer");
+			Type type6 = RafTypes.Find("Multiplayer.Common.ServerPlayer");
+			_disconnectReason = RafTypes.Find("Multiplayer.Common.MpDisconnectReason");
 			if (type2 != null)
 			{
 				_playersField = type2.GetField("players", BindingFlags.Instance | BindingFlags.Public);

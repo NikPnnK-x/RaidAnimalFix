@@ -83,7 +83,7 @@ internal static class RimExodusMp
 
 	public static Type T(string name)
 	{
-		return AccessTools.TypeByName("RimExodus." + name);
+		return RafTypes.Find("RimExodus." + name);
 	}
 
 	private static MethodInfo M(Type type, string name, Type[] args)
@@ -101,26 +101,26 @@ internal static class RimExodusMp
 		try
 		{
 			_present = T("SeamlessDormancyGovernor") != null || T("IncrementalMapGenerator") != null;
-			Type ext = AccessTools.TypeByName("Multiplayer.Client.Extensions");
+			Type ext = RafTypes.Find("Multiplayer.Client.Extensions");
 			_asyncTimeOfMap = M(ext, "AsyncTime", new Type[1] { typeof(Map) });
 			_mpCompOfMap = M(ext, "MpComp", new Type[1] { typeof(Map) });
-			Type atc = AccessTools.TypeByName("Multiplayer.Client.AsyncTimeComp");
+			Type atc = RafTypes.Find("Multiplayer.Client.AsyncTimeComp");
 			if (atc != null)
 			{
 				_playerCount = AccessTools.Property(atc, "CurrentPlayerCount");
 				_asyncMap = AccessTools.Field(atc, "map");
 				_desiredTimeSpeed = AccessTools.Property(atc, "DesiredTimeSpeed");
 			}
-			Type mmc = AccessTools.TypeByName("Multiplayer.Client.MultiplayerMapComp");
+			Type mmc = RafTypes.Find("Multiplayer.Client.MultiplayerMapComp");
 			_factionData = (mmc == null) ? null : AccessTools.Field(mmc, "factionData");
-			Type fmd = AccessTools.TypeByName("Multiplayer.Client.FactionMapData");
+			Type fmd = RafTypes.Find("Multiplayer.Client.FactionMapData");
 			_fmdAreaManager = (fmd == null) ? null : AccessTools.Field(fmd, "areaManager");
-			Type mp = AccessTools.TypeByName("Multiplayer.Client.Multiplayer");
+			Type mp = RafTypes.Find("Multiplayer.Client.Multiplayer");
 			_gameComp = (mp == null) ? null : AccessTools.Property(mp, "GameComp");
-			Type gc = AccessTools.TypeByName("Multiplayer.Client.Comp.MultiplayerGameComp") ?? AccessTools.TypeByName("Multiplayer.Client.MultiplayerGameComp");
+			Type gc = RafTypes.Find("Multiplayer.Client.Comp.MultiplayerGameComp") ?? RafTypes.Find("Multiplayer.Client.MultiplayerGameComp");
 			_asyncTimeFlag = (gc == null) ? null : AccessTools.Field(gc, "asyncTime");
 			_worldComp = (mp == null) ? null : AccessTools.Property(mp, "WorldComp");
-			Type wc = AccessTools.TypeByName("Multiplayer.Client.MultiplayerWorldComp");
+			Type wc = RafTypes.Find("Multiplayer.Client.MultiplayerWorldComp");
 			_spectatorFaction = (wc == null) ? null : AccessTools.Field(wc, "spectatorFaction");
 			if (!_present)
 			{

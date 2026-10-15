@@ -219,7 +219,7 @@ public static class RexWakeOnPlayerView
 
 	private static MethodBase TargetMethod()
 	{
-		Type t = AccessTools.TypeByName("Multiplayer.Client.AsyncTimeComp");
+		Type t = RafTypes.Find("Multiplayer.Client.AsyncTimeComp");
 		return (t == null) ? null : AccessTools.DeclaredMethod(t, "IncreasePlayerCount");
 	}
 
@@ -1207,7 +1207,7 @@ public static class MpRemoveAllFromMapFix
 
 	private static bool Prepare()
 	{
-		Type t = AccessTools.TypeByName("Multiplayer.Client.AsyncTimeComp");
+		Type t = RafTypes.Find("Multiplayer.Client.AsyncTimeComp");
 		if (t == null)
 		{
 			return false;
@@ -1261,8 +1261,8 @@ public static class RexSeamlessTimeSpeed
 
 	private static MethodBase TargetMethod()
 	{
-		Type atc = AccessTools.TypeByName("Multiplayer.Client.AsyncTimeComp");
-		Type sc = AccessTools.TypeByName("Multiplayer.Common.ScheduledCommand");
+		Type atc = RafTypes.Find("Multiplayer.Client.AsyncTimeComp");
+		Type sc = RafTypes.Find("Multiplayer.Common.ScheduledCommand");
 		if (atc == null || sc == null)
 		{
 			return null;

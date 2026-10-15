@@ -9,7 +9,7 @@ public static class MeleeAnimDecorativeOnlyFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("AM.AnimRenderer");
+		Type type = RafTypes.Find("AM.AnimRenderer");
 		if (type == null)
 		{
 			return null;

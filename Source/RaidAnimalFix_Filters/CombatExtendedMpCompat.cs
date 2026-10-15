@@ -23,7 +23,7 @@ namespace RaidAnimalFix;
 
 internal static class CeMp
 {
-	public static bool Present => AccessTools.TypeByName("CombatExtended.Controller") != null;
+	public static bool Present => RafTypes.Find("CombatExtended.Controller") != null;
 
 }
 
@@ -44,8 +44,8 @@ public static class CeSmokeSequentialMp
 
 	private static MethodBase TargetMethod()
 	{
-		Type tracker = AccessTools.TypeByName("CombatExtended.BlackSmokeTracker");
-		Type smoke = AccessTools.TypeByName("CombatExtended.Smoke");
+		Type tracker = RafTypes.Find("CombatExtended.BlackSmokeTracker");
+		Type smoke = RafTypes.Find("CombatExtended.Smoke");
 		if (tracker == null || smoke == null)
 		{
 			return null;
@@ -91,7 +91,7 @@ public static class CeSettingsLockMp
 
 	private static MethodBase TargetMethod()
 	{
-		Type t = AccessTools.TypeByName("CombatExtended.Controller");
+		Type t = RafTypes.Find("CombatExtended.Controller");
 		return (t == null) ? null : AccessTools.DeclaredMethod(t, "DoSettingsWindowContents", new Type[1] { typeof(Rect) });
 	}
 
@@ -115,7 +115,7 @@ public static class CeForeignSmokePrefixOff
 {
 	private static MethodBase TargetMethod()
 	{
-		return AccessTools.Method("CEMPDesyncFix.SmokePatches:MapComponentTick_Prefix");
+		return RafTypes.Method("CEMPDesyncFix.SmokePatches:MapComponentTick_Prefix");
 	}
 
 	private static bool Prefix(ref bool __result)

@@ -9,8 +9,8 @@ public static class ChatPlayerLabelFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Multiplayer.Client.ChatWindow");
-		Type type2 = AccessTools.TypeByName("Multiplayer.Client.PlayerInfo");
+		Type type = RafTypes.Find("Multiplayer.Client.ChatWindow");
+		Type type2 = RafTypes.Find("Multiplayer.Client.PlayerInfo");
 		if (type == null || type2 == null)
 		{
 			return null;

@@ -28,13 +28,13 @@ public static class Vge2TurretBuffFactionMp
 
 	private static bool Prepare()
 	{
-		return AccessTools.TypeByName("VanillaGravshipExpanded2.Building_TurretGun_SpawnSetup_Patch") != null;
+		return RafTypes.Find("VanillaGravshipExpanded2.Building_TurretGun_SpawnSetup_Patch") != null;
 	}
 
 	private static MethodBase TargetMethod()
 	{
-		Type outer = AccessTools.TypeByName("VanillaGravshipExpanded2.Building_TurretGun_SpawnSetup_Patch");
-		_apply = AccessTools.Method("VanillaGravshipExpanded2.WarcomputerHelper:ApplyForcedMissRadiusBuffs");
+		Type outer = RafTypes.Find("VanillaGravshipExpanded2.Building_TurretGun_SpawnSetup_Patch");
+		_apply = RafTypes.Method("VanillaGravshipExpanded2.WarcomputerHelper:ApplyForcedMissRadiusBuffs");
 		if (outer == null || _apply == null)
 		{
 			return null;

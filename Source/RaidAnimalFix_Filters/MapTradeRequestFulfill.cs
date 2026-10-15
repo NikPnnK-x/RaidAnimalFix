@@ -24,7 +24,7 @@ public static class MapTradeRequestFulfill
 		_syncTried = true;
 		try
 		{
-			Type type = AccessTools.TypeByName("Multiplayer.API.MP");
+			Type type = RafTypes.Find("Multiplayer.API.MP");
 			if (type == null)
 			{
 				Log.Message("[RaidAnimalFix] Multiplayer API not found — map trade-request fulfill disabled in MP");
@@ -36,7 +36,7 @@ public static class MapTradeRequestFulfill
 				Log.Message("[RaidAnimalFix] Multiplayer API present but not enabled");
 				return;
 			}
-			Type type2 = AccessTools.TypeByName("Multiplayer.API.SyncType");
+			Type type2 = RafTypes.Find("Multiplayer.API.SyncType");
 			if (!(type2 == null))
 			{
 				MethodInfo method = type.GetMethod("RegisterSyncMethod", BindingFlags.Static | BindingFlags.Public, null, new Type[2]

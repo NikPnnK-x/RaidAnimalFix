@@ -9,7 +9,7 @@ public static class BloodMoteThrowCasingFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("BloodAnimations.MoteThrowCasing");
+		Type type = RafTypes.Find("BloodAnimations.MoteThrowCasing");
 		if (type == null)
 		{
 			return null;

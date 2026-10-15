@@ -28,12 +28,12 @@ internal static class MpMapTime
 		_resolved = true;
 		try
 		{
-			Type type = AccessTools.TypeByName("Multiplayer.Client.Extensions");
+			Type type = RafTypes.Find("Multiplayer.Client.Extensions");
 			if (type != null)
 			{
 				_asyncTimeOfMap = AccessTools.Method(type, "AsyncTime", new Type[1] { typeof(Map) });
 			}
-			Type type2 = AccessTools.TypeByName("Multiplayer.Client.AsyncTimeComp");
+			Type type2 = RafTypes.Find("Multiplayer.Client.AsyncTimeComp");
 			if (type2 != null)
 			{
 				_mapTicks = type2.GetField("mapTicks", BindingFlags.Instance | BindingFlags.Public);

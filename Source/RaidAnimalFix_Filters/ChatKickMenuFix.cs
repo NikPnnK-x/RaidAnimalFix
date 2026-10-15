@@ -9,7 +9,7 @@ public static class ChatKickMenuFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Multiplayer.Client.ChatWindow");
+		Type type = RafTypes.Find("Multiplayer.Client.ChatWindow");
 		if (!(type == null))
 		{
 			return AccessTools.Method(type, "ClickPlayer");

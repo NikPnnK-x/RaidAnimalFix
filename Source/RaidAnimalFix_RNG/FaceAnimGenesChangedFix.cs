@@ -10,7 +10,7 @@ public static class FaceAnimGenesChangedFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("FacialAnimation.HarmonyPatches");
+		Type type = RafTypes.Find("FacialAnimation.HarmonyPatches");
 		if (type == null)
 		{
 			return null;

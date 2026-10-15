@@ -26,7 +26,7 @@ internal static class MpSessionHelper
 		_resolved = true;
 		try
 		{
-			Type type = AccessTools.TypeByName("Multiplayer.Client.Extensions");
+			Type type = RafTypes.Find("Multiplayer.Client.Extensions");
 			if (type != null)
 			{
 				_mpCompMethod = type.GetMethod("MpComp", BindingFlags.Static | BindingFlags.Public, null, new Type[1] { typeof(Map) }, null);

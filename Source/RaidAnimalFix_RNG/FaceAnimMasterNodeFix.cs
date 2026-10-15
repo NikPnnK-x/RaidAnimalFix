@@ -9,7 +9,7 @@ public static class FaceAnimMasterNodeFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("FacialAnimation.NLFacialAnimationMasterNode");
+		Type type = RafTypes.Find("FacialAnimation.NLFacialAnimationMasterNode");
 		if (type == null)
 		{
 			return null;

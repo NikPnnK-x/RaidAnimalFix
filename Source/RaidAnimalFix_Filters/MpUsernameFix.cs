@@ -13,7 +13,7 @@ internal static class MpUsernameFix
 	{
 		try
 		{
-			Type type = AccessTools.TypeByName("Multiplayer.Client.Multiplayer");
+			Type type = RafTypes.Find("Multiplayer.Client.Multiplayer");
 			if (type == null)
 			{
 				return;
@@ -119,7 +119,7 @@ internal static class MpUsernameFix
 	{
 		try
 		{
-			Type type = AccessTools.TypeByName("Steamworks.SteamUser");
+			Type type = RafTypes.Find("Steamworks.SteamUser");
 			MethodInfo methodInfo = ((type == null) ? null : type.GetMethod("GetSteamID", BindingFlags.Static | BindingFlags.Public));
 			if (methodInfo == null)
 			{

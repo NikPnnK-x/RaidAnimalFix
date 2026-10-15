@@ -9,7 +9,7 @@ public static class FingerprintFlushOnDesync
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Multiplayer.Client.SyncCoordinator");
+		Type type = RafTypes.Find("Multiplayer.Client.SyncCoordinator");
 		if (!(type == null))
 		{
 			return AccessTools.Method(type, "HandleDesync");

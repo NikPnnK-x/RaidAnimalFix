@@ -22,8 +22,8 @@ internal static class HarMpCompatFix
 	{
 		try
 		{
-			Type module = AccessTools.TypeByName("Multiplayer.Compat.AlienRace");
-			Type comp = AccessTools.TypeByName("AlienRace.AlienPartGenerator+AlienComp");
+			Type module = RafTypes.Find("Multiplayer.Compat.AlienRace");
+			Type comp = RafTypes.Find("AlienRace.AlienPartGenerator+AlienComp");
 			FieldInfo field = (module == null) ? null : AccessTools.Field(module, "overwriteColorChannelMethod");
 			if (comp == null || field == null || !field.IsStatic || field.GetValue(null) != null)
 			{
@@ -59,7 +59,7 @@ public static class HarMpCompatLatePatchFix
 {
 	private static MethodBase TargetMethod()
 	{
-		return AccessTools.Method("Multiplayer.Compat.AlienRace:LatePatch");
+		return RafTypes.Method("Multiplayer.Compat.AlienRace:LatePatch");
 	}
 
 	private static void Postfix()

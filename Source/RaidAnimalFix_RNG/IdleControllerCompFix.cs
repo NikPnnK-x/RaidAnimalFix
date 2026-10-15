@@ -9,7 +9,7 @@ public static class IdleControllerCompFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("AM.Idle.IdleControllerComp");
+		Type type = RafTypes.Find("AM.Idle.IdleControllerComp");
 		if (type == null)
 		{
 			return null;

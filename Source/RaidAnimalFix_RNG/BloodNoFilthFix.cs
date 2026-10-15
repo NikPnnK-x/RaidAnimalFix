@@ -12,7 +12,7 @@ public static class BloodNoFilthFix
 {
 	private static MethodBase TargetMethod()
 	{
-		if (AccessTools.TypeByName("BloodAnimations.FleckThrownBlood") == null)
+		if (RafTypes.Find("BloodAnimations.FleckThrownBlood") == null)
 		{
 			return null;
 		}

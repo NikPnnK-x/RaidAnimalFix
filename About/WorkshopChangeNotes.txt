@@ -1,3 +1,23 @@
+[b]3.0.942.0[/b]
+
+[list]
+[*] Faster game start. For every optional patch whose mod is not installed, Harmony's type lookup scanned every type of every loaded assembly (twice), and the mod does dozens of such lookups at start - several seconds in total. The mod now looks types up by full name directly in each assembly, exactly like Harmony's own first steps, so a missing mod costs almost nothing. Which patches apply has not changed.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.942.0 (по-русски)[/b]
+
+[list]
+[*] Игра запускается быстрее. Для каждого необязательного патча, чей мод не установлен, поиск типа в Harmony перебирал все типы всех загруженных сборок (дважды), а таких поисков при запуске десятки - в сумме несколько секунд. Теперь мод ищет тип по полному имени прямо в каждой сборке, как и первые шаги самого Harmony, и отсутствующий мод почти ничего не стоит. Какие патчи применяются - не изменилось.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.941.0[/b]
 
 [list]

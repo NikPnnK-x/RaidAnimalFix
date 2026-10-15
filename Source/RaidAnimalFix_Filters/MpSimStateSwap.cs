@@ -125,13 +125,13 @@ public static class MpSimStateSwapPatch
 {
 	private static bool Prepare()
 	{
-		return AccessTools.TypeByName("Multiplayer.Client.AsyncTimeComp") != null;
+		return RafTypes.Find("Multiplayer.Client.AsyncTimeComp") != null;
 	}
 
 	private static IEnumerable<MethodBase> TargetMethods()
 	{
-		Type map = AccessTools.TypeByName("Multiplayer.Client.AsyncTimeComp");
-		Type world = AccessTools.TypeByName("Multiplayer.Client.AsyncTime.AsyncWorldTimeComp") ?? AccessTools.TypeByName("Multiplayer.Client.AsyncWorldTimeComp");
+		Type map = RafTypes.Find("Multiplayer.Client.AsyncTimeComp");
+		Type world = RafTypes.Find("Multiplayer.Client.AsyncTime.AsyncWorldTimeComp") ?? RafTypes.Find("Multiplayer.Client.AsyncWorldTimeComp");
 		foreach (Type t in new Type[2] { map, world })
 		{
 			if (t == null)

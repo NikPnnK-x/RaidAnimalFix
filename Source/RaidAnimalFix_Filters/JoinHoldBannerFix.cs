@@ -9,7 +9,7 @@ public static class JoinHoldBannerFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Multiplayer.Client.IngameUIPatch");
+		Type type = RafTypes.Find("Multiplayer.Client.IngameUIPatch");
 		if (!(type == null))
 		{
 			return AccessTools.Method(type, "Prefix");

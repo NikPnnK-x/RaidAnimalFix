@@ -143,7 +143,7 @@ internal sealed class MpGizmoFieldWatch
 
 	public MpGizmoFieldWatch(string compTypeName, string[] fieldNames, string[] bufferedFields, string tag)
 	{
-		_compType = AccessTools.TypeByName(compTypeName);
+		_compType = RafTypes.Find(compTypeName);
 		if (_compType == null)
 		{
 			return;
@@ -267,7 +267,7 @@ public static class ModVisualRandIsolationMp
 	{
 		foreach (string name in Targets)
 		{
-			MethodInfo m = AccessTools.Method(name);
+			MethodInfo m = RafTypes.Method(name);
 			if (m != null)
 			{
 				yield return m;
@@ -310,7 +310,7 @@ public static class ModCheckboxColumnsMp
 	{
 		foreach (string name in Columns)
 		{
-			Type t = AccessTools.TypeByName(name);
+			Type t = RafTypes.Find(name);
 			if (t == null || ModCompatGuards.ForeignPatchFor(t))
 			{
 				continue;

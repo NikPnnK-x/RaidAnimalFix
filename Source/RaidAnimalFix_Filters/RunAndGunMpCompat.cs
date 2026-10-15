@@ -51,12 +51,12 @@ internal static class RunAndGunMp
 			return;
 		}
 		_resolved = true;
-		Type mod = AccessTools.TypeByName("RunAndGun.RunAndGun");
+		Type mod = RafTypes.Find("RunAndGun.RunAndGun");
 		_settings = (mod == null) ? null : AccessTools.Field(mod, "settings");
-		_settingsType = AccessTools.TypeByName("RunAndGun.Settings");
-		Type draw = AccessTools.TypeByName("RunAndGun.Utilities.DrawUtility");
+		_settingsType = RafTypes.Find("RunAndGun.Settings");
+		Type draw = RafTypes.Find("RunAndGun.Utilities.DrawUtility");
 		_filter = (draw == null) ? null : AccessTools.Method(draw, "FilterWeapons");
-		Type util = AccessTools.TypeByName("RunAndGun.Utilities.WeaponUtility");
+		Type util = RafTypes.Find("RunAndGun.Utilities.WeaponUtility");
 		_allWeapons = (util == null) ? null : AccessTools.Method(util, "getAllWeapons");
 	}
 
@@ -190,7 +190,7 @@ public static class RunAndGunSettingsLockMp
 
 	private static MethodBase TargetMethod()
 	{
-		Type t = AccessTools.TypeByName("RunAndGun.RunAndGun");
+		Type t = RafTypes.Find("RunAndGun.RunAndGun");
 		return (t == null) ? null : AccessTools.DeclaredMethod(t, "DoSettingsWindowContents", new Type[1] { typeof(Rect) });
 	}
 

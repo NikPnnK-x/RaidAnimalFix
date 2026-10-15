@@ -11,7 +11,7 @@ public static class AnimalInsanityDuringRaidFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("RimWorld.IncidentWorker_AnimalInsanityMass");
+		Type type = RafTypes.Find("RimWorld.IncidentWorker_AnimalInsanityMass");
 		if (type == null)
 		{
 			return null;

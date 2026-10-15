@@ -15,7 +15,7 @@ public static class MeleeAnimNoFloatMenuFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("AM.Patches.Patch_FloatMenuMakerMap_GetOptions");
+		Type type = RafTypes.Find("AM.Patches.Patch_FloatMenuMakerMap_GetOptions");
 		return (type == null) ? null : AccessTools.Method(type, "Postfix");
 	}
 
@@ -31,7 +31,7 @@ public static class MeleeAnimNoDuelSpotFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("AM.Buildings.Building_DuelSpot");
+		Type type = RafTypes.Find("AM.Buildings.Building_DuelSpot");
 		return (type == null) ? null : AccessTools.Method(type, "TryStartDuel");
 	}
 
@@ -55,7 +55,7 @@ public static class MeleeAnimNoLassoSpawnFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("AM.Patches.Patch_PawnGenerator_GeneratePawn");
+		Type type = RafTypes.Find("AM.Patches.Patch_PawnGenerator_GeneratePawn");
 		return (type == null) ? null : AccessTools.Method(type, "Postfix");
 	}
 
@@ -74,7 +74,7 @@ public static class MeleeAnimNoFriendlyDuelFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("AM.AutoDuel.JoyGiver_FriendlyDuel");
+		Type type = RafTypes.Find("AM.AutoDuel.JoyGiver_FriendlyDuel");
 		return (type == null) ? null : AccessTools.Method(type, "TryGiveJob", new Type[1] { typeof(Pawn) });
 	}
 
@@ -94,7 +94,7 @@ public static class MeleeAnimNoSpectateDuelFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("AM.AutoDuel.JoyGiver_SpectateFriendlyDuel");
+		Type type = RafTypes.Find("AM.AutoDuel.JoyGiver_SpectateFriendlyDuel");
 		return (type == null) ? null : AccessTools.Method(type, "TryGiveJob", new Type[1] { typeof(Pawn) });
 	}
 
@@ -119,7 +119,7 @@ public static class IdleControllerMeleeAttackFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("AM.Idle.IdleControllerComp");
+		Type type = RafTypes.Find("AM.Idle.IdleControllerComp");
 		return (type == null) ? null : AccessTools.Method(type, "NotifyPawnDidMeleeAttack");
 	}
 
@@ -139,7 +139,7 @@ public static class IdleControllerMeleeDodgeFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("AM.Idle.IdleControllerComp");
+		Type type = RafTypes.Find("AM.Idle.IdleControllerComp");
 		return (type == null) ? null : AccessTools.Method(type, "OnMeleeDodge");
 	}
 

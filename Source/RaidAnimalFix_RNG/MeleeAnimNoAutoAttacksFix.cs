@@ -9,7 +9,7 @@ public static class MeleeAnimNoAutoAttacksFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("AM.Processing.MapPawnProcessor");
+		Type type = RafTypes.Find("AM.Processing.MapPawnProcessor");
 		if (type == null)
 		{
 			return null;

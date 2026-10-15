@@ -92,7 +92,7 @@ public static class MpHelper
 		_reflectionResolved = true;
 		try
 		{
-			_multiplayerType = AccessTools.TypeByName("Multiplayer.Client.Multiplayer");
+			_multiplayerType = RafTypes.Find("Multiplayer.Client.Multiplayer");
 			if (_multiplayerType == null)
 			{
 				Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();

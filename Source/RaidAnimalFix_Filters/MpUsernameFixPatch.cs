@@ -9,7 +9,7 @@ public static class MpUsernameFixPatch
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Multiplayer.Client.MultiplayerStatic");
+		Type type = RafTypes.Find("Multiplayer.Client.MultiplayerStatic");
 		if (!(type == null))
 		{
 			return AccessTools.Method(type, "SetUsername");

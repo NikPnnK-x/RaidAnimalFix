@@ -108,7 +108,7 @@ internal static class VfMp
 
 	public static Type T(string name)
 	{
-		return AccessTools.TypeByName(name);
+		return RafTypes.Find(name);
 	}
 
 	private static void Resolve()

@@ -27,7 +27,7 @@ public static class VfePropsCostDevModeMp
 {
 	private static MethodBase TargetMethod()
 	{
-		return AccessTools.Method("VFEProps.Utils:CostCalculator");
+		return RafTypes.Method("VFEProps.Utils:CostCalculator");
 	}
 
 	private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
@@ -61,7 +61,7 @@ public static class VfePropsSilverMapMp
 {
 	private static IEnumerable<MethodBase> TargetMethods()
 	{
-		Type t = AccessTools.TypeByName("VFEProps.Building_SubstractsSilver");
+		Type t = RafTypes.Find("VFEProps.Building_SubstractsSilver");
 		if (t == null)
 		{
 			yield break;
@@ -106,7 +106,7 @@ public static class VfePropsSettingsLockMp
 {
 	private static MethodBase TargetMethod()
 	{
-		Type t = AccessTools.TypeByName("VFEProps.VFEProps_Mod");
+		Type t = RafTypes.Find("VFEProps.VFEProps_Mod");
 		return (t == null) ? null : AccessTools.DeclaredMethod(t, "DoSettingsWindowContents", new Type[1] { typeof(Rect) });
 	}
 

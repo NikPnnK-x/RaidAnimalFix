@@ -32,7 +32,7 @@ namespace RaidAnimalFix;
 
 internal static class AncotMp
 {
-	public static Type Library => AccessTools.TypeByName("AncotLibrary.GameComponent_AncotLibrary");
+	public static Type Library => RafTypes.Find("AncotLibrary.GameComponent_AncotLibrary");
 
 	public static bool Present => Library != null;
 
@@ -118,7 +118,7 @@ internal static class AncotMpSync
 
 	private static void Watch(string gizmoType, MpGizmoFieldWatch watch)
 	{
-		if (watch.Ready && AccessTools.TypeByName(gizmoType) != null)
+		if (watch.Ready && RafTypes.Find(gizmoType) != null)
 		{
 			AncotMp.GizmoWatches[gizmoType] = watch;
 		}
@@ -127,7 +127,7 @@ internal static class AncotMpSync
 	/// <summary>Виртуальный метод базового типа и его переопределения во всех модах.</summary>
 	private static int Family(string baseTypeName, string method)
 	{
-		Type baseType = AccessTools.TypeByName(baseTypeName);
+		Type baseType = RafTypes.Find(baseTypeName);
 		if (baseType == null)
 		{
 			return 0;
@@ -149,7 +149,7 @@ internal static class AncotMpSync
 	{
 		foreach (string name in new string[2] { "AncotLibrary.RoyalTitlePermitWorker_DropPawn_join", "AncotLibrary.RoyalTitlePermitWorker_DropSkyFaller" })
 		{
-			Type t = AccessTools.TypeByName(name);
+			Type t = RafTypes.Find(name);
 			FieldInfo faction = (t == null) ? null : AccessTools.Field(t, "faction");
 			if (faction == null || !typeof(RoyalTitlePermitWorker_Targeted).IsAssignableFrom(t))
 			{
@@ -181,7 +181,7 @@ internal static class AncotMpSync
 	/// <summary>5. Указатель посадки: вещь, её def, поворот и метод-действие (лямбда аэрокрафта).</summary>
 	private static void RegisterLandDesignator()
 	{
-		Type t = AccessTools.TypeByName("AncotLibrary.Designator_Land");
+		Type t = RafTypes.Find("AncotLibrary.Designator_Land");
 		if (t == null)
 		{
 			return;
@@ -266,7 +266,7 @@ public static class AncotGizmoFieldWatchMp
 	{
 		foreach (string name in Gizmos)
 		{
-			Type t = AccessTools.TypeByName(name);
+			Type t = RafTypes.Find(name);
 			MethodInfo m = (t == null) ? null : AccessTools.DeclaredMethod(t, "GizmoOnGUI");
 			if (m != null)
 			{
@@ -403,7 +403,7 @@ public static class AncotRepulsiveDirectionMp
 
 	private static MethodBase TargetMethod()
 	{
-		return AccessTools.Method("AncotLibrary.Projectile_Repulsive:TryToKnockBack");
+		return RafTypes.Method("AncotLibrary.Projectile_Repulsive:TryToKnockBack");
 	}
 
 	private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
@@ -447,7 +447,7 @@ public static class AncotTraderStockMapMp
 
 	private static MethodBase TargetMethod()
 	{
-		Type t = AccessTools.TypeByName("AncotLibrary.ThingSetMaker_TraderStockCustom");
+		Type t = RafTypes.Find("AncotLibrary.ThingSetMaker_TraderStockCustom");
 		return (t == null) ? null : AccessTools.DeclaredMethod(t, "Generate");
 	}
 
@@ -468,7 +468,7 @@ public static class AncotSettingsLockMp
 
 	private static MethodBase TargetMethod()
 	{
-		Type t = AccessTools.TypeByName("AncotLibrary.Mod_AncotLibrary");
+		Type t = RafTypes.Find("AncotLibrary.Mod_AncotLibrary");
 		return (t == null) ? null : AccessTools.DeclaredMethod(t, "DoSettingsWindowContents", new Type[1] { typeof(Rect) });
 	}
 

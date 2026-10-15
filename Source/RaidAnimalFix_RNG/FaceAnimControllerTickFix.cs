@@ -16,7 +16,7 @@ public static class FaceAnimControllerTickFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("FacialAnimation.FacialAnimationControllerComp");
+		Type type = RafTypes.Find("FacialAnimation.FacialAnimationControllerComp");
 		if (type == null)
 		{
 			return null;

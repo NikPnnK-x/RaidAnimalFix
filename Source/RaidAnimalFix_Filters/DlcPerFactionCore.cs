@@ -43,7 +43,7 @@ internal static class DlcPf
 		_resolved = true;
 		try
 		{
-			Type mp = AccessTools.TypeByName("Multiplayer.Client.Multiplayer");
+			Type mp = RafTypes.Find("Multiplayer.Client.Multiplayer");
 			_gameField = (mp == null) ? null : mp.GetField("game", BindingFlags.Static | BindingFlags.Public);
 			Type gameType = _gameField?.FieldType;
 			if (gameType != null)
@@ -53,7 +53,7 @@ internal static class DlcPf
 			}
 			_multifactionField = _gameCompField?.FieldType.GetField("multifaction", BindingFlags.Instance | BindingFlags.Public);
 			_factionDataField = _worldCompField?.FieldType.GetField("factionData", BindingFlags.Instance | BindingFlags.Public);
-			Type fwd = AccessTools.TypeByName("Multiplayer.Client.FactionWorldData");
+			Type fwd = RafTypes.Find("Multiplayer.Client.FactionWorldData");
 			_fwdStorytellerField = (fwd == null) ? null : fwd.GetField("storyteller", BindingFlags.Instance | BindingFlags.Public);
 			Log.Message("[RaidAnimalFix] DlcPerFaction: multifaction=" + (_multifactionField != null) + " factionData=" + (_factionDataField != null) + " storyteller=" + (_fwdStorytellerField != null));
 		}

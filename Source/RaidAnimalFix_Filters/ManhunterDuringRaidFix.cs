@@ -11,7 +11,7 @@ public static class ManhunterDuringRaidFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("RimWorld.IncidentWorker_AggressiveAnimals") ?? AccessTools.TypeByName("RimWorld.IncidentWorker_ManhunterPack");
+		Type type = RafTypes.Find("RimWorld.IncidentWorker_AggressiveAnimals") ?? RafTypes.Find("RimWorld.IncidentWorker_ManhunterPack");
 		if (type == null)
 		{
 			return null;

@@ -10,7 +10,7 @@ public static class FaceAnimRenderNodesFix
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("FacialAnimation.DrawFaceGraphicsComp");
+		Type type = RafTypes.Find("FacialAnimation.DrawFaceGraphicsComp");
 		if (type == null)
 		{
 			return null;

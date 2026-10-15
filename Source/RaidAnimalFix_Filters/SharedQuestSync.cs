@@ -126,7 +126,7 @@ internal static class SharedQuestUtil
 			_relationsResolved = true;
 			try
 			{
-				Type t = AccessTools.TypeByName("RaidAnimalFix.RelationsApi");
+				Type t = RafTypes.Find("RaidAnimalFix.RelationsApi");
 				_areAllied = (t == null) ? null : AccessTools.Method(t, "AreAllied", new Type[2]
 				{
 					typeof(Faction),

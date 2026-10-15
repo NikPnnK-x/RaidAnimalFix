@@ -9,7 +9,7 @@ public static class HoldTicksWhileJoining
 {
 	private static MethodBase TargetMethod()
 	{
-		Type type = AccessTools.TypeByName("Multiplayer.Client.TickPatch");
+		Type type = RafTypes.Find("Multiplayer.Client.TickPatch");
 		if (!(type == null))
 		{
 			return AccessTools.Method(type, "DoUpdate");
