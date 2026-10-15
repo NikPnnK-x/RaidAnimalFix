@@ -279,7 +279,21 @@ public static class KidnapOwnerContextFix
 [StaticConstructorOnStartup]
 public static class SettingsHashCheck
 {
-	private static readonly string[] SimSettingsMods = new string[4] { "mehni.pickupandhaul", "jellycreative.isekaileveling", "memegoddess.replacestuff", "co.uk.epicguru.meleeanimation" };
+	private static readonly string[] SimSettingsMods = new string[5] { "mehni.pickupandhaul", "jellycreative.isekaileveling", "memegoddess.replacestuff", "co.uk.epicguru.meleeanimation", "rimexodus.seamlessworld" };
+
+	// Поля, которые симуляция не читает (логи, профайлер, интерфейс) или которые мы
+	// переопределяем в MP сами — их различие рассинхрона не даёт, не предупреждаем.
+	private static readonly Dictionary<string, HashSet<string>> SimSettingsIgnore = new Dictionary<string, HashSet<string>>
+	{
+		{
+			"rimexodus.seamlessworld",
+			new HashSet<string>
+			{
+				"verboseLogging", "logGeneration", "logTransfer", "logCaravanExit", "logWeather", "logDormancy", "logCombat", "logCombatExtended", "logCompat", "logSettlement",
+				"logCore", "tickProfilingEnabled", "tickProfileIntervalTicks", "hideEmptyColonistBarGroups", "incrementalGenerationEnabled", "generationBatchSize"
+			}
+		}
+	};
 
 	private static bool _registered;
 
@@ -493,20 +507,21 @@ public static class SettingsHashCheck
 				continue;
 			}
 			StringBuilder stringBuilder2 = new StringBuilder();
-			Dump(obj.GetType(), obj, stringBuilder2);
+			SimSettingsIgnore.TryGetValue(text, out HashSet<string> ignore);
+			Dump(obj.GetType(), obj, stringBuilder2, ignore);
 			stringBuilder.Append(text).Append('=').Append(Fnv(stringBuilder2.ToString()).ToString("x8"))
 				.Append(';');
 		}
 		return stringBuilder.ToString();
 	}
 
-	private static void Dump(Type type, object instance, StringBuilder sb)
+	private static void Dump(Type type, object instance, StringBuilder sb, HashSet<string> ignore = null)
 	{
 		foreach (FieldInfo item in from f in type.GetFields(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
 			orderby f.Name
 			select f)
 		{
-			if (item.IsLiteral || (item.IsStatic && item.IsInitOnly && !item.FieldType.IsPrimitive))
+			if (item.IsLiteral || (item.IsStatic && item.IsInitOnly && !item.FieldType.IsPrimitive) || (ignore != null && ignore.Contains(item.Name)))
 			{
 				continue;
 			}

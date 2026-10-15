@@ -1,3 +1,47 @@
+[b]3.0.938.0[/b]
+
+[list]
+[*] NEW: support for RimExodus - Seamless World in multiplayer (it was marked incompatible). Everything below applies only in multiplayer; single-player behaviour is unchanged.
+[*] Neighbour maps are generated synchronously, the vanilla way. RimExodus's incremental generator built the map outside the vanilla generator, so Multiplayer never set it up (the map did not tick, spawning failed), and split the work by real time (8 ms per frame) - a different amount on each client.
+[*] The neighbour preload queue is filled by the simulation but was processed by Unity frame number, so a map appeared on different ticks on different clients. Now it is processed on the next tick.
+[*] Map sleep / wake no longer follows each player's camera: a map wakes when any player opens it (Multiplayer's synced viewer count), and the sleep sweep counts the pawns, caravans, homes and threats of every player faction (in the world tick the current faction is Multiplayer's spectator, so before nothing counted).
+[*] The "keep this map?" prompt opened from the tick on every client with the answer coming from one client's UI. In multiplayer a small outpost is archived automatically (buildings are kept, as RimExodus already does for big ones). The home area is read for every player faction, so a built outpost is no longer treated as empty.
+[*] Cross-map orders (drafted move / group move into the neighbour map) and the order target are synced. They used to exist only on the clicking client.
+[*] World map buttons "sleep / delete map / delete archive" are synced commands; a map with another player's colonists or home area, or one somebody is looking at, is refused with a message.
+[*] Pawn rotation towards a target on the neighbour map no longer depends on whether the pawn is in your camera. Camera auto-focus on arrival is off in multiplayer.
+[*] Talking to a settlement trader on its own map is disabled in multiplayer (the trade would happen on one computer only) - trade with a caravan from the world map.
+[*] Multiplayer fix for all mods: freezing a map and then re-registering its things (RimExodus does this on sleep / wake) made things tick twice per tick in multiplayer. TickManager.RemoveAllFromMap now also clears the map's own tick lists.
+[*] RimExodus static state (preload queue, transfer passes, caches) is reset when the game reloads at a join point, so a joining player starts with the same state as the others.
+[*] Asynchronous time: a new neighbour map takes the speed of the map it was opened from instead of starting paused, and a speed change spreads to the maps joined to it by seams that hold no other player's pawns or home.
+[*] RimExodus settings are locked during a multiplayer game and are included in the settings check (logging, profiler and interface options are ignored).
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.938.0 (по-русски)[/b]
+
+[list]
+[*] НОВОЕ: поддержка RimExodus - Seamless World в мультиплеере (раньше мод был помечен несовместимым). Всё ниже действует только в мультиплеере; одиночная игра не меняется.
+[*] Соседние карты генерируются синхронно, ванильным путём. Инкрементальный генератор RimExodus собирал карту в обход ванильного генератора - Multiplayer её не настраивал (карта не тикала, спавн падал), а работу делил по реальному времени (8 мс на кадр) - у каждого клиента по-разному.
+[*] Очередь предзагрузки соседей заполняется симуляцией, а разбиралась по номеру кадра Unity - карта появлялась у клиентов в разные тики. Теперь разбирается на ближайшем тике.
+[*] Сон и пробуждение карт больше не зависят от камеры каждого игрока: карта просыпается, когда её открывает любой игрок (синхронный счётчик зрителей Multiplayer), а проход усыпления учитывает пешек, караваны, дома и угрозы всех фракций игроков (в мировом тике текущая фракция - наблюдатель Multiplayer, поэтому раньше не учитывалось ничего).
+[*] Вопрос «сохранить карту?» открывался из тика у всех, а ответ шёл из интерфейса одного клиента. В мультиплеере небольшой аванпост сохраняется в архив автоматически (постройки не теряются, как RimExodus уже делает с большими). Домашняя зона читается для каждой фракции игроков - построенный аванпост больше не считается пустым.
+[*] Приказы через шов (дрефт-приказ и групповой приказ на соседнюю карту) и цель приказа синхронизируются. Раньше они существовали только у кликнувшего клиента.
+[*] Кнопки на карте мира «усыпить / удалить карту / удалить архив» - синхронные команды; карту с колонистами или домашней зоной другого игрока или карту, на которую кто-то смотрит, они не трогают и сообщают почему.
+[*] Поворот пешки к цели на соседней карте больше не зависит от того, видна ли пешка в вашей камере. Автофокус камеры на прибытие в мультиплеере выключен.
+[*] Разговор с торговцем поселения на его карте в мультиплеере отключён (сделка прошла бы только на одном компьютере) - торгуйте караваном с карты мира.
+[*] Исправление Multiplayer для всех модов: если мод «замораживал» карту и потом заново регистрировал её вещи (RimExodus так делает при сне и пробуждении), в мультиплеере вещи тикали дважды за тик. TickManager.RemoveAllFromMap теперь чистит и тик-листы самой карты.
+[*] Статическое состояние RimExodus (очередь предзагрузки, пропуска через шов, кэши) сбрасывается при перезагрузке в точке входа - новый игрок начинает с тем же состоянием, что и остальные.
+[*] Асинхронное время: новая соседняя карта получает скорость карты, из которой её открыли, а не стартует на паузе; смена скорости распространяется на связанные швами карты без пешек и домов других игроков.
+[*] Настройки RimExodus заблокированы во время мультиплеерной игры и входят в сверку настроек (логи, профайлер и интерфейс не учитываются).
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.937.0[/b]
 
 [list]

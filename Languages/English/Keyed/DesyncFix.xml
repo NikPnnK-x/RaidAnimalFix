@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <!-- Desync Fix: mod list check, desync analyzer, settings check, compatibility -->
-  <RAF_Safety_rimexodus_seamlessworld>decides which maps tick or sleep by each player's camera; generates maps on a real-time budget</RAF_Safety_rimexodus_seamlessworld>
+  <RAF_Safety_rimexodus_seamlessworld>fixed by this mod: map sleep/wake follows synced player presence instead of each camera, maps generate synchronously, cross-map orders and map gizmos are synced, all players' pawns/homes are counted; trading with a settlement on its own map is disabled; settings locked in game - keep Sync configs on</RAF_Safety_rimexodus_seamlessworld>
   <RAF_Safety_ferny_perspectiveshift>drives a pawn from the keyboard inside the tick, without sync</RAF_Safety_ferny_perspectiveshift>
   <RAF_Safety_memegoddess_replacestuff>over-rock blueprints, fog, cancel above bridges, bridge order and saving fixed by this mod; the 'Replace' stuff choice is synced</RAF_Safety_memegoddess_replacestuff>
   <RAF_Safety_jellycreative_isekaileveling>gaps in Multiplayer Compatibility closed by this mod (auto-distribute, runes in the tick, drop zone, ranks, caches); settings locked in game - keep Sync configs on</RAF_Safety_jellycreative_isekaileveling>
@@ -30,5 +30,9 @@
   <RAF_SettingsMismatch>Mod settings differ between players (groups of players with identical settings):</RAF_SettingsMismatch>
   <RAF_ReplaceStuffSettingsLocked>Replace Stuff settings affect the simulation and are locked during a multiplayer game.</RAF_ReplaceStuffSettingsLocked>
   <RAF_IsekaiSettingsLocked>Isekai RPG Leveling settings are locked during a multiplayer game: they affect the simulation and must be identical on every client. Change them from the main menu (all players must use the same values).</RAF_IsekaiSettingsLocked>
+  <RAF_RimExodus_SettingsLocked>RimExodus settings are locked during a multiplayer game: the simulation reads them, so they must be identical on every client. Change them from the main menu (all players must use the same values).</RAF_RimExodus_SettingsLocked>
+  <RAF_RimExodus_SettlementTalkMp>Talking to a settlement trader on its own map is not available in multiplayer: the trade would happen on one computer only. Trade with a caravan from the world map.</RAF_RimExodus_SettlementTalkMp>
+  <RAF_RimExodus_MapViewed>Someone is looking at this map right now - it can't be put to sleep or removed.</RAF_RimExodus_MapViewed>
+  <RAF_RimExodus_MapNotYours>Another player has colonists or a home area on this map.</RAF_RimExodus_MapNotYours>
   <RAF_DesyncAnalysisHeader>Desync analysis: mods on the code path where the game diverged (most likely first).</RAF_DesyncAnalysisHeader>
 </LanguageData>

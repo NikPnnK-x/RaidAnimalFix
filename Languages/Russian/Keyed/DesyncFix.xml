@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <!-- Desync Fix: mod list check, desync analyzer, settings check, compatibility -->
-  <RAF_Safety_rimexodus_seamlessworld>решает, какие карты тикают и спят, по камере каждого игрока; генерирует карты по бюджету реального времени</RAF_Safety_rimexodus_seamlessworld>
+  <RAF_Safety_rimexodus_seamlessworld>исправлено этим модом: сон и пробуждение карт идут по синхронному присутствию игроков, а не по камере каждого, карты генерируются синхронно, приказы через шов и кнопки карт синхронизируются, учитываются пешки и дома всех игроков; торговля с поселением на его карте отключена; настройки заблокированы в игре - держите Sync configs включённым</RAF_Safety_rimexodus_seamlessworld>
   <RAF_Safety_ferny_perspectiveshift>управляет пешкой с клавиатуры прямо в тике, без синхронизации</RAF_Safety_ferny_perspectiveshift>
   <RAF_Safety_memegoddess_replacestuff>чертежи поверх скал, туман, отмена над мостами, порядок мостов и сохранение исправлены этим модом; выбор материала у «Заменить» синхронизируется</RAF_Safety_memegoddess_replacestuff>
   <RAF_Safety_jellycreative_isekaileveling>дыры MP Compatibility закрыты этим модом (автораспределение, руны в тике, точка высадки, ранги, кэши); настройки в игре заблокированы — держите Sync configs включённым</RAF_Safety_jellycreative_isekaileveling>
@@ -30,5 +30,9 @@
   <RAF_SettingsMismatch>Настройки модов различаются (группы игроков с одинаковыми настройками):</RAF_SettingsMismatch>
   <RAF_ReplaceStuffSettingsLocked>Настройки Replace Stuff влияют на симуляцию и заблокированы во время игры в мультиплеере.</RAF_ReplaceStuffSettingsLocked>
   <RAF_IsekaiSettingsLocked>Настройки Isekai заблокированы в мультиплеерной игре: они влияют на симуляцию и должны совпадать у всех игроков. Меняйте их в главном меню (одинаково у всех).</RAF_IsekaiSettingsLocked>
+  <RAF_RimExodus_SettingsLocked>Настройки RimExodus заблокированы в мультиплеерной игре: их читает симуляция, поэтому они должны совпадать у всех игроков. Меняйте их в главном меню (одинаково у всех).</RAF_RimExodus_SettingsLocked>
+  <RAF_RimExodus_SettlementTalkMp>Разговор с торговцем поселения на его карте в мультиплеере недоступен: сделка прошла бы только на одном компьютере. Торгуйте караваном с карты мира.</RAF_RimExodus_SettlementTalkMp>
+  <RAF_RimExodus_MapViewed>На эту карту сейчас кто-то смотрит - её нельзя усыпить или удалить.</RAF_RimExodus_MapViewed>
+  <RAF_RimExodus_MapNotYours>На этой карте есть колонисты или домашняя зона другого игрока.</RAF_RimExodus_MapNotYours>
   <RAF_DesyncAnalysisHeader>Разбор рассинхрона: моды на пути кода, где игра разошлась (самые вероятные первыми).</RAF_DesyncAnalysisHeader>
 </LanguageData>

@@ -164,7 +164,7 @@ internal static class ModSafetyCheck
 	// видно: их проверяли (и чтобы не путать с «неизвестными»).
 	private static readonly Entry[] Table = new Entry[]
 	{
-		new Entry("rimexodus.seamlessworld", Verdict.Incompatible, "RAF_Safety_rimexodus_seamlessworld"),
+		new Entry("rimexodus.seamlessworld", Verdict.Mitigated, "RAF_Safety_rimexodus_seamlessworld"),
 		new Entry("ferny.perspectiveshift", Verdict.Incompatible, "RAF_Safety_ferny_perspectiveshift"),
 		new Entry("memegoddess.replacestuff", Verdict.Mitigated, "RAF_Safety_memegoddess_replacestuff"),
 		new Entry("jellycreative.isekaileveling", Verdict.Mitigated, "RAF_Safety_jellycreative_isekaileveling"),
