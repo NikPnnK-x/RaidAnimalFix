@@ -2,7 +2,7 @@
 # Сборка 4 сборок мода в 1.6/Assemblies. Нужен только .NET 6 runtime.
 set -e
 D="$(cd "$(dirname "$0")" && pwd)"
-CSC="${CSC:?Укажите путь к Roslyn csc.dll: CSC=.../tasks/net6.0/bincore/csc.dll (NuGet Microsoft.Net.Compilers.Toolset)}"
+CSC="${CSC:-C:/Users/User/AppData/Local/Temp/claude/c--Users-User-rim/681191b1-b875-4a05-a68f-24da92b3ef16/scratchpad/roslyn/tasks/net6.0/bincore/csc.dll}"
 G="C:/Program Files (x86)/Steam/steamapps/common/RimWorld/RimWorldWin64_Data/Managed"
 HW="C:/Program Files (x86)/Steam/steamapps/workshop/content/294100/2009463077"
 # Harmony раскладывает сборки по версиям игры (1.6/Assemblies); старая раскладка — Current/Assemblies
@@ -21,7 +21,7 @@ build() { # name, extra args
   echo "== $n"
   dotnet "$CSC" "${BASE[@]}" "$@" -out:"$OUT/$n.dll" "$D/Source/$n"/*.cs
 }
-build RaidAnimalFix "-r:$G/System.IO.Compression.dll" "-r:$G/System.IO.Compression.FileSystem.dll"
+build RaidAnimalFix "-r:$G/System.IO.Compression.dll" "-r:$G/System.IO.Compression.FileSystem.dll" "-r:$G/com.rlabrecque.steamworks.net.dll"
 build RaidAnimalFix_RNG "-r:$OUT/RaidAnimalFix.dll"
 build RaidAnimalFix_Filters "-r:$OUT/RaidAnimalFix.dll" "-r:$MPAPI"
 build RaidAnimalFix_Hotfix

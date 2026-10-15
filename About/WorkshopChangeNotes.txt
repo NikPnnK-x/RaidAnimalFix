@@ -1,3 +1,23 @@
+[b]3.0.943.0[/b]
+
+[list]
+[*] For the mod author: uploading this mod with RimWorld's "Update on Steam Workshop" button now also updates the Workshop description (from About/WorkshopDescription.txt; RimWorld sets the description only on the very first upload) and writes the not-yet-published entries of this change log as the update notes instead of "[Auto-generated text]". After a successful upload the descriptions in other languages are updated too, only the ones that changed. Works only when this mod is uploaded; nothing changes for players.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.943.0 (по-русски)[/b]
+
+[list]
+[*] Для автора мода: загрузка этого мода кнопкой RimWorld «Обновить в Steam Workshop» теперь обновляет и описание в Workshop (из About/WorkshopDescription.txt; сама RimWorld ставит описание только при самой первой публикации), а заметкой к обновлению пишет ещё не опубликованные записи этого журнала вместо «[Auto-generated text]». После успешной загрузки обновляются и описания на других языках - только изменившиеся. Срабатывает только при загрузке этого мода; для игроков ничего не меняется.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.942.0[/b]
 
 [list]
