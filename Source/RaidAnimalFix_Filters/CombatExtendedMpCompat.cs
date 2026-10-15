@@ -8,36 +8,23 @@ using Verse;
 namespace RaidAnimalFix;
 
 // COMBAT EXTENDED (CETeam.CombatExtended) + Multiplayer.
-// У CE есть встроенный модуль совместимости с MP, а отдельный мод «Combat Extended —
-// Multiplayer Desync Fixes» (CEMP.DesyncFix) закрывает остаток. Если его нет, закрываем
-// то же самое сами (оценка 3 в таблице совместимости MP):
+// У CE есть встроенный модуль совместимости с MP; остаток (оценка 3 в таблице
+// совместимости MP) закрываем здесь сами, без сторонних «фикс-модов»:
 //  1. BlackSmokeTracker считает дым в Parallel.ForEach, а внутри порядок соседних клеток
 //     выбирается через Rand (InRandomOrder) — генератор RimWorld не потокобезопасен,
 //     плюс клетки читают плотность соседей, пока те её меняют. → в MP последовательно.
 //  2. Настройки CE (боеприпасы, подавление, осколки, гильзы-мусор, охота в ближнем бою,
 //     «оппортунистическая» перезарядка…) читает симуляция. → сверка настроек
 //     (MpFeatures) и блокировка окна настроек во время MP-игры.
-// Если CEMP.DesyncFix стоит — он делает это сам (и синхронизирует настройки на лету),
-// мы не вмешиваемся: двойной патч дыма тикал бы его дважды.
+//  3. Пункт таблицы про огонь прометиума и лужи химтоплива — это VFE Props and Decor
+//     (стоимость/возврат серебра за реквизит), см. VfePropsMpCompat.
+// Если у игрока всё же стоит «Combat Extended — Multiplayer Desync Fixes» (CEMP.DesyncFix),
+// его обработчик дыма гасится, чтобы дым не тикал дважды.
 
 internal static class CeMp
 {
 	public static bool Present => AccessTools.TypeByName("CombatExtended.Controller") != null;
 
-	public static bool FixPackLoaded
-	{
-		get
-		{
-			try
-			{
-				return ModLister.GetActiveModWithIdentifier("CEMP.DesyncFix", ignorePostfix: true) != null;
-			}
-			catch
-			{
-				return false;
-			}
-		}
-	}
 }
 
 /// <summary>1. Дым CE в MP — последовательно, в фиксированном порядке.</summary>
@@ -52,7 +39,7 @@ public static class CeSmokeSequentialMp
 
 	private static bool Prepare()
 	{
-		return CeMp.Present && !CeMp.FixPackLoaded;
+		return CeMp.Present;
 	}
 
 	private static MethodBase TargetMethod()
@@ -93,13 +80,13 @@ public static class CeSmokeSequentialMp
 	}
 }
 
-/// <summary>2. Окно настроек CE во время MP-игры заблокировано (если нет CEMP.DesyncFix).</summary>
+/// <summary>2. Окно настроек CE во время MP-игры заблокировано.</summary>
 [HarmonyPatch]
 public static class CeSettingsLockMp
 {
 	private static bool Prepare()
 	{
-		return CeMp.Present && !CeMp.FixPackLoaded;
+		return CeMp.Present;
 	}
 
 	private static MethodBase TargetMethod()
@@ -118,6 +105,22 @@ public static class CeSettingsLockMp
 		Text.Font = GameFont.Small;
 		Widgets.Label(inRect, "[Desync Fix] " + "RAF_SimSettingsLocked".Translate("Combat Extended").Resolve());
 		Text.Font = font;
+		return false;
+	}
+}
+
+/// <summary>Если стоит CEMP.DesyncFix — его обработчик дыма не тикает (дым считает CeSmokeSequentialMp).</summary>
+[HarmonyPatch]
+public static class CeForeignSmokePrefixOff
+{
+	private static MethodBase TargetMethod()
+	{
+		return AccessTools.Method("CEMPDesyncFix.SmokePatches:MapComponentTick_Prefix");
+	}
+
+	private static bool Prefix(ref bool __result)
+	{
+		__result = true;
 		return false;
 	}
 }

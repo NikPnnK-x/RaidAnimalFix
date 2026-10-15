@@ -1,3 +1,33 @@
+[b]3.0.940.0[/b]
+
+[list]
+[*] No more relying on other "multiplayer fix" mods: everything below is fixed inside this mod, the only companion mod is Multiplayer Compatibility. If one of those separate patches is still installed, the duplicate part of this mod switches off and the mod check marks the patch as not needed.
+[*] Combat Extended: the black smoke fix is always applied (it was left to "Combat Extended - Multiplayer Desync Fixes" when that mod was installed; now that mod's duplicate smoke handler is switched off instead).
+[*] VFE Props and Decor (the "promethium fire and chemfuel" line of the Multiplayer list): a prop's cost and refund no longer depend on each player's developer mode, silver is checked and taken on the prop's own map instead of the map the player is looking at, settings are checked and locked during a game.
+[*] Milira Race: flight, charge and leap orders from targeting are synced (Multiplayer syncs these only for RimWorld's own types). Flight mode, resonance, cancelling a fortress load, "stop" in the Milian equipment table, handing over a fallen angel and Milian hair colour / style are synced. Milian table checkboxes and "manual priorities" on the Milian work tab are synced. Story raids and events, and the quality of Milian gear, used the map each player was looking at - now the same map for everyone. Milira's visual effects no longer use up randomness only for players who see them. The fallen angel in the colony is now saved (players who joined did not have it). Settings are checked and locked during a game.
+[*] Ancot Library (Milira and other Ancot mods): targeting orders (jumps, sustained fire, job weapons, the drop-pawn and skyfaller royal permits with their faction) are synced. Buttons for aerocraft (take-off, destination, landing - the landing designator could not be sent in multiplayer at all), the spinning turret, shields, point defense, mech auto-fight, carriers, sorties, weapon switching, drone work mode, royal titles, caravan owners and weapon naming are synced. Turret fire-at-will and forced target, drone auto-repair and recharge threshold, reload and autofill sliders are synced. The repulsive knockback direction uses the game's random generator instead of Unity's. Trader stock without a player base no longer depends on the player's camera. Settings are checked and locked during a game.
+[*] Humanoid Alien Races: the styling station sync in Multiplayer Compatibility looked up an outdated method of current HAR, so the command failed for everyone and alien colours from the station were not applied. It is repaired.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.940.0 (по-русски)[/b]
+
+[list]
+[*] Больше никаких сторонних «модов-фиксов» для мультиплеера: всё ниже исправлено внутри этого мода, единственный спутник - Multiplayer Compatibility. Если отдельный такой патч всё же установлен, дублирующая часть этого мода отключается, а проверка модов помечает патч как ненужный.
+[*] Combat Extended: исправление чёрного дыма применяется всегда (раньше оставлялось «Combat Extended - Multiplayer Desync Fixes», если он стоял; теперь его дублирующий обработчик дыма отключается).
+[*] VFE Props and Decor (строка таблицы Multiplayer про огонь прометиума и химтопливо): стоимость и возврат за реквизит больше не зависят от режима разработчика у каждого игрока, серебро проверяется и списывается на карте самого реквизита, а не на карте, на которую смотрит игрок; настройки сверяются и заблокированы в игре.
+[*] Milira Race: приказы полёта, рывка и прыжка из прицела синхронны (Multiplayer синхронизирует их только для типов самой RimWorld). Режим полёта, резонанс, отмена загрузки крепости, «стоп» в таблице снаряжения милиан, передача падшего ангела, цвет и причёска милиан синхронны. Галочки таблицы милиан и «ручные приоритеты» на вкладке работ милиан синхронны. Сюжетные рейды и события, а также качество снаряжения милиан брали карту, на которую смотрит игрок, - теперь одну и ту же у всех. Визуальные эффекты Milira больше не тратят случайные числа только у тех, кто их видит. Падший ангел в колонии теперь сохраняется (у вошедших игроков его не было). Настройки сверяются и заблокированы в игре.
+[*] Ancot Library (Milira и другие моды Ancot): приказы из прицела (прыжки, стрельба очередью, оружие-работа, королевские разрешения «высадка бойцов» и «падающий груз» вместе с их фракцией) синхронны. Кнопки аэрокрафта (взлёт, точка назначения, посадка - указатель посадки в мультиплеере вообще не передавался), турели-вертушки, щитов, ПРО, автобоя мехов, носителей, вылета дронов, смены оружия, режима работы дронов, королевских титулов, владельцев караванов и имени оружия синхронны. «Огонь по готовности» и цель турелей, авторемонт и порог зарядки дронов, ползунки перезарядки и автозаполнения синхронны. Направление отброса отталкивающим снарядом берётся из генератора игры, а не Unity. Ассортимент торговцев без базы игрока больше не зависит от камеры игрока. Настройки сверяются и заблокированы в игре.
+[*] Humanoid Alien Races: синхронизация стилист-станции в Multiplayer Compatibility искала устаревший метод нынешнего HAR, поэтому команда у всех падала и цвета инопланетян со станции не применялись. Исправлено.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.939.0[/b]
 
 [list]

@@ -279,7 +279,7 @@ public static class KidnapOwnerContextFix
 [StaticConstructorOnStartup]
 public static class SettingsHashCheck
 {
-	private static readonly string[] SimSettingsMods = new string[6] { "mehni.pickupandhaul", "jellycreative.isekaileveling", "memegoddess.replacestuff", "co.uk.epicguru.meleeanimation", "rimexodus.seamlessworld", "ceteam.combatextended" };
+	private static readonly string[] SimSettingsMods = new string[9] { "mehni.pickupandhaul", "jellycreative.isekaileveling", "memegoddess.replacestuff", "co.uk.epicguru.meleeanimation", "rimexodus.seamlessworld", "ceteam.combatextended", "vanillaexpanded.vfepropsanddecor", "ancot.milirarace", "ancot.ancotlibrary" };
 
 	/// <summary>Сборщики отпечатков для модов, чьи настройки не укладываются в общий дамп.</summary>
 	internal static readonly List<Action<StringBuilder>> ExtraSettingsPayload = new List<Action<StringBuilder>>();
@@ -308,6 +308,18 @@ public static class SettingsHashCheck
 				"showCasings", "recoilAnim", "showTaunts", "showBackpacks", "showTacticalVests", "realWeaponNames", "showExtraTooltips", "detailedMeleeTooltip", "nonPlayerMeleeTooltip", "showExtraStats",
 				"ShowTutorialPopup", "rightClickAmmoSelect", "showCaliberOnGuns", "logUnpatchedDefs", "debugVerbose", "debugDrawPartialLoSChecks", "debugDrawTargetCoverChecks", "debugMuzzleFlash", "debugShowTreeCollisionChance", "debugShowSuppressionBuildup",
 				"debugDrawInterceptChecks", "debugDisplayDangerBuildup", "debugDisplayCellCoverRating", "debugDisplayAttritionInfo", "debugAutopatcherLogger", "lastAmmoSystemStatus", "enableExtraEffects"
+			}
+		},
+		{
+			"ancot.milirarace",
+			new HashSet<string> { "MiliraRace_ModSetting_MilianConfigTab", "TabAvailable_MilianConfig", "TabAvailable_MilianWork", "MiliraRace_ModSetting_MilianHairColor", "MiliraRace_ModSetting_MilianHairColor_PlayerColorOverride", "MiliraRace_ModSetting_MilianHairColorOffset", "MiliraRace_ModSetting_MilianDrawHeadgear" }
+		},
+		{
+			"ancot.ancotlibrary",
+			new HashSet<string>
+			{
+				"color_Awful", "color_Poor", "color_Normal", "color_Good", "color_Excellent", "color_Masterwork", "color_Legendary", "turretSystem_AimingIndicator", "turretSystem_AimingIndicator_NonPlayer", "turretSystem_IndicatorOnlyDrawSelected",
+				"turretSystem_IndicatorOnlyDrawSelected_NonPlayer", "turretSystem_IndicatorOnlyDrawForced", "turretSystem_IndicatorColor_Player", "turretSystem_IndicatorColor_NonPlayer", "weaponExtraRender_Draw", "drone_TabAvailable"
 			}
 		}
 	};

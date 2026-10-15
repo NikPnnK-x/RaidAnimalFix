@@ -197,10 +197,16 @@ internal static class ModSafetyCheck
 		new Entry("oskarpotocki.vanillavehiclesexpanded", Verdict.Mitigated, "RAF_Safety_smashphil_vehicleframework"),
 		new Entry("ceteam.combatextended", Verdict.Mitigated, "RAF_Safety_ceteam_combatextended"),
 		new Entry("cemp.desyncfix", Verdict.Safe, "RAF_Safety_cemp_desyncfix"),
+		new Entry("vanillaexpanded.vfepropsanddecor", Verdict.Mitigated, "RAF_Safety_vanillaexpanded_vfepropsanddecor"),
 		new Entry("memegoddess.runandgun", Verdict.Mitigated, "RAF_Safety_memegoddess_runandgun"),
 		new Entry("memegoddess.giddyup", Verdict.Mitigated, "RAF_Safety_memegoddess_giddyup"),
 		new Entry("vanillaexpanded.gravship2", Verdict.Mitigated, "RAF_Safety_vanillaexpanded_gravship2"),
-		new Entry("ancot.milirarace", Verdict.Risky, "RAF_Safety_ancot_milirarace"),
+		new Entry("ancot.milirarace", Verdict.Mitigated, "RAF_Safety_ancot_milirarace"),
+		new Entry("ancot.ancotlibrary", Verdict.Mitigated, "RAF_Safety_ancot_ancotlibrary"),
+		new Entry("erdelf.humanoidalienraces", Verdict.Mitigated, "RAF_Safety_erdelf_humanoidalienraces", needsMpCompat: true),
+		new Entry("keullaeseu.mp.ancot.milirarace", Verdict.Safe, "RAF_Safety_keullaeseu_patch"),
+		new Entry("keullaeseu.mp.ancot.ancotlibrary", Verdict.Safe, "RAF_Safety_keullaeseu_patch"),
+		new Entry("keullaeseu.mp.erdelf.humanoidalienraces", Verdict.Safe, "RAF_Safety_keullaeseu_har"),
 		new Entry("redmattis.betterprerequisites", Verdict.Mitigated, "RAF_Safety_redmattis_betterprerequisites")
 	};
 

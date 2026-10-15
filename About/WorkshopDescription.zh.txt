@@ -36,7 +36,7 @@
 [h2]内置兼容[/h2]
 [list]
 [*][b]RimExodus — Seamless World[/b] 现已支持多人游戏：地图会根据玩家是否在场而休眠或唤醒，相邻地图对所有人生成得完全一致，跨地图的指令会同步。多人游戏中禁用在定居点自己的地图上与其交易。
-[*][b]Vehicle Framework、Combat Extended、RunAndGun、Giddy-Up 2、Big and Small、Vanilla Gravship Expanded - Chapter 2：[/b]已修复它们在多人游戏中已知的不同步问题（远行队窗口为空、载具远行队、移动射击速度、骑乘指令、各玩家袭击者不同、敌方战争平台的船员）。
+[*][b]Vehicle Framework、Combat Extended、RunAndGun、Giddy-Up 2、Big and Small、Vanilla Gravship Expanded - Chapter 2、VFE Props and Decor、Milira Race、Ancot Library、Humanoid Alien Races：[/b]已修复它们在多人游戏中已知的不同步问题（远行队窗口为空、载具远行队、移动射击速度、骑乘指令、各玩家袭击者不同、敌方战争平台的船员、道具退款、Milira 与 Ancot 的按钮和指令、飞行器降落、造型台上的外星人颜色）。
 [*][b]Replace Stuff、Map Preview、ISEKAI RPG LEVELING：[/b]已修复它们导致不同步的问题。Pick Up And Haul、Allow Tool、Replace Stuff、ISEKAI、Melee Animation 和 RimExodus 的设置会在玩家之间比对。
 [*][b]动画模组：[/b]Blood Animations 和 NL Facial Animation 不再破坏同步，Melee Animation 切换为装饰模式，Yayo's Animation 照常运作。
 [/list]

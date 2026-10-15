@@ -36,7 +36,7 @@ Neuer Reiter „Diplomatie“ (nur im Multiplayer).
 [h2]Eingebaute Kompatibilität[/h2]
 [list]
 [*][b]RimExodus — Seamless World[/b] funktioniert jetzt im Multiplayer: Karten schlafen und erwachen je nach Anwesenheit der Spieler, Nachbarkarten werden bei allen gleich erzeugt, Befehle über die Kartengrenze werden synchronisiert. Handel mit einer Siedlung auf ihrer eigenen Karte ist im Multiplayer deaktiviert.
-[*][b]Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2:[/b] ihre bekannten Multiplayer-Desyncs sind behoben (leeres Karawanenfenster, Fahrzeugkarawanen, Tempo beim Schießen in Bewegung, Reitbefehle, unterschiedliche Angreifer bei den Spielern, Besatzung der feindlichen Kriegsplattform).
+[*][b]Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2, VFE Props and Decor, Milira Race, Ancot Library, Humanoid Alien Races:[/b] ihre bekannten Multiplayer-Desyncs sind behoben (leeres Karawanenfenster, Fahrzeugkarawanen, Tempo beim Schießen in Bewegung, Reitbefehle, unterschiedliche Angreifer bei den Spielern, Besatzung der feindlichen Kriegsplattform, Rückerstattung für Requisiten, Knöpfe und Befehle von Milira und Ancot, Landung des Aerocrafts, Alien-Farben an der Stylingstation).
 [*][b]Replace Stuff, Map Preview, ISEKAI RPG LEVELING:[/b] Ihre Desync-Quellen sind behoben. Die Einstellungen von Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation und RimExodus werden zwischen den Spielern abgeglichen.
 [*][b]Animations-Mods:[/b] Blood Animations und NL Facial Animation stören die Synchronisation nicht mehr, Melee Animation wechselt in einen dekorativen Modus, Yayo's Animation funktioniert wie gewohnt.
 [/list]

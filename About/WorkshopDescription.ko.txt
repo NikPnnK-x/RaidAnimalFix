@@ -36,7 +36,7 @@
 [h2]내장 호환성[/h2]
 [list]
 [*][b]RimExodus — Seamless World[/b]가 이제 멀티플레이에서 작동합니다: 맵은 플레이어가 있는지에 따라 잠들고 깨어나며, 이웃 맵은 모두에게 똑같이 생성되고, 맵을 넘나드는 명령은 동기화됩니다. 멀티플레이에서는 정착지 자체 맵 위에서 그 정착지와 거래하는 기능이 꺼집니다.
-[*][b]Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2:[/b] 멀티플레이에서 알려진 디싱크를 고쳤습니다(빈 캐러밴 창, 차량 캐러밴, 이동 사격 속도, 탑승 명령, 플레이어마다 다른 습격자, 적 전투 플랫폼 승무원).
+[*][b]Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2, VFE Props and Decor, Milira Race, Ancot Library, Humanoid Alien Races:[/b] 멀티플레이에서 알려진 디싱크를 고쳤습니다(빈 캐러밴 창, 차량 캐러밴, 이동 사격 속도, 탑승 명령, 플레이어마다 다른 습격자, 적 전투 플랫폼 승무원, 소품 환급, Milira·Ancot 버튼과 명령, 에어로크래프트 착륙, 스타일링 스테이션의 외계인 색상).
 [*][b]Replace Stuff, Map Preview, ISEKAI RPG LEVELING:[/b] 디싱크 원인을 고쳤습니다. Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation, RimExodus의 설정은 플레이어 간에 비교됩니다.
 [*][b]애니메이션 모드:[/b] Blood Animations와 NL Facial Animation은 더 이상 동기화를 깨지 않고, Melee Animation은 장식 모드로 바뀌며, Yayo's Animation은 그대로 작동합니다.
 [/list]

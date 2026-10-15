@@ -37,12 +37,17 @@
   <RAF_RimExodus_MapNotYours>На этой карте есть колонисты или домашняя зона другого игрока.</RAF_RimExodus_MapNotYours>
   <RAF_DesyncAnalysisHeader>Разбор рассинхрона: моды на пути кода, где игра разошлась (самые вероятные первыми).</RAF_DesyncAnalysisHeader>
   <RAF_Safety_smashphil_vehicleframework>исправлено этим модом: окно каравана больше не пустое, караван с техникой отправляется и переформируется у всех, рассадка и групповая посадка синхронизируются; нужен Multiplayer Compatibility</RAF_Safety_smashphil_vehicleframework>
-  <RAF_Safety_ceteam_combatextended>исправлено этим модом: чёрный дым считается в одном порядке, настройки CE сверяются и заблокированы в игре (или поставьте Combat Extended - Multiplayer Desync Fixes)</RAF_Safety_ceteam_combatextended>
-  <RAF_Safety_cemp_desyncfix>чинит Combat Extended в мультиплеере; дым и настройки CE этот мод тогда оставляет ему</RAF_Safety_cemp_desyncfix>
+  <RAF_Safety_ceteam_combatextended>исправлено этим модом: чёрный дым считается в одном порядке, настройки CE сверяются и заблокированы в игре</RAF_Safety_ceteam_combatextended>
+  <RAF_Safety_cemp_desyncfix>не нужен: этот мод сам чинит Combat Extended (его дублирующий обработчик дыма отключается)</RAF_Safety_cemp_desyncfix>
   <RAF_Safety_memegoddess_runandgun>исправлено этим модом: списки лёгкого и запрещённого оружия заполняются одинаково у всех (раньше были пустыми, пока не открыть окно настроек), настройки сверяются и заблокированы в игре</RAF_Safety_memegoddess_runandgun>
   <RAF_Safety_memegoddess_giddyup>патч Multiplayer Compatibility не применялся к этой версии; посадка на животных, кнопки, всадники в караване и таблица животных синхронизируются этим модом</RAF_Safety_memegoddess_giddyup>
   <RAF_Safety_vanillaexpanded_gravship2>исправлено этим модом: вражеская платформа генерируется одинаково у всех (раньше - в фоновом long event), бафф точности турелей применяется одинаково</RAF_Safety_vanillaexpanded_gravship2>
-  <RAF_Safety_ancot_milirarace>используйте Multiplayer Milira Race Patch от Keullaeseu (вместе с его патчами Ancot Library и Humanoid Alien Races)</RAF_Safety_ancot_milirarace>
+  <RAF_Safety_ancot_milirarace>исправлено этим модом: приказы полёта и прыжка, кнопки полёта/резонанса/причёски, таблицы милиан и ручные приоритеты синхронны, сюжетные рейды и снаряжение милиан берут одну карту у всех, настройки сверяются и заблокированы в игре</RAF_Safety_ancot_milirarace>
   <RAF_Safety_redmattis_betterprerequisites>исправлено этим модом: выбор инфильтраторов в рейдах больше не зависит от несохраняемого счётчика тиков (рейдеры различались у игроков), кэш размеров и статов создаётся и пересчитывается только симуляцией</RAF_Safety_redmattis_betterprerequisites>
   <RAF_SimSettingsLocked>Настройки {0} заблокированы в мультиплеерной игре: их читает симуляция, поэтому они должны совпадать у всех игроков. Меняйте их в главном меню (одинаково у всех).</RAF_SimSettingsLocked>
+  <RAF_Safety_vanillaexpanded_vfepropsanddecor>исправлено этим модом: стоимость реквизита больше не зависит от режима разработчика у игрока, серебро списывается с карты самого реквизита, настройки сверяются и заблокированы в игре</RAF_Safety_vanillaexpanded_vfepropsanddecor>
+  <RAF_Safety_ancot_ancotlibrary>исправлено этим модом: кнопки и ползунки турелей, дронов, аэрокрафтов, щитов, носителей и оружия синхронны, посадка аэрокрафта работает, приказы из прицела и королевские разрешения синхронны, настройки сверяются и заблокированы в игре</RAF_Safety_ancot_ancotlibrary>
+  <RAF_Safety_erdelf_humanoidalienraces>стилист-станцию синхронизирует Multiplayer Compatibility; этот мод чинит в ней синхронизацию цветов инопланетян для нынешней версии HAR</RAF_Safety_erdelf_humanoidalienraces>
+  <RAF_Safety_keullaeseu_patch>не нужен: этот мод сам исправляет мод (пока патч установлен, наша дублирующая часть отключается)</RAF_Safety_keullaeseu_patch>
+  <RAF_Safety_keullaeseu_har>не нужен: Multiplayer Compatibility вместе с исправлением этого мода уже синхронизирует стилист-станцию</RAF_Safety_keullaeseu_har>
 </LanguageData>

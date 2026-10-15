@@ -36,7 +36,7 @@ A new "Diplomacy" tab (multiplayer only).
 [h2]Built-in compatibility[/h2]
 [list]
 [*][b]RimExodus — Seamless World[/b] now works in multiplayer: maps sleep and wake by player presence, neighbor maps generate the same for everyone, cross-map orders are synced. Trading with a settlement on its own map is disabled in multiplayer.
-[*][b]Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2:[/b] their known multiplayer desyncs are fixed (empty caravan window, vehicle caravans, run-and-gun speed, mounting orders, raiders differing between players, enemy warplatform crew).
+[*][b]Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2, VFE Props and Decor, Milira Race, Ancot Library, Humanoid Alien Races:[/b] their known multiplayer desyncs are fixed (empty caravan window, vehicle caravans, run-and-gun speed, mounting orders, raiders differing between players, enemy warplatform crew, prop refunds, Milira and Ancot buttons and orders, aerocraft landing, alien colours at the styling station).
 [*][b]Replace Stuff, Map Preview, ISEKAI RPG LEVELING:[/b] their desync sources are fixed. The settings of Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation and RimExodus are compared between players.
 [*][b]Animation mods:[/b] Blood Animations and NL Facial Animation no longer break sync, Melee Animation switches to a decorative mode, Yayo's Animation works as is.
 [/list]

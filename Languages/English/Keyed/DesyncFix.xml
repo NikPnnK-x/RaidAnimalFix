@@ -37,12 +37,17 @@
   <RAF_RimExodus_MapNotYours>Another player has colonists or a home area on this map.</RAF_RimExodus_MapNotYours>
   <RAF_DesyncAnalysisHeader>Desync analysis: mods on the code path where the game diverged (most likely first).</RAF_DesyncAnalysisHeader>
   <RAF_Safety_smashphil_vehicleframework>fixed by this mod: the caravan window is no longer empty, vehicle caravans are sent and re-formed for everyone, seat assignment and group boarding are synced; needs Multiplayer Compatibility</RAF_Safety_smashphil_vehicleframework>
-  <RAF_Safety_ceteam_combatextended>fixed by this mod: black smoke is computed in a fixed order, CE settings are checked and locked in game (or use Combat Extended - Multiplayer Desync Fixes)</RAF_Safety_ceteam_combatextended>
-  <RAF_Safety_cemp_desyncfix>fixes Combat Extended in multiplayer; this mod then leaves CE smoke and settings to it</RAF_Safety_cemp_desyncfix>
+  <RAF_Safety_ceteam_combatextended>fixed by this mod: black smoke is computed in a fixed order, CE settings are checked and locked in game</RAF_Safety_ceteam_combatextended>
+  <RAF_Safety_cemp_desyncfix>not needed: this mod fixes Combat Extended itself (its duplicate smoke handler is switched off)</RAF_Safety_cemp_desyncfix>
   <RAF_Safety_memegoddess_runandgun>fixed by this mod: light/forbidden weapon lists are filled the same for every player (they were empty until the settings window was opened), settings are checked and locked in game</RAF_Safety_memegoddess_runandgun>
   <RAF_Safety_memegoddess_giddyup>the Multiplayer Compatibility patch did not apply to this version; mounting, gizmos, caravan riders and the animals tab are synced by this mod</RAF_Safety_memegoddess_giddyup>
   <RAF_Safety_vanillaexpanded_gravship2>fixed by this mod: the enemy warplatform is generated the same for everyone (it was generated in a background long event), turret accuracy buff is applied the same way</RAF_Safety_vanillaexpanded_gravship2>
-  <RAF_Safety_ancot_milirarace>use the Multiplayer Milira Race Patch by Keullaeseu (with its Ancot Library and Humanoid Alien Races patches)</RAF_Safety_ancot_milirarace>
+  <RAF_Safety_ancot_milirarace>fixed by this mod: flight and leap orders, flight/resonance/hair buttons, Milian tables and manual priorities are synced, story raids and Milian gear use the same map for everyone, settings are checked and locked in game</RAF_Safety_ancot_milirarace>
   <RAF_Safety_redmattis_betterprerequisites>fixed by this mod: the raid infiltrator roll no longer depends on an unsaved tick counter (raiders differed between players), the size/stat cache is created and refreshed only by the simulation</RAF_Safety_redmattis_betterprerequisites>
   <RAF_SimSettingsLocked>{0} settings are locked during a multiplayer game: the simulation reads them, so they must be identical on every client. Change them from the main menu (all players must use the same values).</RAF_SimSettingsLocked>
+  <RAF_Safety_vanillaexpanded_vfepropsanddecor>fixed by this mod: prop cost no longer depends on each player's dev mode, silver is taken from the prop's own map, settings are checked and locked in game</RAF_Safety_vanillaexpanded_vfepropsanddecor>
+  <RAF_Safety_ancot_ancotlibrary>fixed by this mod: turret, drone, aerocraft, shield, carrier and weapon buttons and sliders are synced, aerocraft landing works, targeting orders and royal permits are synced, settings are checked and locked in game</RAF_Safety_ancot_ancotlibrary>
+  <RAF_Safety_erdelf_humanoidalienraces>Multiplayer Compatibility syncs the styling station; this mod repairs its alien colour sync for the current HAR version</RAF_Safety_erdelf_humanoidalienraces>
+  <RAF_Safety_keullaeseu_patch>not needed: this mod fixes the mod itself (while this patch is installed, our duplicate part switches off)</RAF_Safety_keullaeseu_patch>
+  <RAF_Safety_keullaeseu_har>not needed: Multiplayer Compatibility with this mod's repair already syncs the styling station</RAF_Safety_keullaeseu_har>
 </LanguageData>

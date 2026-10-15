@@ -35,7 +35,7 @@ FEWER DESYNCS
 
 BUILT-IN COMPATIBILITY
 - RimExodus — Seamless World now works in multiplayer: maps sleep and wake by player presence, neighbor maps generate the same for everyone, cross-map orders are synced. Trading with a settlement on its own map is disabled in multiplayer.
-- Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2: their known multiplayer desyncs are fixed (empty caravan window, vehicle caravans, run-and-gun speed, mounting orders, raiders differing between players, enemy warplatform crew).
+- Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2, VFE Props and Decor, Milira Race, Ancot Library, Humanoid Alien Races: their known multiplayer desyncs are fixed (empty caravan window, vehicle caravans, run-and-gun speed, mounting orders, raiders differing between players, enemy warplatform crew, prop refunds, Milira and Ancot buttons and orders, aerocraft landing, alien colours at the styling station).
 - Replace Stuff, Map Preview, ISEKAI RPG LEVELING: their desync sources are fixed. The settings of Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation and RimExodus are compared between players.
 - Animation mods: Blood Animations and NL Facial Animation no longer break sync, Melee Animation switches to a decorative mode, Yayo's Animation works as is.
 
@@ -72,7 +72,7 @@ Language: English and Russian are complete; Chinese, Japanese, Korean, German, F
 
 ВСТРОЕННАЯ СОВМЕСТИМОСТЬ
 - RimExodus — Seamless World теперь работает в мультиплеере: карты засыпают и просыпаются по присутствию игроков, соседние карты генерируются одинаково у всех, приказы через шов синхронизируются. Торговля с поселением на его карте в мультиплеере отключена.
-- Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2: исправлены их известные рассинхроны в мультиплеере (пустое окно каравана, караваны с техникой, скорость стрельбы на ходу, приказы сесть на животное, разные рейдеры у игроков, экипаж вражеской платформы).
+- Vehicle Framework, Combat Extended, RunAndGun, Giddy-Up 2, Big and Small, Vanilla Gravship Expanded - Chapter 2, VFE Props and Decor, Milira Race, Ancot Library, Humanoid Alien Races: исправлены их известные рассинхроны в мультиплеере (пустое окно каравана, караваны с техникой, скорость стрельбы на ходу, приказы сесть на животное, разные рейдеры у игроков, экипаж вражеской платформы, возврат серебра за реквизит, кнопки и приказы Milira и Ancot, посадка аэрокрафта, цвета инопланетян на стилист-станции).
 - Replace Stuff, Map Preview, ISEKAI RPG LEVELING: их источники рассинхронов исправлены. Настройки Pick Up And Haul, Allow Tool, Replace Stuff, ISEKAI, Melee Animation и RimExodus сверяются между игроками.
 - Моды анимаций: Blood Animations и NL Facial Animation больше не ломают синхронизацию, Melee Animation переходит в декоративный режим, Yayo's Animation работает как есть.
 
