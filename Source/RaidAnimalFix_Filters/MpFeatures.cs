@@ -302,6 +302,17 @@ public static class SettingsHashCheck
 			}
 		},
 		{
+			// StatsWindowX/Y окно характеристик пишет в настройки при открытии и перетаскивании —
+			// только в памяти, а Sync configs отдаёт настройки хоста с диска: ложная тревога сразу
+			// после входа. Остальное — музыка, оформление, подписи и отрисовка ауры.
+			"jellycreative.isekaileveling",
+			new HashSet<string>
+			{
+				"StatsWindowX", "StatsWindowY", "EnableIsekaiOST", "IsekaiOSTReplacesVanilla", "IsekaiOSTVolume", "IsekaiOSTOverrideAnomalyMusic", "IsekaiOSTOverrideOdysseyMusic", "UseIsekaiUI", "EnableTraitColors", "ShowEliteMobTitles",
+				"ShowMobRanks", "EnableDraftedAura", "AuraOpacity", "AuraSizeMultiplier", "EnableAuraParticles", "AuraParticleRate", "EnableAuraPulse", "AuraPulseSpeed", "AuraUseFavoriteColor", "EnableConstellationAuraStyle"
+			}
+		},
+		{
 			"ceteam.combatextended",
 			new HashSet<string>
 			{

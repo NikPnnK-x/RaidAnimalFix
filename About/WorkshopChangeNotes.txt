@@ -1,3 +1,23 @@
+[b]3.0.945.0[/b]
+
+[list]
+[*] False "mod settings differ between players" warning for ISEKAI RPG LEVELING even with Sync configs on: the Isekai stats window stores its position in the mod settings when it is opened or moved, only in memory, while Sync configs hands joining players the host's settings from disk. The window position, music, interface style, labels and aura drawing are no longer compared - they do not affect the game. Settings that do (XP, ranks, quests and so on) are still checked.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.945.0 (по-русски)[/b]
+
+[list]
+[*] Ложное предупреждение «настройки модов различаются между игроками» для ISEKAI RPG LEVELING при включённом Sync configs: окно характеристик Isekai запоминает свою позицию в настройках мода при открытии и перетаскивании - только в памяти, а Sync configs отдаёт входящему игроку настройки хоста с диска. Позиция окна, музыка, оформление интерфейса, подписи и отрисовка ауры больше не сравниваются - на игру они не влияют. Настройки, которые влияют (опыт, ранги, квесты и т.д.), проверяются как раньше.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.944.0[/b]
 
 [list]
