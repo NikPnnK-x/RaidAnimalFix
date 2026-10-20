@@ -804,3 +804,230 @@ public static class IsekaiAnimationsRandFix
 		}
 	}
 }
+
+/// <summary>
+/// Фракции живых игроков по loadID — порядок одинаков у всех клиентов.
+/// </summary>
+internal static class IsekaiPerFaction
+{
+	public static List<Faction> RealPlayerFactions()
+	{
+		List<Faction> result = new List<Faction>();
+		List<Faction> all = Find.FactionManager.AllFactionsListForReading;
+		for (int i = 0; i < all.Count; i++)
+		{
+			if (DlcPf.IsReal(all[i]))
+			{
+				result.Add(all[i]);
+			}
+		}
+		result.SortBy((Faction f) => f.loadID);
+		return result;
+	}
+
+	/// <summary>Мировой тик MP с несколькими фракциями: Faction.OfPlayer — наблюдатель.</summary>
+	public static bool InWorldSpectatorTick()
+	{
+		return DlcPf.Active && DlcPf.InSpectatorContext();
+	}
+}
+
+/// <summary>
+/// FIX 11. Квесты гильдии (IsekaiHuntTracker): раз в N дней (настройка) трекер ищет
+/// «дом игрока с колонистами Isekai» — m.IsPlayerHome && FreeColonists… — и создаёт
+/// охоту. Трекер тикает в мировом тике MP, где при нескольких фракциях
+/// Faction.OfPlayer — наблюдатель: дом не находился, квест не создавался, таймер не
+/// сбрасывался. Охоты приходили только от рассказчика (шанс 0.1, повтор 0.1 дня) —
+/// то долго ничего, то несколько подряд. Да и таймер был бы один на всех игроков.
+/// В мировом проходе трекера квест больше не создаётся (отложенные спавны и
+/// страховка «зависших» квестов идут как раньше). После него — для каждой фракции
+/// игрока по очереди, в её контексте и со своим таймером в DlcPerFactionData
+/// (мировые тики; без записи — общий таймер трекера) — то же, что трекер делает
+/// в одиночной игре.
+/// </summary>
+[HarmonyPatch]
+public static class IsekaiGuildQuestSpectatorBlock
+{
+	private static MethodBase TargetMethod()
+	{
+		Type t = IsekaiMp.T("IsekaiLeveling.Quests.IsekaiHuntTracker");
+		return (t == null) ? null : AccessTools.DeclaredMethod(t, "TrySpawnDailyHuntQuest");
+	}
+
+	private static bool Prefix()
+	{
+		return !IsekaiPerFaction.InWorldSpectatorTick();
+	}
+}
+
+[HarmonyPatch]
+public static class IsekaiGuildQuestPerFaction
+{
+	private static AccessTools.FieldRef<object, int> _lastQuestTick;
+
+	private static MethodInfo _trySpawn;
+
+	private static MethodInfo _interval;
+
+	private static MethodBase TargetMethod()
+	{
+		Type t = IsekaiMp.T("IsekaiLeveling.Quests.IsekaiHuntTracker");
+		if (t == null || AccessTools.DeclaredField(t, "lastQuestTick")?.FieldType != typeof(int))
+		{
+			return null;
+		}
+		_lastQuestTick = AccessTools.FieldRefAccess<int>(t, "lastQuestTick");
+		_trySpawn = AccessTools.DeclaredMethod(t, "TrySpawnDailyHuntQuest", Type.EmptyTypes);
+		_interval = AccessTools.DeclaredMethod(t, "GetTicksBetweenQuests", Type.EmptyTypes);
+		return (_trySpawn == null || _interval == null) ? null : AccessTools.DeclaredMethod(t, "GameComponentTick");
+	}
+
+	private static void Postfix(GameComponent __instance)
+	{
+		if (!IsekaiPerFaction.InWorldSpectatorTick() || Find.TickManager.TicksGame % 250 != 0)
+		{
+			return;
+		}
+		List<Faction> factions = IsekaiPerFaction.RealPlayerFactions();
+		for (int i = 0; i < factions.Count; i++)
+		{
+			Faction f = factions[i];
+			if (!DlcPf.PushWorld(f))
+			{
+				continue;
+			}
+			try
+			{
+				DlcPf.IntSwap swap = DlcPf.BeginInt("isekaiGuild:" + f.loadID, ref _lastQuestTick(__instance), isTick: true);
+				try
+				{
+					int now = Find.TickManager.TicksGame;
+					int last = _lastQuestTick(__instance);
+					if (last < 0)
+					{
+						_lastQuestTick(__instance) = now;
+					}
+					else if (now - last >= (int)_interval.Invoke(__instance, null))
+					{
+						_trySpawn.Invoke(__instance, null);
+					}
+				}
+				finally
+				{
+					DlcPf.EndInt(swap, ref _lastQuestTick(__instance));
+				}
+			}
+			catch (Exception ex)
+			{
+				CaravanLeaveHelper.LogErrorThrottled("Isekai guild quest", ex.InnerException ?? ex);
+			}
+			finally
+			{
+				DlcPf.PopWorld();
+			}
+		}
+	}
+}
+
+/// <summary>
+/// FIX 12. Вызовы на дуэль за титул (TitleDuelTracker): ежедневный бросок перебирает
+/// m.IsPlayerHome / FreeColonistsSpawned, а прибытие на место дуэли считает пешки
+/// Faction.OfPlayer — в мировом тике MP это наблюдатель: вызовов не было, а начатая
+/// дуэль не замечала прибывшего чемпиона. Дуэль идёт → тик трекера выполняется в
+/// контексте фракции чемпиона. Дуэли нет → бросок для каждой фракции игрока по
+/// очереди (по loadID), в её контексте и со своим «днём последнего броска»; дуэль по-
+/// прежнему одна на всех — следующая фракция бросает, когда эта закончится.
+/// </summary>
+[HarmonyPatch]
+public static class IsekaiTitleDuelPerFaction
+{
+	private static AccessTools.FieldRef<object, int> _state;
+
+	private static AccessTools.FieldRef<object, Pawn> _champion;
+
+	private static AccessTools.FieldRef<object, int> _lastRolledDay;
+
+	private static MethodBase TargetMethod()
+	{
+		Type t = IsekaiMp.T("IsekaiLeveling.TitleDuelTracker");
+		if (t == null || AccessTools.DeclaredField(t, "state")?.FieldType != typeof(int) || AccessTools.DeclaredField(t, "champion")?.FieldType != typeof(Pawn) || AccessTools.DeclaredField(t, "lastRolledDay")?.FieldType != typeof(int))
+		{
+			return null;
+		}
+		_state = AccessTools.FieldRefAccess<int>(t, "state");
+		_champion = AccessTools.FieldRefAccess<Pawn>(t, "champion");
+		_lastRolledDay = AccessTools.FieldRefAccess<int>(t, "lastRolledDay");
+		return AccessTools.DeclaredMethod(t, "GameComponentTick");
+	}
+
+	// Внутренний вызов идёт уже в контексте фракции — префикс его пропускает.
+	private static bool Prefix(GameComponent __instance)
+	{
+		if (!IsekaiPerFaction.InWorldSpectatorTick())
+		{
+			return true;
+		}
+		int t = Find.TickManager.TicksGame;
+		bool machineTick = t % 250 == 137;
+		bool rollTick = t % 2500 == 1731;
+		if (!machineTick && !rollTick)
+		{
+			return true;
+		}
+		try
+		{
+			if (_state(__instance) != 0)
+			{
+				Faction owner = _champion(__instance)?.Faction;
+				if (!DlcPf.IsReal(owner) || !DlcPf.PushWorld(owner))
+				{
+					return true;
+				}
+				try
+				{
+					__instance.GameComponentTick();
+				}
+				finally
+				{
+					DlcPf.PopWorld();
+				}
+				return false;
+			}
+			if (!rollTick)
+			{
+				return true;
+			}
+			List<Faction> factions = IsekaiPerFaction.RealPlayerFactions();
+			for (int i = 0; i < factions.Count && _state(__instance) == 0; i++)
+			{
+				Faction f = factions[i];
+				if (!DlcPf.PushWorld(f))
+				{
+					continue;
+				}
+				try
+				{
+					DlcPf.IntSwap swap = DlcPf.BeginInt("isekaiDuelDay:" + f.loadID, ref _lastRolledDay(__instance), isTick: false);
+					try
+					{
+						__instance.GameComponentTick();
+					}
+					finally
+					{
+						DlcPf.EndInt(swap, ref _lastRolledDay(__instance));
+					}
+				}
+				finally
+				{
+					DlcPf.PopWorld();
+				}
+			}
+			return false;
+		}
+		catch (Exception ex)
+		{
+			CaravanLeaveHelper.LogErrorThrottled("Isekai title duel", ex);
+			return false;
+		}
+	}
+}

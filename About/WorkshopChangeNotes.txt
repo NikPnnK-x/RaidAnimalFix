@@ -1,3 +1,33 @@
+[b]3.0.944.0[/b]
+
+[list]
+[*] Desync fix ("Wrong random state on map N" near a fire): the burning sound of a fire used the game's shared randomness only on the computer where that sound was being started at that moment. Sounds depend on each player's frame rate and camera (and on RimExodus slowed-down maps), so a fire on a neighbouring RimExodus tile desynced the game. Fire sounds no longer touch the shared randomness.
+[*] RimExodus - Seamless World, lag: with asynchronous time an empty neighbouring tile (no players' pawns, nobody looking at it, no raid there, nobody's home) took the speed of the colony next to it, and on the third speed Multiplayer ran it up to 12 ticks per server tick, because it decides "nothing is happening" by the spectator faction's pawns. Two or three full-size tiles were simulated faster than the colony itself, on every player's computer. Empty tiles now run no faster than normal speed; as soon as a player's pawn walks in or someone opens the tile, it runs at the colony's speed again (without the 12x).
+[*] RimExodus - Seamless World, stutters: every pawn crossing a seam made RimExodus rebuild the tile's "fast zone" near the seams (15 passes over the whole map), dozens of times in a row. In multiplayer the zone is now kept per map and rebuilt only when the void cells of the tile change.
+[*] RimExodus - Seamless World, colonist bar: every loaded tile without your colonists was shown as an empty group with a Multiplayer speed button. In multiplayer these groups are now hidden; your colony, tiles with your colonists and other players' colonies stay.
+[*] ISEKAI RPG LEVELING, guild quests: the guild looks for "a player home with Isekai colonists" every few days (the quest frequency setting), but in a multiplayer game with several factions it runs while the game's "player" is the spectator, so it never found a home and never made a quest. Hunts only came now and then from the storyteller - nothing for a long time, then several in a row. Now every player gets guild hunts on their own timer, at the frequency from the settings, made for their own colony.
+[*] ISEKAI RPG LEVELING, title duels: the daily roll for a challenge and the check that the champion arrived at the duelling ground had the same problem - challenges never came, and a started duel did not notice the champion. The roll now goes through every player's colony in turn (one duel at a time for everyone), and a running duel is handled for the champion's player.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.944.0 (по-русски)[/b]
+
+[list]
+[*] Исправлен рассинхрон («Wrong random state on map N» рядом с огнём): звук горения тратил общую случайность игры только на том компьютере, где этот звук как раз запускался. Звуки зависят от частоты кадров и камеры каждого игрока (и от притормаживаемых карт RimExodus), поэтому огонь на соседней клетке RimExodus рассинхронизировал игру. Звук огня больше не трогает общую случайность.
+[*] RimExodus - Seamless World, лаги: при асинхронном времени пустая соседняя клетка (нет пешек игроков, никто на неё не смотрит, нет рейда, не чей-то дом) получала скорость соседней колонии, а на третьей скорости Multiplayer гнал её до 12 тиков за тик сервера: «ничего не происходит» он определяет по пешкам фракции-наблюдателя. Две-три полноразмерные клетки симулировались быстрее самой колонии - на компьютере каждого игрока. Теперь пустая клетка идёт не быстрее обычной скорости; как только на неё заходит пешка игрока или кто-то её открывает, она снова идёт со скоростью колонии (без ×12).
+[*] RimExodus - Seamless World, фризы: каждый переход пешки через шов заставлял RimExodus заново строить «быструю зону» у швов (15 проходов по всей карте) - десятки раз подряд. В мультиплеере зона теперь хранится для каждой карты и перестраивается, только если меняются клетки пустоты.
+[*] RimExodus - Seamless World, панель колонистов: каждая загруженная клетка без ваших колонистов показывалась пустой группой с кнопкой скорости Multiplayer. В мультиплеере такие группы теперь скрыты; ваша колония, клетки с вашими колонистами и колонии других игроков остаются.
+[*] ISEKAI RPG LEVELING, квесты гильдии: раз в несколько дней (настройка частоты квестов) гильдия ищет «дом игрока с колонистами Isekai», но в мультиплеере с несколькими фракциями это происходит, пока «игроком» считается наблюдатель - дом не находился, квест не создавался. Охоты приходили только изредка от рассказчика - то долго ничего, то несколько подряд. Теперь у каждого игрока свой таймер охот с частотой из настроек, и квест создаётся для его колонии.
+[*] ISEKAI RPG LEVELING, дуэли за титул: у ежедневного броска на вызов и у проверки «чемпион пришёл на место дуэли» была та же проблема - вызовы не приходили, а начатая дуэль не замечала чемпиона. Бросок теперь идёт по колониям всех игроков по очереди (дуэль одна на всех), а идущая дуэль обрабатывается для игрока чемпиона.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.943.0[/b]
 
 [list]

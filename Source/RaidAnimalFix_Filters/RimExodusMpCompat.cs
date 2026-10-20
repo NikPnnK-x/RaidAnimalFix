@@ -50,6 +50,13 @@ namespace RaidAnimalFix;
 //     распространяется на связанные швами карты этого игрока.
 // 13. Настройки RimExodus читает симуляция → заблокированы во время MP-игры и
 //     входят в сверку настроек.
+// 14. С асинхронным временем пустая клетка получала скорость кластера (12), а MP гнал
+//     её на ▶▶▶ ×12 («ничего не происходит» считается по наблюдателю) — соседние карты
+//     симулировались быстрее колонии, лаги у всех. → пустая клетка идёт не быстрее ▶.
+// 15. Панель колонистов: каждая загруженная клетка без своих колонистов была пустой
+//     группой с кнопкой скорости MP. → в MP такие группы скрыты.
+// 16. Быстрая зона троттлинга (15 проходов по карте) строилась заново после каждого
+//     перехода пешки через шов → фризы. → кэш по отпечатку клеток пустоты.
 
 /// <summary>1. Синхронная (ванильная) генерация соседних карт в MP; скорость новой карты.</summary>
 [HarmonyPatch]
@@ -349,28 +356,7 @@ public static class RexHasPlayerPawnMp
 		{
 			return true;
 		}
-		__result = false;
-		if (map == null || map.Disposed)
-		{
-			return false;
-		}
-		if (RimExodusMp.AnyPlayerViewing(map))
-		{
-			__result = true;
-			return false;
-		}
-		IReadOnlyList<Pawn> pawns = map.mapPawns?.AllPawnsSpawned;
-		if (pawns != null)
-		{
-			for (int i = 0; i < pawns.Count; i++)
-			{
-				if (RimExodusMp.IsPlayerFaction(pawns[i].Faction))
-				{
-					__result = true;
-					break;
-				}
-			}
-		}
+		__result = map != null && !map.Disposed && (RimExodusMp.AnyPlayerViewing(map) || RimExodusMp.AnyPlayerPawn(map));
 		return false;
 	}
 }
@@ -1341,5 +1327,250 @@ public static class RexSettingsLockMp
 		Widgets.Label(inRect, "[Desync Fix] " + "RAF_RimExodus_SettingsLocked".Translate().Resolve());
 		Text.Font = font;
 		return false;
+	}
+}
+
+/// <summary>
+/// 14. Асинхронное время: пустая клетка RimExodus (MapParent_SeamlessTile — нет пешек
+/// игроков, никто не смотрит, нет активной угрозы, не чей-то дом) идёт не быстрее ▶:
+/// 1 тик карты за тик сервера. Скорость клеткам раздаёт кластер (12), и при ▶▶▶ у соседа
+/// MP гнал пустую полноразмерную карту ×6, а «ничего не происходит» он считает по пешкам
+/// фракции-наблюдателя (на клетке их нет никогда) → ×12. Две-три клетки симулировались
+/// быстрее самой колонии — у обоих игроков. Пешка игрока вошла или кто-то открыл клетку —
+/// она снова идёт со скоростью кластера, только без ×12. Все входы — состояние симуляции
+/// (пешки, синхронный счётчик зрителей, список угроз губернатора), так что число тиков
+/// карты одинаково у всех. Без асинхронного времени MP берёт минимум по всем картам —
+/// там клетки не трогаем, иначе замедлилась бы вся игра.
+/// </summary>
+[HarmonyPatch]
+public static class RexIdleTileSpeedCap
+{
+	private static bool Prepare()
+	{
+		return RimExodusMp.Present;
+	}
+
+	private static MethodBase TargetMethod()
+	{
+		Type t = RafTypes.Find("Multiplayer.Client.AsyncTimeComp");
+		return (t == null) ? null : AccessTools.DeclaredMethod(t, "TickRateMultiplier", new Type[1] { typeof(TimeSpeed) });
+	}
+
+	private static void Postfix(object __instance, TimeSpeed speed, ref float __result)
+	{
+		if (__result <= 1f)
+		{
+			return;
+		}
+		try
+		{
+			Map map = RimExodusMp.MapOfAsyncTime(__instance);
+			if (!RimExodusMp.IsSeamlessTileMap(map) || !RimExodusMp.AsyncTimeOn)
+			{
+				return;
+			}
+			if (RimExodusMp.PlayerCountOf(__instance) > 0 || RimExodusMp.AnyPlayerPawn(map) || RimExodusMp.InThreatKeepalive(map) || IsPlayerHomeTile(map))
+			{
+				if (speed == TimeSpeed.Superfast && __result > 6f)
+				{
+					__result = 6f;
+				}
+				return;
+			}
+			__result = 1f;
+		}
+		catch (Exception ex)
+		{
+			Log.ErrorOnce("[RaidAnimalFix] RimExodus idle tile speed: " + ex.Message, 0x5E1D7A11);
+		}
+	}
+
+	// Как RexProtectedHomeMp, но без Map.IsPlayerHome: тот смотрит на Faction.OfPlayer,
+	// а вне тика карты это фракция этого клиента.
+	private static bool IsPlayerHomeTile(Map map)
+	{
+		MapParent parent = map.Parent;
+		return map.wasSpawnedViaGravShipLanding || (parent != null && parent.def.canBePlayerHome && RimExodusMp.IsPlayerFaction(parent.Faction));
+	}
+}
+
+/// <summary>
+/// 15. Панель колонистов в MP: ваниль рисует группу для каждой карты (пустую рамку, если
+/// колонистов нет), а MP под каждой группой — кнопку скорости. Каждая загруженная клетка
+/// RimExodus без своих колонистов становилась такой группой. Скрываем их (как RimExodus
+/// со своей галочкой «скрывать пустые группы», но только клетки: своя колония, клетки
+/// со своими колонистами и колонии других игроков остаются). Только UI.
+/// </summary>
+[HarmonyPatch(typeof(ColonistBar), "CheckRecacheEntries")]
+[HarmonyAfter("RimExodus.SeamlessWorld")]
+[HarmonyPriority(Priority.Last)]
+public static class RexColonistBarIdleTilesMp
+{
+	private static readonly AccessTools.FieldRef<ColonistBar, List<ColonistBar.Entry>> Entries = AccessTools.FieldRefAccess<ColonistBar, List<ColonistBar.Entry>>("cachedEntries");
+
+	private static readonly AccessTools.FieldRef<ColonistBar, List<Vector2>> DrawLocs = AccessTools.FieldRefAccess<ColonistBar, List<Vector2>>("cachedDrawLocs");
+
+	private static readonly AccessTools.FieldRef<ColonistBar, List<int>> Groups = AccessTools.FieldRefAccess<ColonistBar, List<int>>("cachedReorderableGroups");
+
+	private static readonly AccessTools.FieldRef<ColonistBar, float> Scale = AccessTools.FieldRefAccess<ColonistBar, float>("cachedScale");
+
+	private static readonly AccessTools.FieldRef<ColonistBar, ColonistBarDrawLocsFinder> Finder = AccessTools.FieldRefAccess<ColonistBar, ColonistBarDrawLocsFinder>("drawLocsFinder");
+
+	private static bool Prepare()
+	{
+		return RimExodusMp.Present;
+	}
+
+	private static void Postfix(ColonistBar __instance)
+	{
+		if (!MpHelper.IsMultiplayer())
+		{
+			return;
+		}
+		List<ColonistBar.Entry> list = Entries(__instance);
+		List<Vector2> drawLocs = DrawLocs(__instance);
+		List<int> groups = Groups(__instance);
+		ColonistBarDrawLocsFinder finder = Finder(__instance);
+		// Пустая группа карты — запись без пешки (ваниль добавляет её, когда своих колонистов нет).
+		if (list == null || drawLocs == null || groups == null || finder == null || list.RemoveAll((ColonistBar.Entry e) => e.pawn == null && RimExodusMp.IsSeamlessTileMap(e.map)) == 0)
+		{
+			return;
+		}
+		int prev = int.MinValue;
+		int group = -1;
+		for (int i = 0; i < list.Count; i++)
+		{
+			ColonistBar.Entry entry = list[i];
+			if (entry.group != prev)
+			{
+				prev = entry.group;
+				group++;
+			}
+			list[i] = new ColonistBar.Entry(entry.pawn, entry.map, group);
+		}
+		groups.Clear();
+		for (int i = 0; i < list.Count; i++)
+		{
+			groups.Add(-1);
+		}
+		finder.CalculateDrawLocs(drawLocs, out float scale, group + 1);
+		Scale(__instance) = scale;
+	}
+}
+
+/// <summary>
+/// 16. Throttle() строит «быструю зону» у швов: 15 проходов по всей карте с новыми
+/// массивами на каждую клетку — десятки мс. Переход любой пешки через шов снимает
+/// троттлинг с карты прибытия, следующий Sweep ставит его обратно — зона строилась
+/// заново на каждый переход, у обоих игроков (в логе десятки «Throttle ON/OFF» подряд).
+/// В MP зона кэшируется на карту. Ключ — радиус и отпечаток клеток пустоты (пустоту
+/// RimExodus перекрашивает при заполнении швов): один проход вместо пятнадцати, и игрок,
+/// зашедший позже, получает ту же зону, что и остальные. Зона только читается.
+/// </summary>
+[HarmonyPatch]
+public static class RexFastRegionCacheMp
+{
+	private sealed class Key
+	{
+		public int radius;
+
+		public int voidCount;
+
+		public int voidHash;
+
+		public bool Same(Key other)
+		{
+			return other != null && radius == other.radius && voidCount == other.voidCount && voidHash == other.voidHash;
+		}
+	}
+
+	private sealed class Cached
+	{
+		public Key key;
+
+		public HashSet<IntVec3> cells;
+	}
+
+	private static readonly ConditionalWeakTable<Map, Cached> Cache = new ConditionalWeakTable<Map, Cached>();
+
+	private static TerrainDef _void;
+
+	private static bool Prepare()
+	{
+		return RimExodusMp.Present;
+	}
+
+	private static MethodBase TargetMethod()
+	{
+		Type t = RimExodusMp.T("SeamlessTickThrottle");
+		return (t == null) ? null : AccessTools.DeclaredMethod(t, "BuildFastRegion", new Type[2]
+		{
+			typeof(Map),
+			typeof(int)
+		});
+	}
+
+	private static bool Prefix(Map map, int radius, ref HashSet<IntVec3> __result, out Key __state)
+	{
+		__state = null;
+		if (map == null || radius <= 0 || !MpHelper.IsMultiplayer())
+		{
+			return true;
+		}
+		Key key = Fingerprint(map, radius);
+		if (key == null)
+		{
+			return true;
+		}
+		if (Cache.TryGetValue(map, out Cached cached) && key.Same(cached.key))
+		{
+			__result = cached.cells;
+			return false;
+		}
+		__state = key;
+		return true;
+	}
+
+	private static void Postfix(Map map, HashSet<IntVec3> __result, Key __state)
+	{
+		if (__state == null || __result == null)
+		{
+			return;
+		}
+		Cache.Remove(map);
+		Cache.Add(map, new Cached
+		{
+			key = __state,
+			cells = __result
+		});
+	}
+
+	private static Key Fingerprint(Map map, int radius)
+	{
+		if (_void == null)
+		{
+			_void = DefDatabase<TerrainDef>.GetNamedSilentFail("RimExodus_Void");
+		}
+		TerrainDef[] top = map.terrainGrid?.topGrid;
+		if (_void == null || top == null)
+		{
+			return null;
+		}
+		int count = 0;
+		int hash = 17;
+		for (int i = 0; i < top.Length; i++)
+		{
+			if (top[i] == _void)
+			{
+				count++;
+				hash = hash * 31 + i;
+			}
+		}
+		return new Key
+		{
+			radius = radius,
+			voidCount = count,
+			voidHash = hash
+		};
 	}
 }

@@ -81,6 +81,14 @@ internal static class RimExodusMp
 
 	private static MethodInfo _tryBridgeJob;
 
+	private static Type _governorType;
+
+	private static FieldInfo _threatKeepalive;
+
+	private static Game _govGame;
+
+	private static HashSet<Map> _govThreats;
+
 	public static Type T(string name)
 	{
 		return RafTypes.Find("RimExodus." + name);
@@ -169,6 +177,8 @@ internal static class RimExodusMp
 				typeof(IntVec3),
 				typeof(Job)
 			});
+			_governorType = T("SeamlessDormancyGovernor");
+			_threatKeepalive = (_governorType == null) ? null : AccessTools.Field(_governorType, "threatKeepaliveMaps");
 		}
 		catch (Exception ex)
 		{
@@ -218,20 +228,84 @@ internal static class RimExodusMp
 	/// </summary>
 	public static bool AnyPlayerViewing(Map map)
 	{
+		return PlayerCountOf(AsyncTime(map)) > 0;
+	}
+
+	/// <summary>Сколько игроков смотрит на карту этого AsyncTimeComp (синхронный счётчик MP).</summary>
+	public static int PlayerCountOf(object asyncTimeComp)
+	{
 		Resolve();
-		object comp = AsyncTime(map);
-		if (comp == null || _playerCount == null)
+		if (asyncTimeComp == null || _playerCount == null)
 		{
-			return false;
+			return 0;
 		}
 		try
 		{
-			return (int)_playerCount.GetValue(comp, null) > 0;
+			return (int)_playerCount.GetValue(asyncTimeComp, null);
 		}
 		catch
 		{
+			return 0;
+		}
+	}
+
+	/// <summary>Карта — клетка бесшовного мира RimExodus (MapParent_SeamlessTile), а не поселение/место.</summary>
+	public static bool IsSeamlessTileMap(Map map)
+	{
+		return map != null && !map.Disposed && IsTileParent(map.Parent);
+	}
+
+	/// <summary>
+	/// На карте есть пешка любой фракции живого игрока. Без Faction.OfPlayer — тот зависит
+	/// от контекста (в тике карты MP ставит наблюдателя, вне тиков — фракцию этого клиента).
+	/// </summary>
+	public static bool AnyPlayerPawn(Map map)
+	{
+		IReadOnlyList<Pawn> pawns = map?.mapPawns?.AllPawnsSpawned;
+		if (pawns == null)
+		{
 			return false;
 		}
+		Faction spectator = SpectatorFaction;
+		for (int i = 0; i < pawns.Count; i++)
+		{
+			Faction f = pawns[i].Faction;
+			if (f != null && f.IsPlayer && f != spectator)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/// <summary>
+	/// Карта в списке «активная угроза» губернатора RimExodus (там рейд — её не усыпляют).
+	/// Список не сохраняется, но после перезагрузки точки входа пуст у всех и заполняется
+	/// в одном и том же тике Sweep — детерминирован.
+	/// </summary>
+	public static bool InThreatKeepalive(Map map)
+	{
+		Resolve();
+		Game game = Current.Game;
+		if (map == null || game == null || _threatKeepalive == null)
+		{
+			return false;
+		}
+		if (game != _govGame || _govThreats == null)
+		{
+			_govGame = game;
+			_govThreats = null;
+			List<GameComponent> comps = game.components;
+			for (int i = 0; comps != null && i < comps.Count; i++)
+			{
+				if (_governorType.IsInstanceOfType(comps[i]))
+				{
+					_govThreats = _threatKeepalive.GetValue(comps[i]) as HashSet<Map>;
+					break;
+				}
+			}
+		}
+		return _govThreats != null && _govThreats.Contains(map);
 	}
 
 	/// <summary>Включено ли асинхронное время в этой MP-игре.</summary>

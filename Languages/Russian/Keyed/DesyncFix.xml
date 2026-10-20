@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <!-- Desync Fix: mod list check, desync analyzer, settings check, compatibility -->
-  <RAF_Safety_rimexodus_seamlessworld>исправлено этим модом: сон и пробуждение карт идут по синхронному присутствию игроков, а не по камере каждого, карты генерируются синхронно, приказы через шов и кнопки карт синхронизируются, учитываются пешки и дома всех игроков; торговля с поселением на его карте отключена; настройки заблокированы в игре - держите Sync configs включённым</RAF_Safety_rimexodus_seamlessworld>
+  <RAF_Safety_rimexodus_seamlessworld>исправлено этим модом: сон и пробуждение карт идут по синхронному присутствию игроков, а не по камере каждого, карты генерируются синхронно, приказы через шов и кнопки карт синхронизируются, учитываются пешки и дома всех игроков; при асинхронном времени пустые клетки идут не быстрее обычной скорости и скрыты из панели колонистов; торговля с поселением на его карте отключена; настройки заблокированы в игре - держите Sync configs включённым</RAF_Safety_rimexodus_seamlessworld>
   <RAF_Safety_ferny_perspectiveshift>управляет пешкой с клавиатуры прямо в тике, без синхронизации</RAF_Safety_ferny_perspectiveshift>
   <RAF_Safety_memegoddess_replacestuff>чертежи поверх скал, туман, отмена над мостами, порядок мостов и сохранение исправлены этим модом; выбор материала у «Заменить» синхронизируется</RAF_Safety_memegoddess_replacestuff>
-  <RAF_Safety_jellycreative_isekaileveling>дыры MP Compatibility закрыты этим модом (автораспределение, руны в тике, точка высадки, ранги, кэши); настройки в игре заблокированы — держите Sync configs включённым</RAF_Safety_jellycreative_isekaileveling>
+  <RAF_Safety_jellycreative_isekaileveling>дыры MP Compatibility закрыты этим модом (автораспределение, руны в тике, точка высадки, ранги, кэши, квесты гильдии и дуэли за титул у каждого игрока); настройки в игре заблокированы — держите Sync configs включённым</RAF_Safety_jellycreative_isekaileveling>
   <RAF_Safety_mehni_pickupandhaul>настройки (вместимость, трупы, животные) влияют на выбор работ — включите Sync configs и не меняйте их в игре</RAF_Safety_mehni_pickupandhaul>
   <RAF_Safety_m00nl1ght_mappreview>переброс сида и превью в игре выключены этим модом</RAF_Safety_m00nl1ght_mappreview>
   <RAF_Safety_co_uk_epicguru_meleeanimation>декоративный режим: казни, дуэли, лассо, навыки выключены этим модом</RAF_Safety_co_uk_epicguru_meleeanimation>

@@ -5,6 +5,7 @@ using System.Reflection.Emit;
 using HarmonyLib;
 using RimWorld;
 using Verse;
+using Verse.Sound;
 
 namespace RaidAnimalFix;
 
@@ -643,6 +644,36 @@ public static class PitGateCameraRandFix
 		{
 			Rand.PopState();
 		}
+	}
+}
+
+/// <summary>
+/// Конструктор SoundSizeAggregator тратит Rand (testSize — громкость для звука без
+/// источников), а создаётся агрегатор, когда огонь / плоть не нашли рядом живой
+/// сустейнер. Сустейнеры живут в реальном времени (кадры, затухание; RimExodus ещё и
+/// продлевает их на притормаживаемых картах) — у одного игрока агрегатор создаётся,
+/// у другого нет (Desync-70/71: Fire.TickInterval на соседней карте). Остальной
+/// звуковой код (SubSustainer, Sample, TryPlay) MP изолирует сам — здесь то же.
+/// </summary>
+[HarmonyPatch(typeof(SoundSizeAggregator), MethodType.Constructor)]
+public static class SoundSizeAggregatorRandFix
+{
+	private static void Prefix(out bool __state)
+	{
+		__state = MpHelper.IsMultiplayer();
+		if (__state)
+		{
+			Rand.PushState();
+		}
+	}
+
+	private static Exception Finalizer(Exception __exception, bool __state)
+	{
+		if (__state)
+		{
+			Rand.PopState();
+		}
+		return __exception;
 	}
 }
 

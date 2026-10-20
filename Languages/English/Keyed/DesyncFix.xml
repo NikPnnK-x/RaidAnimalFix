@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <!-- Desync Fix: mod list check, desync analyzer, settings check, compatibility -->
-  <RAF_Safety_rimexodus_seamlessworld>fixed by this mod: map sleep/wake follows synced player presence instead of each camera, maps generate synchronously, cross-map orders and map gizmos are synced, all players' pawns/homes are counted; trading with a settlement on its own map is disabled; settings locked in game - keep Sync configs on</RAF_Safety_rimexodus_seamlessworld>
+  <RAF_Safety_rimexodus_seamlessworld>fixed by this mod: map sleep/wake follows synced player presence instead of each camera, maps generate synchronously, cross-map orders and map gizmos are synced, all players' pawns/homes are counted; with async time empty tiles run no faster than normal speed and are hidden from the colonist bar; trading with a settlement on its own map is disabled; settings locked in game - keep Sync configs on</RAF_Safety_rimexodus_seamlessworld>
   <RAF_Safety_ferny_perspectiveshift>drives a pawn from the keyboard inside the tick, without sync</RAF_Safety_ferny_perspectiveshift>
   <RAF_Safety_memegoddess_replacestuff>over-rock blueprints, fog, cancel above bridges, bridge order and saving fixed by this mod; the 'Replace' stuff choice is synced</RAF_Safety_memegoddess_replacestuff>
-  <RAF_Safety_jellycreative_isekaileveling>gaps in Multiplayer Compatibility closed by this mod (auto-distribute, runes in the tick, drop zone, ranks, caches); settings locked in game - keep Sync configs on</RAF_Safety_jellycreative_isekaileveling>
+  <RAF_Safety_jellycreative_isekaileveling>gaps in Multiplayer Compatibility closed by this mod (auto-distribute, runes in the tick, drop zone, ranks, caches, guild quests and title duels per player); settings locked in game - keep Sync configs on</RAF_Safety_jellycreative_isekaileveling>
   <RAF_Safety_mehni_pickupandhaul>settings (capacity, corpses, animals) affect job choice - turn on Sync configs and don't change them in game</RAF_Safety_mehni_pickupandhaul>
   <RAF_Safety_m00nl1ght_mappreview>seed reroll and in-game preview disabled by this mod</RAF_Safety_m00nl1ght_mappreview>
   <RAF_Safety_co_uk_epicguru_meleeanimation>decorative mode: executions, duels, lasso and skills disabled by this mod</RAF_Safety_co_uk_epicguru_meleeanimation>
