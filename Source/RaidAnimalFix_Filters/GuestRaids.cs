@@ -129,7 +129,17 @@ public static class GuestThreatWealth
 /// Рейд на карту, где стоят колонисты другого игрока: письмо о рейде получает
 /// только хозяин (фильтр писем по фракции контекста), а гость узнаёт о бое,
 /// когда его пешек уже бьют. Показываем гостям локальное сообщение.
-/// Перебор фракций — AllFactionsListForReading; показ — локальное решение.
+///
+/// 3.0.946: решение «создавать ли сообщение» было локальным (LocalFaction !=
+/// владельца карты), а конструктор Message расходует GetNextMessageID из
+/// синхронного состояния — в тике сторителлера клиент гостя тратил ID, который
+/// хост не тратил вовсе, и игра рассинхронизировалась («Trace hashes don't
+/// match», лишний трейс GetNextMessageID у гостя). Теперь условие синхронное:
+/// перебираем фракции реальных игроков в порядке AllFactionsListForReading, и
+/// для каждой с колонистами на карте создаём одно сообщение — их число у всех
+/// клиентов одинаково, потому что определяется только составом мира. Кому
+/// показывать, решают фильтры отображения (MessageFilterFix2 / SilenceMessages
+/// форка) по целям сообщения — уже после расхода ID.
 /// </summary>
 [HarmonyPatch(typeof(IncidentWorker_Raid), "TryExecuteWorker")]
 public static class GuestRaidNotice
@@ -143,29 +153,29 @@ public static class GuestRaidNotice
 		try
 		{
 			Faction owner = map.ParentFaction;
-			Faction me = RelationsUtil.LocalFaction();
-			if (me == null || me == owner || !MpContext.IsRealPlayerFaction(me))
-			{
-				return;
-			}
-			if (!NotificationFilter.MapHasColonistsOf(map, me))
-			{
-				return;
-			}
 			string raider = parms.faction?.Name ?? "?";
 			string place = map.Parent?.LabelCap ?? map.ToString();
-			Pawn mine = null;
-			IReadOnlyList<Pawn> spawned = map.mapPawns.AllPawnsSpawned;
-			for (int i = 0; i < spawned.Count; i++)
+			List<Faction> factions = Find.FactionManager.AllFactionsListForReading;
+			for (int i = 0; i < factions.Count; i++)
 			{
-				if (spawned[i].Faction == me && spawned[i].IsFreeColonist)
+				Faction f = factions[i];
+				if (f == null || f == owner || !MpContext.IsRealPlayerFaction(f) || !NotificationFilter.MapHasColonistsOf(map, f))
 				{
-					mine = spawned[i];
-					break;
+					continue;
 				}
+				Pawn mine = null;
+				IReadOnlyList<Pawn> spawned = map.mapPawns.AllPawnsSpawned;
+				for (int j = 0; j < spawned.Count; j++)
+				{
+					if (spawned[j].Faction == f && spawned[j].IsFreeColonist)
+					{
+						mine = spawned[j];
+						break;
+					}
+				}
+				LookTargets targets = (mine != null) ? new LookTargets(mine) : LookTargets.Invalid;
+				Messages.Message(new Message("[RaidAnimalFix] " + "RAF_Relations_MsgRaidOnHostMap".Translate(raider, place), MessageTypeDefOf.ThreatBig, targets), historical: false);
 			}
-			LookTargets targets = (mine != null) ? new LookTargets(mine) : LookTargets.Invalid;
-			Messages.Message(new Message("[RaidAnimalFix] " + "RAF_Relations_MsgRaidOnHostMap".Translate(raider, place), MessageTypeDefOf.ThreatBig, targets), historical: false);
 		}
 		catch (Exception ex)
 		{

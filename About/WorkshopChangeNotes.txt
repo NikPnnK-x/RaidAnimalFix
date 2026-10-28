@@ -1,3 +1,25 @@
+[b]3.0.946.0[/b]
+
+[list]
+[*] Desync fix (raid on a tile where another player's caravan is standing): the "your colonists are being raided" notice for the caravan's owner was created only on that player's computer. Creating a Message spends a unique ID from the synchronized game state, so the guest's client spent an ID the host never did, and the game desynced right there (extra GetNextMessageID trace, "Trace hashes don't match"). The decision to create the notice is now synchronized: the mod walks the real-player factions in a fixed order and creates one notice per faction that has colonists on the raided map - every client creates the same number of notices. Who actually sees them is decided by the display filters (per faction of the targets), after the ID is already spent.
+[*] Desync fix (random inspirations, "Trace hashes don't match" / "Wrong random state"): the inspiration roll (MTB check + inspiration pick) consumed the game's shared randomness. In rare state combinations with several player factions the roll ran on one client only (+2 Rand calls), shifting the shared random state for everyone. The whole roll now runs in its own Rand stream seeded from the pawn's ID and the current tick, so it can no longer touch the shared randomness; with identical inputs the seeded roll gives identical results on all clients.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.946.0 (по-русски)[/b]
+
+[list]
+[*] Фикс рассинхрона (налёт на клетку, где стоит караван другого игрока): уведомление «ваших колонистов атакуют» для владельца каравана создавалось только на его компьютере. Создание Message тратит уникальный ID из синхронного состояния игры, поэтому клиент гостя тратил ID, который хост не тратил вовсе, и игра рассинхронизировалась прямо на этом месте (лишний трейс GetNextMessageID, «Trace hashes don't match»). Решение о создании уведомления теперь синхронное: мод перебирает фракции реальных игроков в фиксированном порядке и для каждой фракции с колонистами на карте создаёт одно уведомление - их число одинаково у всех клиентов. Кому показывать, решают фильтры отображения (по фракции целей) - уже после траты ID.
+[*] Фикс рассинхрона (случайные вдохновения, «Trace hashes don't match» / «Wrong random state»): ролл вдохновения (проверка MTB + выбор вдохновения) расходовал общий поток случайности игры. При редких комбинациях состояния пешки с несколькими фракциями игроков ролл выполнялся только у одного клиента (+2 вызова Rand), сдвигая общий поток для всех. Теперь весь ролл выполняется в собственном потоке Rand с сидом из ID пешки и текущего тика - общий поток случайности он больше не трогает; при одинаковом входе сид одинаков и результат одинаков у всех.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.945.0[/b]
 
 [list]
